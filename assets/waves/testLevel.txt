@@ -1,0 +1,13 @@
+#ID		Type				Enemy		Count
+
+# WaveA
+WaveA1	Time(1)				Creep	10
+		Alive(WaveA1, 3)	Creep	5
+#		HeroLife(0.1)		Creep	3
+#		Delay(WaveA1, 5)	Creep	3
+
+# WaveB
+WaveB1	Time(8)				Creep	5
+WaveB2	Alive(WaveB1, 2)	Creep	1
+WaveB3	Alive(WaveB2, 0)	Creep	1
+		Alive(WaveB3, 0)	Creep	1
