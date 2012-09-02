@@ -8,6 +8,7 @@ package brotherhood.states.gameplay
 	import brotherhood.states.State;
 	import brotherhood.system.EntityService;
 	import brotherhood.system.SystemService;
+	import flash.display.Bitmap;
 	import flash.display.BitmapData;
 	import flash.geom.Rectangle;
 	import nemostein.framework.dragonfly.AnchorAlign;
@@ -24,6 +25,8 @@ package brotherhood.states.gameplay
 		override protected function initialize():void 
 		{
 			super.initialize();
+			
+			draw(Bitmap(new Assets.ImageBackground()).bitmapData);
 			
 			crosshairsLayer = new Core();
 			creepsLayer = new Core();

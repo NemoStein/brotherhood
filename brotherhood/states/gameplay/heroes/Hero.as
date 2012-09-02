@@ -2,11 +2,18 @@ package brotherhood.states.gameplay.heroes
 {
 	import brotherhood.states.gameplay.Target;
 	import brotherhood.system.SystemService;
+	import flash.display.Bitmap;
+	import nemostein.framework.dragonfly.AnchorAlign;
+	import nemostein.framework.dragonfly.Animation;
 	import nemostein.framework.dragonfly.Core;
 	import nemostein.io.Keys;
 	
 	public class Hero extends Core implements Target
 	{
+		static public const LOOK_LEFT:String = "lookLeft";
+		static public const LOOK_MIDDLE:String = "lookMiddle";
+		static public const LOOK_RIGHT:String = "lookRight";
+		
 		public var currentHP:Number = 100;
 		public var totalHP:Number = 100;
 		
@@ -17,6 +24,17 @@ package brotherhood.states.gameplay.heroes
 		override protected function initialize():void 
 		{
 			super.initialize();
+			
+			draw(Bitmap(new Assets.ImageHeroes).bitmapData);
+			
+			frame.width = 50;
+			frame.height = 50;
+			
+			alignAnchor(AnchorAlign.BOTTOM, AnchorAlign.CENTER);
+			
+			addAnimation(new Animation(LOOK_LEFT, [0], 150, false));
+			addAnimation(new Animation(LOOK_MIDDLE, [1], 150, false));
+			addAnimation(new Animation(LOOK_RIGHT, [2], 150, false));
 		}
 		
 		public function addXP(xp:int):void
