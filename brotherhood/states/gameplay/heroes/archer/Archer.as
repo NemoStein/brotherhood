@@ -1,6 +1,8 @@
 package brotherhood.states.gameplay.heroes.archer 
 {
 	import brotherhood.states.gameplay.heroes.Hero;
+	import brotherhood.states.gameplay.hud.HUD;
+	import brotherhood.system.EntityService;
 	import flash.display.BitmapData;
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
@@ -20,6 +22,16 @@ package brotherhood.states.gameplay.heroes.archer
 			sprite.fillRect(new Rectangle(10, 0, 20, 20), 0xff008000);
 			
 			alignAnchor(AnchorAlign.BOTTOM, AnchorAlign.CENTER);
+		}
+		
+		override protected function update():void 
+		{
+			if (input.pressed(HUD.P1_GA))
+			{
+				trace(EntityService.player1Crosshair.radius);
+			}
+			
+			super.update();
 		}
 	}
 }

@@ -1,13 +1,7 @@
 package brotherhood
 {
-	import brotherhood.states.gameplay.GamePlay;
-	import brotherhood.states.heroselection.HeroSelection;
 	import brotherhood.states.startmenu.StartMenu;
 	import brotherhood.system.SystemService;
-	import flash.display.Bitmap;
-	import flash.display.BitmapData;
-	import nemostein.framework.dragonfly.Animation;
-	import nemostein.framework.dragonfly.Core;
 	import nemostein.framework.dragonfly.Game;
 	
 	public class Brotherhood extends Game
@@ -23,6 +17,13 @@ package brotherhood
 			
 			SystemService.registerGame(this);
 			SystemService.changeState(StartMenu);
+			
+			//var commonArrow:CommonArrow = new CommonArrow();
+			//
+			//commonArrow.x = 50;
+			//commonArrow.y = 50;
+			//
+			//add(commonArrow);
 		}
 	}
 }
