@@ -2,6 +2,7 @@ package brotherhood.states.gameplay.waves
 {
 	import brotherhood.states.gameplay.creeps.Creep;
 	import brotherhood.states.State;
+	import nemostein.framework.dragonfly.Core;
 	public class Alive extends Wave
 	{
 		private var _waveReference:Wave;
@@ -23,7 +24,7 @@ package brotherhood.states.gameplay.waves
 		}
 		
 		
-		override public function start(state:State):void 
+		override public function start(container:Core):void 
 		{
 			if(_waveReference)
 			{
