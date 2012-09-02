@@ -84,7 +84,7 @@ package brotherhood.states.gameplay
 			/******************************/
 			
 			_waves = Waves.parse(new Assets.TextWavesTestLevel());
-			_waves.startWaves(this);
+			_waves.startWaves(creepsLayer);
 		}
 		
 		override protected function stateUpdate():void 

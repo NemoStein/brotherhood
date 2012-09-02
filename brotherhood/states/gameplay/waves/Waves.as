@@ -1,7 +1,7 @@
 package brotherhood.states.gameplay.waves
 {
-	import brotherhood.states.State;
 	import flash.utils.getDefinitionByName;
+	import nemostein.framework.dragonfly.Core;
 	
 	public class Waves
 	{
@@ -33,12 +33,12 @@ package brotherhood.states.gameplay.waves
 			delete _waves[id];
 		}
 		
-		public function startWaves(state:State):void
+		public function startWaves(container:Core):void
 		{
 			for (var id:String in _waves)
 			{
 				var wave:Wave = _waves[id];
-				wave.start(state);
+				wave.start(container);
 			}
 		}
 		

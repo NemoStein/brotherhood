@@ -1,8 +1,7 @@
 package brotherhood.states.gameplay.waves
 {
 	import brotherhood.states.gameplay.creeps.Creep;
-	import brotherhood.states.State;
-	import flash.geom.Point;
+	import nemostein.framework.dragonfly.Core;
 	
 	public class Wave
 	{
@@ -14,7 +13,7 @@ package brotherhood.states.gameplay.waves
 		protected var CreepClass:Class;
 		protected var count:int;
 		
-		protected var state:State;
+		protected var container:Core;
 		protected var dispatched:Boolean;
 		
 		public var alive:int;
@@ -37,9 +36,9 @@ package brotherhood.states.gameplay.waves
 		
 		}
 		
-		public function start(state:State):void
+		public function start(container:Core):void
 		{
-			this.state = state;
+			this.container = container;
 		}
 		
 		public function onCreepDestruction(callback:Function):void
@@ -80,7 +79,7 @@ package brotherhood.states.gameplay.waves
 					creep.x = Math.random() * 800 + 250;
 					creep.y = Math.random() * 30 + 750;
 					
-					state.add(creep);
+					container.add(creep);
 				}
 				
 				// DELETE: wave sequence test

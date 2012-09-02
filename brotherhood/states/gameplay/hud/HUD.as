@@ -148,41 +148,42 @@ package brotherhood.states.gameplay.hud
 		
 		override protected function update():void 
 		{
-			var p1Destination:Point = EntityService.player1Crosshair.destination;
+			var p1Crosshair:Crosshair = EntityService.player1Crosshair;
+			var p1CrosshairDestination:Point = p1Crosshair.destination;
 			
 			if (input.pressed(P1_U))
 			{
-				p1Destination.y = -Infinity;
+				p1CrosshairDestination.y = -Infinity;
 				
 			}
 			else if(input.pressed(P1_D))
 			{
-				p1Destination.y = Infinity;
+				p1CrosshairDestination.y = Infinity;
 			}
 			else
 			{
-				p1Destination.y = EntityService.player1Crosshair.y;
+				p1CrosshairDestination.y = EntityService.player1Crosshair.y;
 			}
 			
 			if (input.pressed(P1_L))
 			{
-				p1Destination.x = -Infinity;
+				p1CrosshairDestination.x = -Infinity;
 			}
 			else if(input.pressed(P1_R))
 			{
-				p1Destination.x = Infinity;
+				p1CrosshairDestination.x = Infinity;
 			}
 			else
 			{
-				p1Destination.x = EntityService.player1Crosshair.x;
+				p1CrosshairDestination.x = EntityService.player1Crosshair.x;
 			}
 			
-			var distanceX:Number = p1Destination.x - EntityService.player1Crosshair.x;
-			var distanceY:Number = p1Destination.y - EntityService.player1Crosshair.y;
+			var distanceX:Number = p1CrosshairDestination.x - EntityService.player1Crosshair.x;
+			var distanceY:Number = p1CrosshairDestination.y - EntityService.player1Crosshair.y;
 			
 			if (distanceX || distanceY)
 			{
-				var moveSpeed:Number = Crosshair.SPEED * time;
+				var moveSpeed:Number = p1Crosshair.speed * time;
 				
 				var moveAngle:Number = Math.atan2(distanceY, distanceX);
 				
