@@ -41,13 +41,15 @@ package brotherhood.states.gameplay
 			
 			add(hud);
 			
-			
 			// DELETE: lane/base division
 			/******************************/
-			
 			var ll:Core = new Core(new BitmapData(250, 470, true, 0x50000000));
 			var ml:Core = new Core(new BitmapData(300, 470, true, 0x50ffffff));
 			var rl:Core = new Core(new BitmapData(250, 470, true, 0x50000000));
+			
+			var lb:Core = new Core(new BitmapData(130, 20, true, 0x80ffffff));
+			var rb:Core = new Core(new BitmapData(130, 20, true, 0x80ffffff));
+			var gb:Core = new Core(new BitmapData(200, 20, true, 0x80000000));
 			
 			ll.x = 250;
 			ml.x = 500;
@@ -56,10 +58,6 @@ package brotherhood.states.gameplay
 			ll.y = 250;
 			ml.y = 250;
 			rl.y = 250;
-			
-			var lb:Core = new Core(new BitmapData(130, 20, true, 0x80ffffff));
-			var rb:Core = new Core(new BitmapData(130, 20, true, 0x80ffffff));
-			var gb:Core = new Core(new BitmapData(200, 20, true, 0x80000000));
 			
 			lb.x = 335;
 			rb.x = 815;
@@ -76,7 +74,6 @@ package brotherhood.states.gameplay
 			add(lb);
 			add(rb);
 			add(gb);
-			
 			/******************************/
 			
 			_waves = Waves.parse(new Assets.TextWavesTestLevel());
