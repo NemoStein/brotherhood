@@ -97,7 +97,17 @@ package
 				
 				EntityService.player1Crosshair.x += moveX;
 				EntityService.player1Crosshair.y += moveY;
+				
+				EntityService.player2Crosshair.x += moveX;
+				EntityService.player2Crosshair.y += moveY;
 			}
+			
+			if (input.justPressed(P1_GA))
+			{
+				EntityService.archer.useSkill(1);
+				EntityService.wizard.useSkill(1);
+			}
+			
 			super.update();
 		}
 	}

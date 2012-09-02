@@ -59,6 +59,8 @@ package brotherhood.states.gameplay
 			crosshairsLayer.add(EntityService.player1Crosshair);
 			crosshairsLayer.add(EntityService.player2Crosshair);
 			
+			EntityService.player2Crosshair.visible = false;
+			
 			_waves = Waves.parse(new Assets.TextWavesTestLevel());
 			_waves.startWaves(creepsLayer);
 		}

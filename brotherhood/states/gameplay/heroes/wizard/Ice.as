@@ -1,16 +1,16 @@
-package brotherhood.states.gameplay.heroes.archer.arrows 
+package brotherhood.states.gameplay.heroes.wizard 
 {
 	import brotherhood.system.EntityService;
 	import flash.display.BitmapData;
 	import flash.geom.Point;
-	import flash.geom.Rectangle;
 	import nemostein.framework.dragonfly.Core;
 	
-	public class CommonArrow extends Core 
+	public class Ice extends Core 
 	{
+		
 		private var _destination:Point = new Point();
 		
-		public function CommonArrow():void
+		public function Ice():void
 		{
 			super();
 			
@@ -22,17 +22,7 @@ package brotherhood.states.gameplay.heroes.archer.arrows
 		{
 			super.initialize();
 			
-			frame.width = 15;
-			frame.height = 3;
-			
-			sprite = new BitmapData(frame.width, frame.height, true, 0);
-			sprite.fillRect(new Rectangle(4, 1, 10, 1), 0xff000000);
-			sprite.fillRect(new Rectangle(1, 0, 2, 3), 0xff008000);
-			sprite.fillRect(new Rectangle(0, 0, 1, 1), 0xff008000);
-			sprite.fillRect(new Rectangle(0, 2, 1, 1), 0xff008000);
-			sprite.fillRect(new Rectangle(3, 1, 1, 1), 0xff008000);
-			sprite.fillRect(new Rectangle(12, 0, 2, 3), 0xff808080);
-			sprite.fillRect(new Rectangle(14, 1, 1, 1), 0xff808080);
+			draw( new BitmapData(8, 8, true, 0x80000070));
 		}
 		
 		override protected function update():void 
