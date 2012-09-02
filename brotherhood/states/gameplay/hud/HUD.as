@@ -1,37 +1,41 @@
 package brotherhood.states.gameplay.hud
 {
+	import brotherhood.states.gameplay.heroes.crosshair.Crosshair;
 	import brotherhood.system.EntityService;
+	import brotherhood.system.SystemService;
+	import flash.geom.Point;
 	import nemostein.framework.dragonfly.AnchorAlign;
 	import nemostein.framework.dragonfly.Core;
+	import nemostein.io.Keys;
 	
 	public class HUD extends Core
 	{
 		public static const ARCHER:String = "archer";
 		static public const WIZARD:String = "wizard";
 		
-		static public const P1_GA:String = "p1Ga";
-		static public const P1_GB:String = "p1Gb";
-		static public const P1_BA:String = "p1Ba";
-		static public const P1_BB:String = "p1Bb";
-		static public const P1_RA:String = "p1Ra";
-		static public const P1_RB:String = "p1Rb";
-		static public const P1_U:String = "p1U";
-		static public const P1_D:String = "p1D";
-		static public const P1_L:String = "p1L";
-		static public const P1_R:String = "p1R";
-		static public const P1_S:String = "p1S";
+		static public var P1_GA:int = Keys.U;
+		static public var P1_GB:int = Keys.J;
+		static public var P1_BA:int = Keys.I;
+		static public var P1_BB:int = Keys.K;
+		static public var P1_RA:int = Keys.O;
+		static public var P1_RB:int = Keys.L;
+		static public var P1_U:int = Keys.W;
+		static public var P1_D:int = Keys.S;
+		static public var P1_L:int = Keys.A;
+		static public var P1_R:int = Keys.D;
+		static public var P1_S:int = Keys.NUMBER_9;
 		
-		static public const P2_GA:String = "p2Ga";
-		static public const P2_GB:String = "p2Gb";
-		static public const P2_BA:String = "p2Ba";
-		static public const P2_BB:String = "p2Bb";
-		static public const P2_RA:String = "p2Ra";
-		static public const P2_RB:String = "p2Rb";
-		static public const P2_U:String = "p2U";
-		static public const P2_D:String = "p2D";
-		static public const P2_L:String = "p2L";
-		static public const P2_R:String = "p2R";
-		static public const P2_S:String = "p2S";
+		/*static public var P2_GA:String = Keys.2Ga";
+		static public var P2_GB:String = Keys.2Gb";
+		static public var P2_BA:String = Keys.2Ba";
+		static public var P2_BB:String = Keys.2Bb";
+		static public var P2_RA:String = Keys.2Ra";
+		static public var P2_RB:String = Keys.2Rb";
+		static public var P2_U:String = Keys.2U";
+		static public var P2_D:String = Keys.2D";
+		static public var P2_L:String = Keys.2L";
+		static public var P2_R:String = Keys.2R";
+		static public var P2_S:String = Keys.2S";*/
 		
 		public static var archerRight:Boolean;
 		
@@ -41,8 +45,8 @@ package brotherhood.states.gameplay.hud
 		private var _archerStats:HeroSlot;
 		private var _wizardStats:HeroSlot;
 		
-		private var _archerCrosshair:Core;
-		private var _wizardCrosshair:Core;
+		private var _archerCrosshair:Crosshair;
+		private var _wizardCrosshair:Crosshair;
 		
 		
 		override protected function initialize():void
@@ -54,6 +58,9 @@ package brotherhood.states.gameplay.hud
 			
 			_archerStats = new HeroSlot(ARCHER);
 			_wizardStats = new HeroSlot(WIZARD);
+			
+			_archerCrosshair = new Crosshair(ARCHER);
+			_wizardCrosshair = new Crosshair(WIZARD);
 			
 			if (archerRight)
 			{
@@ -76,6 +83,9 @@ package brotherhood.states.gameplay.hud
 				
 				EntityService.player1 = EntityService.wizard;
 				EntityService.player2 = EntityService.archer;
+				
+				EntityService.player1Crosshair = _wizardCrosshair;
+				EntityService.player2Crosshair = _archerCrosshair;
 			}
 			else
 			{
@@ -98,16 +108,77 @@ package brotherhood.states.gameplay.hud
 				
 				EntityService.player1 = EntityService.archer;
 				EntityService.player2 = EntityService.wizard;
+				
+				EntityService.player1Crosshair = _archerCrosshair;
+				EntityService.player2Crosshair = _wizardCrosshair;
 			}
 			
 			add(_archerSkills);
 			add(_wizardSkills);
 			add(_archerStats);
 			add(_wizardStats);
+			
+			SystemService.crosshairLayer.add(_archerCrosshair);
+			SystemService.crosshairLayer.add(_wizardCrosshair);
 		}
 		
 		override protected function update():void 
 		{
+			var p1Destination:Point = EntityService.player1Crosshair.destination;
+			
+			if (input.pressed(P1_U))
+			{
+				p1Destination.y = -Infinity;
+				
+			}
+			else if(input.pressed(P1_D))
+			{
+				p1Destination.y = Infinity;
+			}
+			else
+			{
+				p1Destination.y = EntityService.player1Crosshair.y;
+			}
+			
+			if (input.pressed(P1_L))
+			{
+				p1Destination.x = -Infinity;
+			}
+			else if(input.pressed(P1_R))
+			{
+				p1Destination.x = Infinity;
+			}
+			else
+			{
+				p1Destination.x = EntityService.player1Crosshair.x;
+			}
+			
+			var distanceX:Number = p1Destination.x - EntityService.player1Crosshair.x;
+			var distanceY:Number = p1Destination.y - EntityService.player1Crosshair.y;
+			
+			if (distanceX || distanceY)
+			{
+				var moveSpeed:Number = Crosshair.SPEED * time;
+				
+				var moveAngle:Number = Math.atan2(distanceY, distanceX);
+				
+				var moveX:Number = Math.cos(moveAngle) * moveSpeed;
+				var moveY:Number = Math.sin(moveAngle) * moveSpeed;
+				
+				if (distanceX > 0 && distanceX < moveX || distanceX < 0 && distanceX > moveX)
+				{
+					moveX = distanceX;
+				}
+				
+				if (distanceY > 0 && distanceY < moveY || distanceY < 0 && distanceY > moveY)
+				{
+					moveY = distanceY;
+				}
+				
+				EntityService.player1Crosshair.x += moveX;
+				EntityService.player1Crosshair.y += moveY;
+			}
+			
 			super.update();
 		}
 	}
