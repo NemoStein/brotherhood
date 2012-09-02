@@ -40,6 +40,12 @@ package brotherhood.states.gameplay.hud
 			add(_foreground);
 		}
 		
+		public function setValues(value:Number, maxValue:Number):void
+		{
+			this.value = value;
+			this.maxValue = maxValue;
+		}
+		
 		override protected function update():void 
 		{
 			if (value > maxValue)

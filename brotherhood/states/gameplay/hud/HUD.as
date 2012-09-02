@@ -1,7 +1,5 @@
 package brotherhood.states.gameplay.hud
 {
-	import flash.display.BitmapData;
-	import flash.geom.Point;
 	import nemostein.framework.dragonfly.AnchorAlign;
 	import nemostein.framework.dragonfly.Core;
 	
@@ -13,8 +11,8 @@ package brotherhood.states.gameplay.hud
 		private var _archerSkills:SkillSlot;
 		private var _wizardSkills:SkillSlot;
 		
-		private var _archerStats:Hero;
-		private var _wizardStats:Hero;
+		private var _archerStats:HeroSlot;
+		private var _wizardStats:HeroSlot;
 		
 		private var player1:String;
 		
@@ -25,8 +23,8 @@ package brotherhood.states.gameplay.hud
 			_archerSkills = new SkillSlot(ARCHER);
 			_wizardSkills = new SkillSlot(WIZARD);
 			
-			_archerStats = new Hero();
-			_wizardStats = new Hero();
+			_archerStats = new HeroSlot(ARCHER);
+			_wizardStats = new HeroSlot(WIZARD);
 			
 			player1 = ARCHER;
 			
@@ -38,7 +36,7 @@ package brotherhood.states.gameplay.hud
 				_archerStats.alignAnchor(AnchorAlign.TOP, AnchorAlign.LEFT);
 				_wizardStats.alignAnchor(AnchorAlign.TOP, AnchorAlign.RIGHT);
 				
-				_archerStats.x = 20;
+				_archerStats.x = _archerSkills.width + 20;
 				_archerStats.y = 0;
 				
 				_wizardStats.x = 960;
