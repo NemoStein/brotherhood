@@ -4,7 +4,6 @@ package brotherhood.states.gameplay.creeps.ranged
 	import flash.display.BitmapData;
 	import flash.geom.Point;
 	import nemostein.framework.dragonfly.AnchorAlign;
-	import nemostein.framework.dragonfly.Core;
 	
 	internal class Ranged extends Creep
 	{
