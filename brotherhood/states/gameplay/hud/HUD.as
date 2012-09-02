@@ -2,6 +2,7 @@ package brotherhood.states.gameplay.hud
 {
 	import brotherhood.states.gameplay.heroes.archer.Archer;
 	import brotherhood.states.gameplay.heroes.crosshair.Crosshair;
+	import brotherhood.states.gameplay.heroes.Hero;
 	import brotherhood.system.EntityService;
 	import brotherhood.system.SystemService;
 	import flash.geom.Point;
@@ -46,9 +47,6 @@ package brotherhood.states.gameplay.hud
 		private var _archerStats:HeroSlot;
 		private var _wizardStats:HeroSlot;
 		
-		private var _archerCrosshair:Crosshair;
-		private var _wizardCrosshair:Crosshair;
-		
 		
 		override protected function initialize():void
 		{
@@ -62,9 +60,6 @@ package brotherhood.states.gameplay.hud
 			
 			var wizard:Hero = EntityService.wizard;
 			var archer:Hero = EntityService.archer;
-			
-			_archerCrosshair = new Crosshair(ARCHER);
-			_wizardCrosshair = new Crosshair(WIZARD);
 			
 			archer.y = 105;
 			wizard.y = 105;
@@ -94,8 +89,8 @@ package brotherhood.states.gameplay.hud
 				EntityService.player1 = wizard;
 				EntityService.player2 = archer;
 				
-				EntityService.player1Crosshair = _wizardCrosshair;
-				EntityService.player2Crosshair = _archerCrosshair;
+				EntityService.player1Crosshair = new Crosshair(WIZARD);
+				EntityService.player2Crosshair = new Crosshair(ARCHER);
 			}
 			else
 			{
@@ -122,8 +117,8 @@ package brotherhood.states.gameplay.hud
 				EntityService.player1 = archer;
 				EntityService.player2 = wizard;
 				
-				EntityService.player1Crosshair = _archerCrosshair;
-				EntityService.player2Crosshair = _wizardCrosshair;
+				EntityService.player1Crosshair = new Crosshair(WIZARD);
+				EntityService.player2Crosshair = new Crosshair(ARCHER);
 			}
 			
 			add(_archerSkills);
@@ -135,8 +130,8 @@ package brotherhood.states.gameplay.hud
 			add(wizard);
 			add(archer);
 			
-			SystemService.crosshairLayer.add(_archerCrosshair);
-			SystemService.crosshairLayer.add(_wizardCrosshair);
+			SystemService.crosshairLayer.add(EntityService.player1Crosshair);
+			SystemService.crosshairLayer.add(EntityService.player2Crosshair);
 		}
 		
 		override protected function update():void 
