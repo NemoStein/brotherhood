@@ -1,5 +1,8 @@
 package brotherhood.system
 {
+	import brotherhood.states.endgame.defeat.Defeat;
+	import brotherhood.states.endgame.victory.Victory;
+	import brotherhood.states.startmenu.StartMenu;
 	import brotherhood.states.State;
 	import flash.utils.Dictionary;
 	import nemostein.framework.dragonfly.Core;
@@ -15,6 +18,7 @@ package brotherhood.system
 		static private var _currentState:State;
 		static private var _nextStateSwipeFinished:Boolean;
 		static private var _currentStateSwipeFinished:Boolean;
+		static private var _gameEnded:Boolean;
 		
 		static public function registerGame(game:Game):void
 		{
@@ -31,42 +35,55 @@ package brotherhood.system
 		
 		static public function changeState(stateClass:Class):void
 		{
-			_nextState = getState(stateClass);
-			_stateLayer.add(_nextState);
+			if(_currentState)
+			{
+				_stateLayer.remove(_currentState);
+			}
 			
-			if (_currentState)
+			_currentState = getState(stateClass);
+			_stateLayer.add(_currentState);
+			
+			if (_currentState is StartMenu)
 			{
-				var direction:int = int(Math.random() * 4);
-				var distance:int;
-				
-				if (direction == State.SWIPE_UP)
-				{
-					_nextState.y = _game.height;
-					distance = _game.height;
-				}
-				else if (direction == State.SWIPE_DOWN)
-				{
-					_nextState.y = -_game.height;
-					distance = _game.height;
-				}
-				else if (direction == State.SWIPE_LEFT)
-				{
-					_nextState.x = _game.width;
-					distance = _game.width;
-				}
-				else if (direction == State.SWIPE_RIGHT)
-				{
-					_nextState.x = -_game.width;
-					distance = _game.width;
-				}
-				
-				_nextState.swipeTo(direction, distance);
-				_currentState.swipeTo(direction, distance);
+				_gameEnded = false;
 			}
-			else
-			{
-				_currentState = _nextState;
-			}
+			
+			//_nextState = getState(stateClass);
+			//_stateLayer.add(_nextState);
+			//
+			//if (_currentState)
+			//{
+				//var direction:int = int(Math.random() * 4);
+				//var distance:int;
+				//
+				//if (direction == State.SWIPE_UP)
+				//{
+					//_nextState.y = _game.height;
+					//distance = _game.height;
+				//}
+				//else if (direction == State.SWIPE_DOWN)
+				//{
+					//_nextState.y = -_game.height;
+					//distance = _game.height;
+				//}
+				//else if (direction == State.SWIPE_LEFT)
+				//{
+					//_nextState.x = _game.width;
+					//distance = _game.width;
+				//}
+				//else if (direction == State.SWIPE_RIGHT)
+				//{
+					//_nextState.x = -_game.width;
+					//distance = _game.width;
+				//}
+				//
+				//_nextState.swipeTo(direction, distance);
+				//_currentState.swipeTo(direction, distance);
+			//}
+			//else
+			//{
+				//_currentState = _nextState;
+			//}
 		}
 		
 		static public function swipeFinished(state:State):void
@@ -91,8 +108,28 @@ package brotherhood.system
 			}
 		}
 		
+		static public function defeat():void 
+		{
+			if(!_gameEnded)
+			{
+				_gameEnded = true;
+				changeState(Defeat);
+			}
+		}
+		
+		static public function victory():void 
+		{
+			if(!_gameEnded)
+			{
+				_gameEnded = true;
+				changeState(Victory);
+			}
+		}
+		
 		static private function getState(stateClass:Class):State
 		{
+			return new stateClass();
+			
 			if (!_states[stateClass])
 			{
 				_states[stateClass] = new stateClass();

@@ -1,5 +1,8 @@
 package brotherhood.states.gameplay.hud
 {
+	import brotherhood.states.gameplay.heroes.archer.Archer;
+	import brotherhood.states.gameplay.heroes.Hero;
+	import brotherhood.states.gameplay.heroes.wizard.Wizard;
 	import brotherhood.system.EntityService;
 	import nemostein.framework.dragonfly.AnchorAlign;
 	import nemostein.framework.dragonfly.Core;
@@ -55,6 +58,12 @@ package brotherhood.states.gameplay.hud
 			_archerStats = new HeroSlot(ARCHER);
 			_wizardStats = new HeroSlot(WIZARD);
 			
+			var wizard:Hero = EntityService.wizard;
+			var archer:Hero = EntityService.archer;
+			
+			archer.y = 105;
+			wizard.y = 105;
+			
 			if (archerRight)
 			{
 				_archerSkills.alignAnchor(AnchorAlign.TOP, AnchorAlign.LEFT);
@@ -74,8 +83,11 @@ package brotherhood.states.gameplay.hud
 				_wizardSkills.x = 1280;
 				_wizardSkills.y = 0;
 				
-				EntityService.player1 = EntityService.wizard;
-				EntityService.player2 = EntityService.archer;
+				wizard.x = 400;
+				archer.x = 880;
+				
+				EntityService.player1 = wizard;
+				EntityService.player2 = archer;
 			}
 			else
 			{
@@ -96,14 +108,21 @@ package brotherhood.states.gameplay.hud
 				_archerSkills.x = 1280;
 				_archerSkills.y = 0;
 				
-				EntityService.player1 = EntityService.archer;
-				EntityService.player2 = EntityService.wizard;
+				archer.x = 400;
+				wizard.x = 880;
+				
+				EntityService.player1 = archer;
+				EntityService.player2 = wizard;
 			}
 			
 			add(_archerSkills);
 			add(_wizardSkills);
+			
 			add(_archerStats);
 			add(_wizardStats);
+			
+			add(wizard);
+			add(archer);
 		}
 		
 		override protected function update():void 

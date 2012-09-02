@@ -1,27 +1,36 @@
 package brotherhood.states.gameplay.creeps
 {
+	import brotherhood.states.gameplay.Target;
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
 	import nemostein.framework.dragonfly.Core;
 	
-	public class Creep extends Core
+	public class Creep extends Core implements Target
 	{
 		static public var leftTowerBase:Rectangle;
 		static public var rightTowerBase:Rectangle;
 		static public var gateBase:Rectangle;
 		
+		protected var target:Target;
 		protected var arivedAtDestination:Boolean;
 		protected var maxMoveSpeed:Number;
+		protected var strenght:Number;
 		protected var destination:Point;
 		
 		override protected function initialize():void
 		{
 			super.initialize();
 			
-			maxMoveSpeed = 50;
+			strenght = 1;
+			maxMoveSpeed = 150;
 		}
 		
 		protected function attackTarget():void
+		{
+			target.hit(strenght);
+		}
+		
+		public function hit(power:Number):void
 		{
 		
 		}

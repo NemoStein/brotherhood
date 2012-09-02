@@ -1,14 +1,16 @@
 package brotherhood.states.gameplay.heroes 
 {
+	import brotherhood.states.gameplay.Target;
+	import brotherhood.system.SystemService;
 	import nemostein.framework.dragonfly.Core;
 	import nemostein.io.Keys;
 	
-	public class Hero extends Core 
+	public class Hero extends Core implements Target
 	{
-		public var currentHp:Number = 100;
-		public var totalHp:Number = 100;
+		public var currentHP:Number = 100;
+		public var totalHP:Number = 100;
 		
-		public var currentXp:Number = 0;
+		public var currentXP:Number = 0;
 		
 		public var level:int = 1;
 		
@@ -17,11 +19,11 @@ package brotherhood.states.gameplay.heroes
 			super.initialize();
 		}
 		
-		public function addXp(xp:int):void
+		public function addXP(xp:int):void
 		{
-			currentXp += xp;
+			currentXP += xp;
 			
-			if (currentXp >= nextLevelXp(level))
+			if (currentXP >= nextLevelXP(level))
 			{
 				levelUp();
 			}
@@ -29,17 +31,33 @@ package brotherhood.states.gameplay.heroes
 		
 		private function levelUp():void 
 		{
-			currentXp -= nextLevelXp(level++);
+			currentXP -= nextLevelXP(level++);
 		}
 		
-		public function nextLevelXp(level:int):Number 
+		public function nextLevelXP(level:int):Number 
 		{
 			if (level == 1)
 			{
 				return 100;
 			}
 			
-			return nextLevelXp(level - 1) * 1.2;
+			return nextLevelXP(level - 1) * 1.2;
+		}
+		
+		public function hit(power:Number):void 
+		{
+			currentHP -= power;
+		}
+		
+		override protected function update():void 
+		{
+			if (currentHP <= 0)
+			{
+				currentHP = 0;
+				SystemService.defeat();
+			}
+			
+			super.update();
 		}
 	}
 }

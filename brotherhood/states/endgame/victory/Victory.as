@@ -1,9 +1,12 @@
 package brotherhood.states.endgame.victory 
 {
+	import brotherhood.states.startmenu.StartMenu;
 	import brotherhood.states.State;
+	import brotherhood.system.SystemService;
 	import flash.display.BitmapData;
 	import nemostein.framework.dragonfly.AnchorAlign;
 	import nemostein.framework.dragonfly.Core;
+	import nemostein.io.Keys;
 	
 	public class Victory extends State 
 	{
@@ -13,10 +16,10 @@ package brotherhood.states.endgame.victory
 			
 			draw( new BitmapData(1280, 720, false, 0xFFCCCCCC));
 			
-			var screenTitle:Core = new Core( new BitmapData(900,100,false,0xFF008000));
-			var leftStats:Core = new Core(new BitmapData(300,300,false,0xFF800000));
-			var rightStats:Core = new Core(new BitmapData(300,300,false,0xFF80000));
-			var returnButton:Core = new Core(new BitmapData(100,100,false,0xFF008000));
+			var screenTitle:Core = new Core( new BitmapData(900,100,false,0xFF000080));
+			var leftStats:Core = new Core(new BitmapData(300,300,false,0xFF000080));
+			var rightStats:Core = new Core(new BitmapData(300,300,false,0xFF000080));
+			var returnButton:Core = new Core(new BitmapData(100,100,false,0xFF000080));
 			
 			screenTitle.alignAnchor(AnchorAlign.TOP, AnchorAlign.CENTER);
 			returnButton.alignAnchor(AnchorAlign.TOP, AnchorAlign.CENTER);
@@ -43,6 +46,11 @@ package brotherhood.states.endgame.victory
 		
 		override protected function stateUpdate():void 
 		{
+			if (input.justPressed(Keys.ANY))
+			{
+				SystemService.changeState(StartMenu);
+			}
+			
 			super.stateUpdate();
 		}
 	}

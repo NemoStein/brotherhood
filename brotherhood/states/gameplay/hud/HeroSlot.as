@@ -1,4 +1,4 @@
-package brotherhood.states.gameplay.hud 
+package brotherhood.states.gameplay.hud
 {
 	import brotherhood.states.gameplay.heroes.Hero;
 	import brotherhood.system.EntityService;
@@ -6,7 +6,7 @@ package brotherhood.states.gameplay.hud
 	import nemostein.framework.dragonfly.Core;
 	import nemostein.framework.dragonfly.Text;
 	
-	public class HeroSlot extends Core 
+	public class HeroSlot extends Core
 	{
 		private var _heroType:String;
 		
@@ -24,7 +24,7 @@ package brotherhood.states.gameplay.hud
 			super();
 		}
 		
-		override protected function initialize():void 
+		override protected function initialize():void
 		{
 			super.initialize();
 			
@@ -39,7 +39,7 @@ package brotherhood.states.gameplay.hud
 			
 			if (_heroType == HUD.ARCHER)
 			{
-				draw( new BitmapData(190, 34, false, 0xFF008000 ));
+				draw(new BitmapData(190, 34, false, 0xFF008000));
 				
 				hero = EntityService.archer;
 				
@@ -58,7 +58,7 @@ package brotherhood.states.gameplay.hud
 			}
 			else
 			{
-				draw( new BitmapData(190, 34, false, 0xFF000080 ));
+				draw(new BitmapData(190, 34, false, 0xFF000080));
 				
 				hero = EntityService.wizard;
 				
@@ -76,8 +76,8 @@ package brotherhood.states.gameplay.hud
 				}
 			}
 			
-			_lifeBar.setValues(hero.currentHp, hero.totalHp);
-			_xpBar.setValues(hero.currentXp, hero.nextLevelXp(hero.level));
+			_lifeBar.setValues(hero.currentHP, hero.totalHP);
+			_xpBar.setValues(hero.currentXP, hero.nextLevelXP(hero.level));
 			
 			_lvl = new Text("lvl: 1");
 			
@@ -88,10 +88,10 @@ package brotherhood.states.gameplay.hud
 			setCurrentDescendentsAsRelative();
 		}
 		
-		override protected function update():void 
+		override protected function update():void
 		{
-			_lifeBar.setValues(hero.currentHp, hero.totalHp);
-			_xpBar.setValues(hero.currentXp, hero.nextLevelXp(hero.level));
+			_lifeBar.setValues(hero.currentHP, hero.totalHP);
+			_xpBar.setValues(hero.currentXP, hero.nextLevelXP(hero.level));
 			
 			super.update();
 		}

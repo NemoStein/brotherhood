@@ -9,8 +9,6 @@ package brotherhood.states.gameplay.creeps.ranged
 	
 	internal class Ranged extends Creep
 	{
-		protected var target:Hero;
-		
 		protected var maxRange:Number;
 		protected var minRange:Number;
 		
