@@ -2,6 +2,7 @@ package brotherhood
 {
 	import brotherhood.states.gameplay.GamePlay;
 	import brotherhood.states.heroselection.HeroSelection;
+	import brotherhood.states.startmenu.StartMenu;
 	import brotherhood.system.SystemService;
 	import flash.display.Bitmap;
 	import flash.display.BitmapData;
@@ -21,7 +22,7 @@ package brotherhood
 			super.initialize();
 			
 			SystemService.registerGame(this);
-			SystemService.changeState(HeroSelection);
+			SystemService.changeState(StartMenu);
 		}
 	}
 }

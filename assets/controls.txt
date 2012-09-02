@@ -1,0 +1,18 @@
+P1_GA P1_BA P1_RA
+P1_GB P1_BB P1_RB
+
+P1_S
+
+     P1_U
+P1_L      P1_R
+     P1_D
+
+
+P2_GA P2_BA P2_RA
+P2_GB P2_BB P2_RB
+
+P2_S
+
+     P2_U
+P2_L      P2_R
+     P2_D
