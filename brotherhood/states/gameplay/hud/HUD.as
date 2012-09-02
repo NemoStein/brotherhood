@@ -47,9 +47,6 @@ package brotherhood.states.gameplay.hud
 			var wizard:Hero = EntityService.wizard;
 			var archer:Hero = EntityService.archer;
 			
-			archer.y = 105;
-			wizard.y = 105;
-			
 			if (!archerRight)
 			{
 				_archerSkills.alignAnchor(AnchorAlign.TOP, AnchorAlign.LEFT);
@@ -60,7 +57,8 @@ package brotherhood.states.gameplay.hud
 				_archerStats.x = 300;
 				_archerStats.y = 0;
 				
-				archer.x = 405;
+				archer.x = 415;
+				archer.y = 104;
 				
 				_wizardSkills.alignAnchor(AnchorAlign.TOP, AnchorAlign.RIGHT);
 				_wizardStats.alignAnchor(AnchorAlign.TOP, AnchorAlign.RIGHT);
@@ -71,7 +69,8 @@ package brotherhood.states.gameplay.hud
 				_wizardStats.x = 960;
 				_wizardStats.y = 0;
 				
-				wizard.x = 880;
+				wizard.x = 866;
+				wizard.y = 106;
 				
 				EntityService.player1 = archer;
 				EntityService.player2 = wizard;
@@ -89,7 +88,8 @@ package brotherhood.states.gameplay.hud
 				_wizardStats.x = 320;
 				_wizardStats.y = 0;
 				
-				wizard.x = 405;
+				wizard.x = 404;
+				wizard.y = 104;
 				
 				_archerSkills.alignAnchor(AnchorAlign.TOP, AnchorAlign.RIGHT);
 				_archerStats.alignAnchor(AnchorAlign.TOP, AnchorAlign.RIGHT);
@@ -100,7 +100,8 @@ package brotherhood.states.gameplay.hud
 				_archerStats.x = 960;
 				_archerStats.y = 0;
 				
-				archer.x = 880;
+				archer.x = 877;
+				archer.y = 105;
 				
 				EntityService.player1 = wizard;
 				EntityService.player2 = archer;
