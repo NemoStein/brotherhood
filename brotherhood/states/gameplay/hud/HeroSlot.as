@@ -77,7 +77,7 @@ package brotherhood.states.gameplay.hud
 			}
 			
 			_lifeBar.setValues(hero.currentHp, hero.totalHp);
-			_xpBar.setValues(hero.currentXp, hero.nextLevelXp);
+			_xpBar.setValues(hero.currentXp, hero.nextLevelXp(hero.level));
 			
 			_lvl = new Text("lvl: 1");
 			
@@ -91,7 +91,7 @@ package brotherhood.states.gameplay.hud
 		override protected function update():void 
 		{
 			_lifeBar.setValues(hero.currentHp, hero.totalHp);
-			_xpBar.setValues(hero.currentXp, hero.nextLevelXp);
+			_xpBar.setValues(hero.currentXp, hero.nextLevelXp(hero.level));
 			
 			super.update();
 		}
