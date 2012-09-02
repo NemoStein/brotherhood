@@ -15,7 +15,7 @@ package brotherhood.states.heroselection
 	
 	public class HeroSelection extends State
 	{
-		private var _archerRight:Boolean = true;
+		private var _archerRight:Boolean;
 		private var _archerAvatar:Core;
 		private var _wizardAvatar:Core;
 		
@@ -26,8 +26,10 @@ package brotherhood.states.heroselection
 			draw(new BitmapData(1280, 720, false, 0xffababeb));
 			
 			var screenTitle:Core = new Core(new BitmapData(800, 100, true, 0xffdd8080));
+			
 			_archerAvatar = new Core(new BitmapData(400, 400, true, 0xaa008000));
 			_wizardAvatar = new Core(new BitmapData(400, 400, true, 0xaa000080));
+			
 			var swapButton:Core = new Core(new BitmapData(250, 70, true, 0xffdd8080));
 			var startButton:Core = new Core(new BitmapData(250, 70, true, 0xffdd8080));
 			
@@ -42,10 +44,10 @@ package brotherhood.states.heroselection
 			startButton.x = 730;
 			startButton.y = 615;
 			
-			_archerAvatar.x = 680;
+			_archerAvatar.x = 200;
 			_archerAvatar.y = 175;
 			
-			_wizardAvatar.x = 200;
+			_wizardAvatar.x = 680;
 			_wizardAvatar.y = 175;
 			
 			add(screenTitle);

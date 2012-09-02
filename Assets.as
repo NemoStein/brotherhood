@@ -39,6 +39,12 @@ package
 		[Embed(source="assets/skills/wizard.png")]
 		public static const ImageSkillsWizard:Class;
 		
+		[Embed(source="assets/themes/intro.mp3")]
+		public static const SoundThemesIntro:Class;
+		
+		[Embed(source="assets/themes/loop.mp3")]
+		public static const SoundThemesLoop:Class;
+		
 		[Embed(source="assets/waves/testLevel.txt",mimeType="application/octet-stream")]
 		public static const TextWavesTestLevel:Class;
 	}
