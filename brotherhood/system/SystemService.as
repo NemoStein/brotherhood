@@ -13,7 +13,6 @@ package brotherhood.system
 		static private var _game:Game;
 		static private var _states:Dictionary;
 		static private var _stateLayer:Core;
-		static private var _crosshairLayer:Core;
 		
 		static private var _nextState:State;
 		static private var _currentState:State;
@@ -29,10 +28,8 @@ package brotherhood.system
 				
 				_states = new Dictionary();
 				_stateLayer = new Core();
-				_crosshairLayer = new Core();
 				
 				_game.add(_stateLayer);
-				_game.add(_crosshairLayer);
 			}
 		}
 		

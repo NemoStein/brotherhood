@@ -17,6 +17,10 @@ package brotherhood.states.gameplay
 	{
 		private var _waves:Waves;
 		
+		public var crosshairsLayer:Core;
+		public var creepsLayer:Core;
+		public var skillsLayer:Core;
+		
 		override protected function initialize():void 
 		{
 			super.initialize();
