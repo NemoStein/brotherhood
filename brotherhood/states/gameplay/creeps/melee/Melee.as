@@ -3,6 +3,7 @@ package brotherhood.states.gameplay.creeps.melee
 	import brotherhood.states.gameplay.creeps.Creep;
 	import brotherhood.states.gameplay.tower.Tower;
 	import brotherhood.system.EntityService;
+	import flash.display.Bitmap;
 	import flash.display.BitmapData;
 	import flash.geom.Point;
 	import nemostein.framework.dragonfly.AnchorAlign;
@@ -13,7 +14,14 @@ package brotherhood.states.gameplay.creeps.melee
 		{
 			super.initialize();
 			
-			draw(new BitmapData(15, 15, true, 0xffdf4030));
+			draw(Bitmap(new Assets.ImageCreepsCreeps).bitmapData);
+			
+			frame.x = 0;
+			frame.y = 570;
+			frame.width = 65;
+			frame.height = 65;
+			
+			//draw(new BitmapData(15, 15, true, 0xffdf4030));
 			alignAnchor(AnchorAlign.BOTTOM, AnchorAlign.CENTER);
 		}
 		

@@ -25,7 +25,7 @@ package brotherhood.states.gameplay.heroes
 		{
 			super.initialize();
 			
-			draw(Bitmap(new Assets.ImageHeroes).bitmapData);
+			draw(Bitmap(new Assets.ImageHeroesHeroes).bitmapData);
 			
 			frame.width = 50;
 			frame.height = 50;

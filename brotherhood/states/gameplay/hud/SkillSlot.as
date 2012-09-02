@@ -1,6 +1,7 @@
 package brotherhood.states.gameplay.hud
 {
 	import brotherhood.states.gameplay.heroes.skills.Skill;
+	import flash.display.Bitmap;
 	import flash.display.BitmapData;
 	import nemostein.framework.dragonfly.Core;
 	
@@ -14,11 +15,13 @@ package brotherhood.states.gameplay.hud
 			
 			if (heroType == HUD.ARCHER)
 			{
-				draw(new BitmapData(300, 200, false, 0xFF008000));
+				draw(Bitmap(new Assets.ImageSkillsArcher).bitmapData);
+				//draw(new BitmapData(300, 200, false, 0xFF008000));
 			}
 			else
 			{
-				draw(new BitmapData(300, 200, false, 0xFF000080));
+				draw(Bitmap(new Assets.ImageSkillsWizard).bitmapData);
+				//draw(new BitmapData(300, 200, false, 0xFF000080));
 			}
 		}
 	}

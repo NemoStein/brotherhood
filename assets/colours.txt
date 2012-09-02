@@ -1,5 +1,0 @@
-verde - 008f0c
-azul - 2e3192
-vermei - 9f1200
-
-alpha .5

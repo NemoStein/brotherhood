@@ -26,7 +26,7 @@ package brotherhood.states.gameplay
 		{
 			super.initialize();
 			
-			draw(Bitmap(new Assets.ImageBackground()).bitmapData);
+			draw(Bitmap(new Assets.ImageStatesGamePlay).bitmapData);
 			var controls:Controls = new Controls();
 			
 			crosshairsLayer = new Core();

@@ -19,8 +19,6 @@ package brotherhood.states.gameplay.heroes.crosshair
 		public var radius:Number;
 		public var areaOfEffect:Rectangle;
 		
-		private var core:Core;
-		
 		public function Crosshair(heroType:String):void
 		{
 			super();
@@ -35,24 +33,74 @@ package brotherhood.states.gameplay.heroes.crosshair
 			destination = new Point();
 			areaOfEffect = new Rectangle();
 			
+			//draw(Bitmap(new Assets.ImageHeroesCrosshairs).bitmapData);
+			
+			frame.width = 280;
+			frame.height = 280;
+			
 			if (_heroType == HUD.ARCHER)
 			{
-				draw(Bitmap(new Assets.ImageCrosshairsArcher).bitmapData);
-			}
-			else
-			{
-				draw(Bitmap(new Assets.ImageCrosshairsWizard).bitmapData);
+				frame.y = 280;
 			}
 			
 			alignAnchor(AnchorAlign.CENTER, AnchorAlign.CENTER);
-			
-			// DELETE: area of effect marker
-			core = new Core();
-			add(core);
 		}
 		
 		override protected function update():void
 		{
+			if (input.pressed(Controls.P1_U))
+			{
+				destination.y = -Infinity;
+				
+			}
+			else if(input.pressed(Controls.P1_D))
+			{
+				destination.y = Infinity;
+			}
+			else
+			{
+				destination.y = y;
+			}
+			
+			if (input.pressed(Controls.P1_L))
+			{
+				destination.x = -Infinity;
+			}
+			else if(input.pressed(Controls.P1_R))
+			{
+				destination.x = Infinity;
+			}
+			else
+			{
+				destination.x = x;
+			}
+			
+			var distanceX:Number = destination.x - x;
+			var distanceY:Number = destination.y - y;
+			
+			if (distanceX || distanceY)
+			{
+				var moveSpeed:Number = MAX_SPEED * time;
+				
+				var moveAngle:Number = Math.atan2(distanceY, distanceX);
+				
+				var moveX:Number = Math.cos(moveAngle) * moveSpeed;
+				var moveY:Number = Math.sin(moveAngle) * moveSpeed;
+				
+				if (distanceX > 0 && distanceX < moveX || distanceX < 0 && distanceX > moveX)
+				{
+					moveX = distanceX;
+				}
+				
+				if (distanceY > 0 && distanceY < moveY || distanceY < 0 && distanceY > moveY)
+				{
+					moveY = distanceY;
+				}
+				
+				x += moveX;
+				y += moveY;
+			}
+			
 			if (x > 1000)
 			{
 				x = 1000;
@@ -81,10 +129,6 @@ package brotherhood.states.gameplay.heroes.crosshair
 			
 			areaOfEffect.x = x - areaOfEffect.width / 2;
 			areaOfEffect.y = y - areaOfEffect.height / 2;
-			
-			core.draw(new BitmapData(areaOfEffect.width, areaOfEffect.height, true, 0x50000000));
-			core.x = areaOfEffect.x;
-			core.y = areaOfEffect.y;
 			
 			super.update();
 		}
