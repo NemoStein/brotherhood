@@ -1,19 +1,24 @@
-package brotherhood.states.gameplay.heroes.crosshair 
+package brotherhood.states.gameplay.heroes.crosshair
 {
 	import brotherhood.states.gameplay.hud.HUD;
 	import flash.display.Bitmap;
+	import flash.display.BitmapData;
 	import flash.geom.Point;
+	import flash.geom.Rectangle;
 	import nemostein.framework.dragonfly.AnchorAlign;
 	import nemostein.framework.dragonfly.Core;
 	
-	
-	public class Crosshair extends Core 
+	public class Crosshair extends Core
 	{
 		static public const SPEED:int = 330;
 		
 		private var _heroType:String;
 		
 		public var destination:Point;
+		public var radius:Number;
+		public var areaOfEffect:Rectangle;
+		
+		private var core:Core;
 		
 		public function Crosshair(heroType:String):void
 		{
@@ -22,11 +27,12 @@ package brotherhood.states.gameplay.heroes.crosshair
 			_heroType = heroType;
 		}
 		
-		override protected function initialize():void 
+		override protected function initialize():void
 		{
 			super.initialize();
 			
 			destination = new Point();
+			areaOfEffect = new Rectangle();
 			
 			if (_heroType == HUD.ARCHER)
 			{
@@ -38,9 +44,13 @@ package brotherhood.states.gameplay.heroes.crosshair
 			}
 			
 			alignAnchor(AnchorAlign.CENTER, AnchorAlign.CENTER);
+			
+			// DELETE: area of effect marker
+			core = new Core();
+			add(core);
 		}
 		
-		override protected function update():void 
+		override protected function update():void
 		{
 			if (x > 1000)
 			{
@@ -60,12 +70,21 @@ package brotherhood.states.gameplay.heroes.crosshair
 				y = 220;
 			}
 			
-			scaleY = y / 630 + 0.1;
-			scaleX = y / 630 + 0.1;
+			radius = y / 630 + 0.1;
+			
+			scaleX = scaleY = radius;
+			
+			areaOfEffect.left = x;
+			areaOfEffect.top = y;
+			
+			areaOfEffect.width = radius * 50;
+			areaOfEffect.height = radius * 50;
+			
+			core.draw(new BitmapData(areaOfEffect.width, areaOfEffect.height, true, 0x50000000));
+			core.x = areaOfEffect.x;
+			core.y = areaOfEffect.y;
 			
 			super.update();
 		}
-		
 	}
-
 }
