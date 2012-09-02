@@ -33,7 +33,7 @@ package brotherhood.states.gameplay.heroes.crosshair
 			destination = new Point();
 			areaOfEffect = new Rectangle();
 			
-			draw(Bitmap(new Assets.ImageHeroesCrosshairs).bitmapData);
+			draw(Bitmap(new Assets.ImageArea).bitmapData);
 			
 			frame.width = 280;
 			frame.height = 280;

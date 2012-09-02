@@ -32,6 +32,17 @@ package
 		static public var P2_R:String = Keys.;
 		static public var P2_S:String = Keys.;*/
 		
+		override protected function update():void 
+		{
+			if (input.justPressed(P1_GA))
+			{
+				EntityService.archer.useSkill(1);
+				EntityService.wizard.useSkill(1);
+			}
+			
+			super.update();
+		}
+		
 		//override protected function update():void 
 		//{
 			//var p1Crosshair:Crosshair = EntityService.player1Crosshair;

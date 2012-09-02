@@ -1,11 +1,12 @@
-package brotherhood.states.gameplay.heroes.wizard 
+package brotherhood.states.gameplay.heroes.wizard
 {
 	import brotherhood.system.EntityService;
+	import flash.display.Bitmap;
 	import flash.display.BitmapData;
 	import flash.geom.Point;
 	import nemostein.framework.dragonfly.Core;
 	
-	public class Ice extends Core 
+	public class Ice extends Core
 	{
 		
 		private var _destination:Point = new Point();
@@ -18,14 +19,18 @@ package brotherhood.states.gameplay.heroes.wizard
 			_destination.y = EntityService.player1Crosshair.y;
 		}
 		
-		override protected function initialize():void 
+		override protected function initialize():void
 		{
 			super.initialize();
 			
-			draw( new BitmapData(8, 8, true, 0x80000070));
+			draw(Bitmap(new Assets.ImageCreepsFire).bitmapData);
+			frame.width = 32;
+			frame.height = 32;
+			
+			//draw( new BitmapData(8, 8, true, 0x80000070));
 		}
 		
-		override protected function update():void 
+		override protected function update():void
 		{
 			var maxMoveSpeed:int = 500;
 			
@@ -36,10 +41,10 @@ package brotherhood.states.gameplay.heroes.wizard
 			{
 				var moveSpeed:Number = maxMoveSpeed * time;
 				
-				angle = Math.atan2(distanceY, distanceX);
+				var moveAngle:Number = Math.atan2(distanceY, distanceX);
 				
-				var moveX:Number = Math.cos(angle) * moveSpeed;
-				var moveY:Number = Math.sin(angle) * moveSpeed;
+				var moveX:Number = Math.cos(moveAngle) * moveSpeed;
+				var moveY:Number = Math.sin(moveAngle) * moveSpeed;
 				
 				if (distanceX > 0 && distanceX < moveX || distanceX < 0 && distanceX > moveX)
 				{
