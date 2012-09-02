@@ -31,7 +31,7 @@ package brotherhood.states.gameplay.waves
 				_waveReference.onCreepDestruction(waveReferenceCreepDestruction);
 			}
 			
-			super.start(state);
+			super.start(container);
 		}
 		
 		

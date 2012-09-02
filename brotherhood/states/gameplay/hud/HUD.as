@@ -142,8 +142,8 @@ package brotherhood.states.gameplay.hud
 			add(_leftTowerStats);
 			add(_rightTowerStats);
 			
-			SystemService.crosshairLayer.add(EntityService.player1Crosshair);
-			SystemService.crosshairLayer.add(EntityService.player2Crosshair);
+			SystemService.gamePlayState.crosshairsLayer.add(EntityService.player1Crosshair);
+			SystemService.gamePlayState.crosshairsLayer.add(EntityService.player2Crosshair);
 		}
 		
 		override protected function update():void 

@@ -2,6 +2,7 @@ package brotherhood.system
 {
 	import brotherhood.states.endgame.defeat.Defeat;
 	import brotherhood.states.endgame.victory.Victory;
+	import brotherhood.states.gameplay.GamePlay;
 	import brotherhood.states.startmenu.StartMenu;
 	import brotherhood.states.State;
 	import flash.utils.Dictionary;
@@ -19,6 +20,7 @@ package brotherhood.system
 		static private var _nextStateSwipeFinished:Boolean;
 		static private var _currentStateSwipeFinished:Boolean;
 		static private var _gameEnded:Boolean;
+		static public var gamePlayState:GamePlay;
 		
 		static public function registerGame(game:Game):void
 		{
@@ -46,6 +48,10 @@ package brotherhood.system
 			if (_currentState is StartMenu)
 			{
 				_gameEnded = false;
+			}	
+			else if (_currentState is GamePlay)
+			{
+				gamePlayState = GamePlay(_currentState);
 			}
 			
 			//_nextState = getState(stateClass);
@@ -136,11 +142,6 @@ package brotherhood.system
 			}
 			
 			return _states[stateClass];
-		}
-		
-		static public function get crosshairLayer():Core 
-		{
-			return _crosshairLayer;
 		}
 	}
 }
