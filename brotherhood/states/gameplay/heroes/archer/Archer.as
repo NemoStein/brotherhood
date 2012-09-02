@@ -14,21 +14,22 @@ package brotherhood.states.gameplay.heroes.archer
 		{
 			super.initialize();
 			
-			frame.width = 40;
-			frame.height = 60;
-			
-			sprite = new BitmapData(frame.width, frame.height, true, 0);
-			sprite.fillRect(new Rectangle(0, 10, 40, 50), 0xff00ff00);
-			sprite.fillRect(new Rectangle(10, 0, 20, 20), 0xff008000);
-			
-			alignAnchor(AnchorAlign.BOTTOM, AnchorAlign.CENTER);
+			frame.y = 50;
 		}
 		
 		override protected function update():void 
 		{
 			if (input.pressed(Controls.P1_GA))
 			{
-				trace(EntityService.player1Crosshair.radius);
+				playAnimation(LOOK_LEFT);
+			}
+			else if (input.justPressed(HUD.P1_BB))
+			{
+				playAnimation(LOOK_MIDDLE);
+			}
+			else if (input.justPressed(HUD.P1_RB))
+			{
+				playAnimation(LOOK_RIGHT);
 			}
 			
 			super.update();

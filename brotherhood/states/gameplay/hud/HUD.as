@@ -50,58 +50,60 @@ package brotherhood.states.gameplay.hud
 			archer.y = 105;
 			wizard.y = 105;
 			
-			if (archerRight)
+			if (!archerRight)
 			{
 				_archerSkills.alignAnchor(AnchorAlign.TOP, AnchorAlign.LEFT);
-				_wizardSkills.alignAnchor(AnchorAlign.TOP, AnchorAlign.RIGHT);
-				
-				_archerStats.alignAnchor(AnchorAlign.TOP, AnchorAlign.RIGHT);
-				_wizardStats.alignAnchor(AnchorAlign.TOP, AnchorAlign.LEFT);
-				
-				_archerStats.x = 960;
-				_archerStats.y = 0;
-				
-				_wizardStats.x = 320;
-				_wizardStats.y = 0;
+				_archerStats.alignAnchor(AnchorAlign.TOP, AnchorAlign.LEFT);
 				
 				_archerSkills.x = _archerSkills.y = 0;
-				
-				_wizardSkills.x = 1280;
-				_wizardSkills.y = 0;
-				
-				wizard.x = 400;
-				archer.x = 880;
-				
-				EntityService.player1 = wizard;
-				EntityService.player2 = archer;
-				
-				EntityService.player1Crosshair = new Crosshair(WIZARD);
-				EntityService.player2Crosshair = new Crosshair(ARCHER);
-			}
-			else
-			{
-				_archerSkills.alignAnchor(AnchorAlign.TOP, AnchorAlign.RIGHT);
-				_wizardSkills.alignAnchor(AnchorAlign.TOP, AnchorAlign.LEFT);
-				
-				_archerStats.alignAnchor(AnchorAlign.TOP, AnchorAlign.LEFT);
-				_wizardStats.alignAnchor(AnchorAlign.TOP, AnchorAlign.RIGHT);
-				
-				_wizardStats.x = 960;
-				_wizardStats.y = 0;
 				
 				_archerStats.x = 320;
 				_archerStats.y = 0;
 				
-				_wizardSkills.x = _wizardSkills.y = 0;
+				archer.x = 405;
 				
-				_archerSkills.x = 1280;
-				_archerSkills.y = 0;
+				_wizardSkills.alignAnchor(AnchorAlign.TOP, AnchorAlign.RIGHT);
+				_wizardStats.alignAnchor(AnchorAlign.TOP, AnchorAlign.RIGHT);
 				
-				archer.x = 400;
+				_wizardSkills.x = 1280;
+				_wizardSkills.y = 0;
+				
+				_wizardStats.x = 960;
+				_wizardStats.y = 0;
+				
 				wizard.x = 880;
 				
 				EntityService.player1 = archer;
 				EntityService.player2 = wizard;
+				
+				EntityService.player1Crosshair = new Crosshair(ARCHER);
+				EntityService.player2Crosshair = new Crosshair(WIZARD);
+			}
+			else
+			{
+				_wizardSkills.alignAnchor(AnchorAlign.TOP, AnchorAlign.LEFT);
+				_wizardStats.alignAnchor(AnchorAlign.TOP, AnchorAlign.LEFT);
+				
+				_wizardSkills.x = _wizardSkills.y = 0;
+				
+				_wizardStats.x = 320;
+				_wizardStats.y = 0;
+				
+				wizard.x = 405;
+				
+				_archerSkills.alignAnchor(AnchorAlign.TOP, AnchorAlign.RIGHT);
+				_archerStats.alignAnchor(AnchorAlign.TOP, AnchorAlign.RIGHT);
+				
+				_archerSkills.x = 1280;
+				_archerSkills.y = 0;
+				
+				_archerStats.x = 960;
+				_archerStats.y = 0;
+				
+				archer.x = 880;
+				
+				EntityService.player1 = wizard;
+				EntityService.player2 = archer;
 				
 				EntityService.player1Crosshair = new Crosshair(WIZARD);
 				EntityService.player2Crosshair = new Crosshair(ARCHER);

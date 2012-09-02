@@ -55,9 +55,6 @@ package brotherhood.states.gameplay.waves
 		{
 			--alive;
 			
-			// DELETE: wave sequence test
-			trace("Killing a bot from wave " + id + " (" + alive + " alive now)");
-			
 			for (var i:int = 0; i < _creepDestructionCallbacks.length; i++)
 			{
 				var callback:Function = _creepDestructionCallbacks[i];
@@ -82,8 +79,6 @@ package brotherhood.states.gameplay.waves
 					container.add(creep);
 				}
 				
-				// DELETE: wave sequence test
-				trace("Dispatching " + count + " bots from wave " + id);
 				for (var j:int = 0; j < _creepDispatchCallbacks.length; ++j)
 				{
 					var callback:Function = _creepDispatchCallbacks[j];
@@ -99,13 +94,8 @@ package brotherhood.states.gameplay.waves
 		{
 			if (dispatched)
 			{
-				// DELETE: wave sequence test
-				destroyCreep(null);
-				
 				if (alive == 0)
 				{
-					// DELETE: wave sequence test
-					trace("All bots are dead in wave " + id);
 					return true;
 				}
 			}

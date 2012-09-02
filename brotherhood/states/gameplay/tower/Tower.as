@@ -15,7 +15,7 @@ package brotherhood.states.gameplay.tower
 		{
 			super.initialize();
 			
-			draw(new BitmapData(130, 190, true, 0xff5f5f5f));
+			draw(new BitmapData(130, 190, true, 0x605f5f5f));
 			
 			alignAnchor(AnchorAlign.BOTTOM, AnchorAlign.CENTER);
 		}
