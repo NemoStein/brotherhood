@@ -2,7 +2,7 @@ package brotherhood.states.gameplay.creeps.ranged
 {
 	import brotherhood.states.gameplay.creeps.Creep;
 	import brotherhood.states.gameplay.heroes.Hero;
-	import brotherhood.system.HeroService;
+	import brotherhood.system.EntityService;
 	import flash.display.BitmapData;
 	import flash.geom.Point;
 	import nemostein.framework.dragonfly.AnchorAlign;
@@ -31,7 +31,7 @@ package brotherhood.states.gameplay.creeps.ranged
 			{
 				if (!target)
 				{
-					target = x < 640 ? HeroService.player1 : HeroService.player2;
+					target = x < 640 ? EntityService.player1 : EntityService.player2;
 				}
 				
 				attackTarget();

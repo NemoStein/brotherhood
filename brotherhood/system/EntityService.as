@@ -12,5 +12,4 @@ package brotherhood.system
 		public static var player1:Hero;
 		public static var player2:Hero;
 	}
-
 }
