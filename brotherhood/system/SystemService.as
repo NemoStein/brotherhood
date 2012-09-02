@@ -20,7 +20,6 @@ package brotherhood.system
 		static private var _nextStateSwipeFinished:Boolean;
 		static private var _currentStateSwipeFinished:Boolean;
 		static private var _gameEnded:Boolean;
-		static public var gamePlayState:GamePlay;
 		
 		static public function registerGame(game:Game):void
 		{
@@ -48,10 +47,6 @@ package brotherhood.system
 			if (_currentState is StartMenu)
 			{
 				_gameEnded = false;
-			}	
-			else if (_currentState is GamePlay)
-			{
-				gamePlayState = GamePlay(_currentState);
 			}
 			
 			//_nextState = getState(stateClass);

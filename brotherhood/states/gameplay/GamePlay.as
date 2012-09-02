@@ -25,6 +25,10 @@ package brotherhood.states.gameplay
 		{
 			super.initialize();
 			
+			crosshairsLayer = new Core();
+			creepsLayer = new Core();
+			skillsLayer = new Core();
+			
 			var leftTower:Tower = new Tower();
 			var rightTower:Tower = new Tower();
 			
@@ -50,7 +54,14 @@ package brotherhood.states.gameplay
 			add(leftTower);
 			add(rightTower);
 			
+			add(crosshairsLayer);
+			add(creepsLayer);
+			add(skillsLayer);
+			
 			add(hud);
+			
+			crosshairsLayer.add(EntityService.player1Crosshair);
+			crosshairsLayer.add(EntityService.player2Crosshair);
 			
 			// DELETE: lane/base division
 			/******************************/

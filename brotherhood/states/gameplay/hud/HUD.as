@@ -1,5 +1,6 @@
 package brotherhood.states.gameplay.hud
 {
+	import brotherhood.states.gameplay.GamePlay;
 	import brotherhood.states.gameplay.heroes.archer.Archer;
 	import brotherhood.states.gameplay.heroes.crosshair.Crosshair;
 	import brotherhood.states.gameplay.heroes.Hero;
@@ -141,9 +142,6 @@ package brotherhood.states.gameplay.hud
 			
 			add(_leftTowerStats);
 			add(_rightTowerStats);
-			
-			SystemService.gamePlayState.crosshairsLayer.add(EntityService.player1Crosshair);
-			SystemService.gamePlayState.crosshairsLayer.add(EntityService.player2Crosshair);
 		}
 		
 		override protected function update():void 
