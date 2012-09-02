@@ -36,7 +36,8 @@ package brotherhood.states.gameplay.hud
 			}
 			else
 			{
-				_foreground.alignAnchor( AnchorAlign.BOTTOM,  AnchorAlign.LEFT);
+				_background.alignAnchor( AnchorAlign.BOTTOM,  AnchorAlign.CENTER);
+				_foreground.alignAnchor( AnchorAlign.BOTTOM,  AnchorAlign.CENTER);
 			}
 			
 			add(_background);

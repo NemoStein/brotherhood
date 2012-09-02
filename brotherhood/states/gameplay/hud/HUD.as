@@ -15,6 +15,9 @@ package brotherhood.states.gameplay.hud
 		public static const ARCHER:String = "archer";
 		static public const WIZARD:String = "wizard";
 		
+		static public const LEFT:String = "left";
+		static public const RIGHT:String = "right";
+		
 		static public var P1_GA:int = Keys.U;
 		static public var P1_GB:int = Keys.J;
 		static public var P1_BA:int = Keys.I;
@@ -47,6 +50,9 @@ package brotherhood.states.gameplay.hud
 		private var _archerStats:HeroSlot;
 		private var _wizardStats:HeroSlot;
 		
+		private var _leftTowerStats:TowerSlot;
+		private var _rightTowerStats:TowerSlot;
+		
 		
 		override protected function initialize():void
 		{
@@ -57,6 +63,9 @@ package brotherhood.states.gameplay.hud
 			
 			_archerStats = new HeroSlot(ARCHER);
 			_wizardStats = new HeroSlot(WIZARD);
+			
+			_leftTowerStats = new TowerSlot(LEFT);
+			_rightTowerStats = new TowerSlot(RIGHT);
 			
 			var wizard:Hero = EntityService.wizard;
 			var archer:Hero = EntityService.archer;
@@ -129,6 +138,9 @@ package brotherhood.states.gameplay.hud
 			
 			add(wizard);
 			add(archer);
+			
+			add(_leftTowerStats);
+			add(_rightTowerStats);
 			
 			SystemService.crosshairLayer.add(EntityService.player1Crosshair);
 			SystemService.crosshairLayer.add(EntityService.player2Crosshair);
