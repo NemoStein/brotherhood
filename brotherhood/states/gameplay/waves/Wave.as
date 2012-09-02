@@ -78,7 +78,7 @@ package brotherhood.states.gameplay.waves
 					var creep:Creep = new CreepClass();
 					
 					creep.x = Math.random() * 800 + 250;
-					creep.y = Math.random() * 50 + 750;
+					creep.y = Math.random() * 30 + 750;
 					
 					state.add(creep);
 				}

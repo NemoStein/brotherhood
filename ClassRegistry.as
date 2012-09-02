@@ -10,14 +10,11 @@ package
 	{
 		static public function register():void
 		{
-			// Creep types registry
-			brotherhood.states.gameplay.creeps.melee.Normal
-			brotherhood.states.gameplay.creeps.ranged.Normal
-			
-			// Wave types registry
-			Time;
-			HeroLife;
-			Alive;
+			brotherhood.states.gameplay.creeps.melee.Normal;
+			brotherhood.states.gameplay.creeps.ranged.Normal;
+			brotherhood.states.gameplay.waves.Alive;
+			brotherhood.states.gameplay.waves.HeroLife;
+			brotherhood.states.gameplay.waves.Time;
 		}
 	}
 }

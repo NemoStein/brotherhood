@@ -8,12 +8,18 @@ package brotherhood.states.gameplay.creeps.ranged
 	
 	internal class Ranged extends Creep
 	{
+		protected var maxRange:Number;
+		protected var minRange:Number;
+		
 		override protected function initialize():void
 		{
 			super.initialize();
 			
 			draw(new BitmapData(15, 15, true, 0xff4030df));
 			alignAnchor(AnchorAlign.BOTTOM, AnchorAlign.CENTER);
+			
+			minRange = 100;
+			maxRange = 150;
 		}
 		
 		override protected function update():void
@@ -22,22 +28,8 @@ package brotherhood.states.gameplay.creeps.ranged
 			{
 				target = new Point();
 				
-				// TODO: Ajust lanes here
-				if (x < 500)
-				{
-					target.x = Math.random() * leftTowerBase.width + leftTowerBase.x;
-					target.y = Math.random() * leftTowerBase.height + leftTowerBase.y;
-				}
-				else if (x < 800)
-				{
-					target.x = Math.random() * gateBase.width + gateBase.x;
-					target.y = Math.random() * gateBase.height + gateBase.y;
-				}
-				else
-				{
-					target.x = Math.random() * rightTowerBase.width + rightTowerBase.x;
-					target.y = Math.random() * rightTowerBase.height + rightTowerBase.y;
-				}
+				target.x = x;
+				target.y = Math.random() * (maxRange - minRange) + maxRange + gateBase.bottom;
 			}
 			
 			var distanceX:Number = target.x - x;
