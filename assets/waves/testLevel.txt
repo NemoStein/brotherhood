@@ -11,3 +11,5 @@ WaveB1	Time(8)				Creep	5
 WaveB2	Alive(WaveB1, 2)	Creep	1
 WaveB3	Alive(WaveB2, 0)	Creep	1
 		Alive(WaveB3, 0)	Creep	1
+
+# hello world
