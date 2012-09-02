@@ -75,6 +75,19 @@ package brotherhood.states.gameplay.heroes
 				SystemService.defeat();
 			}
 			
+			if (input.justPressed(Controls.P1_GB))
+			{
+				playAnimation(LOOK_LEFT);
+			}
+			else if (input.justPressed(Controls.P1_BB))
+			{
+				playAnimation(LOOK_MIDDLE);
+			}
+			else if (input.justPressed(Controls.P1_RB))
+			{
+				playAnimation(LOOK_RIGHT);
+			}
+			
 			super.update();
 		}
 	}

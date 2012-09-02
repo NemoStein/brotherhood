@@ -36,22 +36,13 @@ package brotherhood.states.gameplay
 			var leftTower:Tower = new Tower();
 			var rightTower:Tower = new Tower();
 			
-			leftTower.alignAnchor(AnchorAlign.BOTTOM, AnchorAlign.CENTER);
-			rightTower.alignAnchor(AnchorAlign.BOTTOM, AnchorAlign.CENTER);
-			
-			leftTower.x = 400;
-			leftTower.y = 250;
-			
-			rightTower.x = 880;
-			rightTower.y = 250;
-			
 			EntityService.leftTower = leftTower;
 			EntityService.rightTower = rightTower;
 			EntityService.gate = new Gate(leftTower, rightTower);
 			
-			Creep.leftTowerBase = new Rectangle(335, 240, 130, 20);
-			Creep.rightTowerBase = new Rectangle(815, 240, 130, 20);
-			Creep.gateBase = new Rectangle(540, 190, 200, 20);
+			Creep.leftTowerBase = new Rectangle(340, 250, 125, 25);
+			Creep.rightTowerBase = new Rectangle(815, 250, 125, 25);
+			Creep.gateBase = new Rectangle(555, 225, 175, 20);
 			
 			var hud:HUD = new HUD();
 			
@@ -67,41 +58,6 @@ package brotherhood.states.gameplay
 			
 			crosshairsLayer.add(EntityService.player1Crosshair);
 			crosshairsLayer.add(EntityService.player2Crosshair);
-			
-			// DELETE: lane/base division
-			/******************************/
-			var ll:Core = new Core(new BitmapData(250, 470, true, 0x50000000));
-			var ml:Core = new Core(new BitmapData(300, 470, true, 0x50ffffff));
-			var rl:Core = new Core(new BitmapData(250, 470, true, 0x50000000));
-			
-			var lb:Core = new Core(new BitmapData(130, 20, true, 0x80ffffff));
-			var rb:Core = new Core(new BitmapData(130, 20, true, 0x80ffffff));
-			var gb:Core = new Core(new BitmapData(200, 20, true, 0x80000000));
-			
-			ll.x = 250;
-			ml.x = 500;
-			rl.x = 800;
-			
-			ll.y = 250;
-			ml.y = 250;
-			rl.y = 250;
-			
-			lb.x = 335;
-			rb.x = 815;
-			gb.x = 540;
-			
-			lb.y = 240;
-			rb.y = 240;
-			gb.y = 190;
-			
-			add(ll);
-			add(ml);
-			add(rl);
-			
-			add(lb);
-			add(rb);
-			add(gb);
-			/******************************/
 			
 			_waves = Waves.parse(new Assets.TextWavesTestLevel());
 			_waves.startWaves(creepsLayer);

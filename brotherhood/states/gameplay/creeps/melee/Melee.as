@@ -28,11 +28,11 @@ package brotherhood.states.gameplay.creeps.melee
 			{
 				if (!target)
 				{
-					if (x < 500)
+					if (x < 510)
 					{
 						target = EntityService.leftTower;
 					}
-					else if (x < 800)
+					else if (x < 770)
 					{
 						target = EntityService.gate;
 					}
