@@ -14,20 +14,31 @@ package brotherhood.states.gameplay.creeps
 		protected var target:Target;
 		protected var arivedAtDestination:Boolean;
 		protected var maxMoveSpeed:Number;
-		protected var strenght:Number;
 		protected var destination:Point;
+		
+		protected var strenght:Number;
+		protected var rateOfFire:Number;
+		protected var fireDelay:Number;
 		
 		override protected function initialize():void
 		{
 			super.initialize();
 			
 			strenght = 1;
+			rateOfFire = 2;
+			
+			fireDelay = 0;
+			
 			maxMoveSpeed = 150;
 		}
 		
 		protected function attackTarget():void
 		{
-			target.hit(strenght);
+			if (fireDelay <= 0)
+			{
+				target.hit(strenght);
+				fireDelay += rateOfFire;
+			}
 		}
 		
 		public function hit(power:Number):void
@@ -37,6 +48,15 @@ package brotherhood.states.gameplay.creeps
 		
 		override protected function update():void
 		{
+			if (fireDelay <= 0)
+			{
+				fireDelay = 0;
+			}
+			else
+			{
+				fireDelay -= time;
+			}
+			
 			var distanceX:Number = destination.x - x;
 			var distanceY:Number = destination.y - y;
 			
