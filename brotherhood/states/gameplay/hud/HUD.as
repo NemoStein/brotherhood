@@ -2,6 +2,7 @@ package brotherhood.states.gameplay.hud
 {
 	import brotherhood.states.gameplay.heroes.archer.Archer;
 	import brotherhood.states.gameplay.heroes.crosshair.Crosshair;
+	import brotherhood.states.gameplay.heroes.Hero;
 	import brotherhood.system.EntityService;
 	import brotherhood.system.SystemService;
 	import flash.geom.Point;
