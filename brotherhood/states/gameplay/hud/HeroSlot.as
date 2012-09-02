@@ -31,48 +31,49 @@ package brotherhood.states.gameplay.hud
 			_lifeBar = new Bar();
 			_xpBar = new Bar();
 			
-			_xpBar.build(100, 15, 0xFF008080);
-			_lifeBar.build(80, 20, 0xFF800000);
+			_xpBar.build(190, 34, 0xFF008080);
+			_lifeBar.build(69, 16, 0xFF800000);
 			
-			_xpBar.x = 0;
+			_xpBar.x = 9;
 			_xpBar.y = 0;
 			
 			if (_heroType == HUD.ARCHER)
 			{
-				draw(new BitmapData(190, 34, false, 0xFF008000));
+				draw(new BitmapData(190, 34, true, 0x0008000));
+				
 				
 				hero = EntityService.archer;
 				
 				if (HUD.archerRight)
 				{
-					_lifeBar.x = 0;
-					_lifeBar.y = 34;
+					_lifeBar.x = 10;
+					_lifeBar.y = 44;
 				}
 				else
 				{
-					_lifeBar.x = 110;
-					_lifeBar.y = 34;
+					_lifeBar.x = 131;
+					_lifeBar.y = 44;
 					
 					_lifeBar.reverse = true;
 				}
 			}
 			else
 			{
-				draw(new BitmapData(190, 34, false, 0xFF000080));
+				draw(new BitmapData(190, 34, true, 0x00000080));
 				
 				hero = EntityService.wizard;
 				
 				if (HUD.archerRight)
 				{
-					_lifeBar.x = 110;
-					_lifeBar.y = 34;
+					_lifeBar.x = 131;
+					_lifeBar.y = 44;
 					
 					_lifeBar.reverse = true;
 				}
 				else
 				{
-					_lifeBar.x = 0;
-					_lifeBar.y = 34;
+					_lifeBar.x = 10;
+					_lifeBar.y = 44;
 				}
 			}
 			
@@ -80,6 +81,7 @@ package brotherhood.states.gameplay.hud
 			_xpBar.setValues(hero.currentXP, hero.nextLevelXP(hero.level));
 			
 			_lvl = new Text("lvl: 1");
+			_lvl.x = 9;
 			
 			add(_lifeBar);
 			add(_xpBar);

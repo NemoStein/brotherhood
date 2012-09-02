@@ -17,7 +17,7 @@ package brotherhood.states.gameplay.heroes
 		public var currentHP:Number = 100;
 		public var totalHP:Number = 100;
 		
-		public var currentXP:Number = 0;
+		public var currentXP:Number = 100;
 		
 		public var level:int = 1;
 		

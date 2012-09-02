@@ -23,14 +23,14 @@ package brotherhood.states.gameplay.hud
 			super.initialize();
 			
 			_lifeBar = new Bar();
-			_lifeBar.build(15, 100, 0xFF800000);
-			_lifeBar.y = 250;
+			_lifeBar.build(16, 122, 0xFF800000);
+			_lifeBar.y = 230;
 			
 			if(_side == HUD.LEFT)
 			{
 				_tower = EntityService.leftTower;
 				
-				_lifeBar.x = _tower.x + _tower.width;
+				_lifeBar.x = 513;
 				
 				_lifeBar.setValues(_tower.currentHP,_tower.totalHP);
 			}
@@ -38,7 +38,7 @@ package brotherhood.states.gameplay.hud
 			{
 				_tower = EntityService.rightTower;
 				
-				_lifeBar.x = _tower.x - _tower.width;
+				_lifeBar.x = 768;
 				
 				_lifeBar.setValues(_tower.currentHP,_tower.totalHP);
 			}

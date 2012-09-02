@@ -57,7 +57,7 @@ package brotherhood.states.gameplay.hud
 				
 				_archerSkills.x = _archerSkills.y = 0;
 				
-				_archerStats.x = 320;
+				_archerStats.x = 300;
 				_archerStats.y = 0;
 				
 				archer.x = 405;

@@ -19,15 +19,15 @@ package brotherhood.states.gameplay.heroes.archer
 		
 		override protected function update():void 
 		{
-			if (input.pressed(Controls.P1_GA))
+			if (input.justPressed(Controls.P1_GA))
 			{
 				playAnimation(LOOK_LEFT);
 			}
-			else if (input.justPressed(HUD.P1_BB))
+			else if (input.justPressed(Controls.P1_BB))
 			{
 				playAnimation(LOOK_MIDDLE);
 			}
-			else if (input.justPressed(HUD.P1_RB))
+			else if (input.justPressed(Controls.P1_RB))
 			{
 				playAnimation(LOOK_RIGHT);
 			}

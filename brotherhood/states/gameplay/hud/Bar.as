@@ -1,14 +1,17 @@
 package brotherhood.states.gameplay.hud 
 {
 	import flash.display.BitmapData;
+	import flash.geom.Point;
 	import nemostein.framework.dragonfly.AnchorAlign;
 	import nemostein.framework.dragonfly.Core;
 	
 	
 	public class Bar extends Core 
 	{
-		private var _background:Core;
-		private var _foreground:Core;
+		private var _bar:Core;
+		
+		private var _originalWidth:int;
+		private var _originalHeight:int;
 		
 		private var _horizontal:Boolean;
 		
@@ -26,22 +29,22 @@ package brotherhood.states.gameplay.hud
 		{
 			_horizontal = width > height;
 			
-			_background = new Core( new BitmapData(width, height, false, 0xFFCCCCCC));
-			_foreground = new Core( new BitmapData(width, height, false, startColour));
+			_originalWidth = width;
+			_originalHeight = height;
+			
+			_bar= new Core( new BitmapData(width, height, false, startColour));
 			
 			
 			if (_horizontal)
 			{
-				_foreground.alignAnchor( AnchorAlign.TOP,  AnchorAlign.LEFT);
+				_bar.alignAnchor( AnchorAlign.TOP,  AnchorAlign.LEFT);
 			}
 			else
 			{
-				_background.alignAnchor( AnchorAlign.BOTTOM,  AnchorAlign.CENTER);
-				_foreground.alignAnchor( AnchorAlign.BOTTOM,  AnchorAlign.CENTER);
+				_bar.alignAnchor( AnchorAlign.BOTTOM,  AnchorAlign.CENTER);
 			}
 			
-			add(_background);
-			add(_foreground);
+			add(_bar);
 			
 			setCurrentDescendentsAsRelative();
 		}
@@ -54,7 +57,7 @@ package brotherhood.states.gameplay.hud
 		
 		override protected function update():void 
 		{
-			_foreground.x = 0;
+			_bar.x = 0;
 			
 			if (value > maxValue)
 			{
@@ -68,20 +71,20 @@ package brotherhood.states.gameplay.hud
 			
 			if (_horizontal)
 			{
-				_foreground.scaleX = (value / maxValue);
+				_bar.scaleX = (value / maxValue);
 				
 				if (reverse && value != maxValue)
 				{
-					_foreground.x = _background.width - _foreground.width *_foreground.scaleX;
+					_bar.x = _originalWidth - _bar.width *_bar.scaleX;
 				}
 			}
 			else
 			{
-				_foreground.scaleY = (value / maxValue);
+				_bar.scaleY = (value / maxValue);
 				
 				if (reverse  && value != maxValue)
 				{
-					_foreground.y =  _background.height - _foreground.height * _foreground.scaleY;
+					_bar.y =  _originalHeight - _bar.height * _bar.scaleY;
 				}
 			}
 			
