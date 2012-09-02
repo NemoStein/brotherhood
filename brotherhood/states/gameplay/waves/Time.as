@@ -25,7 +25,7 @@ package brotherhood.states.gameplay.waves
 		
 		private function onTimerTimerComplete(e:TimerEvent):void
 		{
-			dispatchEnemies();
+			dispatchCreeps();
 		}
 	}
 }

@@ -12,28 +12,14 @@ package brotherhood.states.gameplay.creeps
 		static public var rightTowerBase:Rectangle;
 		static public var gateBase:Rectangle;
 		
-		protected var moveSpeed:Number;
+		protected var maxMoveSpeed:Number;
 		protected var target:Point;
 		
 		override protected function initialize():void 
 		{
 			super.initialize();
 			
-			draw(new BitmapData(15, 15, true, 0xffdf4030));
-			
-			alignAnchor(AnchorAlign.BOTTOM, AnchorAlign.CENTER);
-			
-			moveSpeed = 50;
-		}
-		
-		override protected function update():void 
-		{
-			if (target == null)
-			{
-				
-			}
-			
-			super.update();
+			maxMoveSpeed = 50;
 		}
 	}
 }

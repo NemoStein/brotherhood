@@ -52,6 +52,8 @@ package
 		{
 			removeChild(_introSequence);
 			
+			ClassRegistry.register();
+			
 			var game:Brotherhood = new Brotherhood();
 			game.start(stage);
 			game.showFps();

@@ -1,7 +1,7 @@
 package brotherhood.states.gameplay.waves
 {
+	import brotherhood.states.State;
 	import flash.utils.getDefinitionByName;
-	import nemostein.games.botmayhem.levels.Level;
 	
 	public class Waves
 	{
@@ -33,12 +33,12 @@ package brotherhood.states.gameplay.waves
 			delete _waves[id];
 		}
 		
-		public function startWaves(level:Level):void
+		public function startWaves(state:State):void
 		{
 			for (var id:String in _waves)
 			{
 				var wave:Wave = _waves[id];
-				wave.start(level);
+				wave.start(state);
 			}
 		}
 		
@@ -69,7 +69,7 @@ package brotherhood.states.gameplay.waves
 				
 				if (line.length > 0 && line.substr(0, 1) != "#")
 				{
-					var regex:RegExp = /^ ((\w+) \s+)? \s* (\w+) \( ( [^)]* ) \) \s+ (\w+) \s+ (\d+) .*$/gix;
+					var regex:RegExp = /^ ((\w+) \s+)? \s* (\w+) \( ( [^)]* ) \) \s+ ([\w]+[\w\.]+[\w]+) \s+ (\d+) .*$/gix;
 					var data:Array = regex.exec(line);
 					
 					if (data)
@@ -77,9 +77,9 @@ package brotherhood.states.gameplay.waves
 						try
 						{
 							var id:String = data[2];
-							var WaveClass:Class = Class(getDefinitionByName("nemostein.games.botmayhem.waves." + data[3]));
+							var WaveClass:Class = Class(getDefinitionByName("brotherhood.states.gameplay.waves." + data[3]));
 							var params:Array = data[4].split(/,\s*/);
-							var EnemyClass:Class = Class(getDefinitionByName("nemostein.games.botmayhem.bots.enemies." + data[5]));
+							var EnemyClass:Class = Class(getDefinitionByName("brotherhood.states.gameplay.creeps." + data[5]));
 							var count:int = int(data[6]);
 						}
 						catch (error:Error)
