@@ -37,11 +37,11 @@ package brotherhood.states.gameplay.heroes.crosshair
 			
 			if (_heroType == HUD.ARCHER)
 			{
-				draw(Bitmap(new Assets.ImageShotArea).bitmapData);
+				draw(Bitmap(new Assets.ImageCrosshairsArcher).bitmapData);
 			}
 			else
 			{
-				draw(Bitmap(new Assets.ImageShotArea).bitmapData);
+				draw(Bitmap(new Assets.ImageCrosshairsWizard).bitmapData);
 			}
 			
 			alignAnchor(AnchorAlign.CENTER, AnchorAlign.CENTER);
