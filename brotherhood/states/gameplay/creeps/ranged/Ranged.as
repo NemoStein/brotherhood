@@ -1,12 +1,16 @@
 package brotherhood.states.gameplay.creeps.ranged
 {
 	import brotherhood.states.gameplay.creeps.Creep;
+	import brotherhood.states.gameplay.heroes.Hero;
+	import brotherhood.system.EntityService;
 	import flash.display.BitmapData;
 	import flash.geom.Point;
 	import nemostein.framework.dragonfly.AnchorAlign;
 	
 	internal class Ranged extends Creep
 	{
+		protected var target:Hero;
+		
 		protected var maxRange:Number;
 		protected var minRange:Number;
 		
@@ -23,38 +27,21 @@ package brotherhood.states.gameplay.creeps.ranged
 		
 		override protected function update():void
 		{
-			if (!target)
+			if (arivedAtDestination)
 			{
-				target = new Point();
+				if (!target)
+				{
+					target = x < 640 ? EntityService.player1 : EntityService.player2;
+				}
 				
-				target.x = x;
-				target.y = Math.random() * (maxRange - minRange) + maxRange + gateBase.bottom;
+				attackTarget();
 			}
-			
-			var distanceX:Number = target.x - x;
-			var distanceY:Number = target.y - y;
-			
-			if (distanceX || distanceY)
+			else if (!destination)
 			{
-				var moveSpeed:Number = maxMoveSpeed * time;
+				destination = new Point();
 				
-				var moveAngle:Number = Math.atan2(distanceY, distanceX);
-				
-				var moveX:Number = Math.cos(moveAngle) * moveSpeed;
-				var moveY:Number = Math.sin(moveAngle) * moveSpeed;
-				
-				if (distanceX > 0 && distanceX < moveX || distanceX < 0 && distanceX > moveX)
-				{
-					moveX = distanceX;
-				}
-				
-				if (distanceY > 0 && distanceY < moveY || distanceY < 0 && distanceY > moveY)
-				{
-					moveY = distanceY;
-				}
-				
-				x += moveX;
-				y += moveY;
+				destination.x = x;
+				destination.y = Math.random() * (maxRange - minRange) + maxRange + gateBase.bottom;
 			}
 			
 			super.update();
