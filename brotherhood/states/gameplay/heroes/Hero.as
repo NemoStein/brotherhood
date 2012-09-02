@@ -37,6 +37,11 @@ package brotherhood.states.gameplay.heroes
 			addAnimation(new Animation(LOOK_RIGHT, [2], 150, false));
 		}
 		
+		public function useSkill(value:int):void
+		{
+			
+		}
+		
 		public function addXP(xp:int):void
 		{
 			currentXP += xp;

@@ -31,10 +31,10 @@ package brotherhood.states.gameplay.hud
 			_lifeBar = new Bar();
 			_xpBar = new Bar();
 			
-			_xpBar.build(190, 34, 0xFF008080);
-			_lifeBar.build(69, 16, 0xFF800000);
+			_xpBar.build(189, 32, 0xFF008080);
+			_lifeBar.build(69, 15, 0xFF800000);
 			
-			_xpBar.x = 9;
+			_xpBar.x = 11;
 			_xpBar.y = 0;
 			
 			if (_heroType == HUD.ARCHER)
@@ -46,7 +46,7 @@ package brotherhood.states.gameplay.hud
 				
 				if (HUD.archerRight)
 				{
-					_lifeBar.x = 10;
+					_lifeBar.x = 11;
 					_lifeBar.y = 44;
 				}
 				else
@@ -72,7 +72,7 @@ package brotherhood.states.gameplay.hud
 				}
 				else
 				{
-					_lifeBar.x = 10;
+					_lifeBar.x = 11;
 					_lifeBar.y = 44;
 				}
 			}
