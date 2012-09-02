@@ -1,6 +1,7 @@
 package brotherhood
 {
 	import brotherhood.states.gameplay.GamePlay;
+	import brotherhood.states.heroselection.HeroSelection;
 	import brotherhood.system.SystemService;
 	import flash.display.BitmapData;
 	import nemostein.framework.dragonfly.Core;
@@ -18,7 +19,7 @@ package brotherhood
 			super.initialize();
 			
 			SystemService.registerGame(this);
-			SystemService.changeState(GamePlay);
+			SystemService.changeState(HeroSelection);
 		}
 	}
 }

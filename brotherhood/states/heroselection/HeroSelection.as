@@ -2,7 +2,10 @@ package brotherhood.states.heroselection
 {
 	import brotherhood.states.endgame.defeat.Defeat;
 	import brotherhood.states.gameplay.GamePlay;
+	import brotherhood.states.gameplay.heroes.archer.Archer;
+	import brotherhood.states.gameplay.heroes.wizard.Wizard;
 	import brotherhood.states.State;
+	import brotherhood.system.HeroService;
 	import brotherhood.system.SystemService;
 	import flash.display.BitmapData;
 	import nemostein.framework.dragonfly.AnchorAlign;
@@ -52,6 +55,10 @@ package brotherhood.states.heroselection
 		{
 			if (input.justPressed(Keys.ANY))
 			{
+				
+				HeroService.archer = new Archer();
+				HeroService.wizard = new Wizard();
+				
 				SystemService.changeState(GamePlay);
 			}
 			

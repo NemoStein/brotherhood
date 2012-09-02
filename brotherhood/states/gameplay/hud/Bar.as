@@ -48,6 +48,8 @@ package brotherhood.states.gameplay.hud
 		
 		override protected function update():void 
 		{
+			trace(value);
+			
 			if (value > maxValue)
 			{
 				value = maxValue;

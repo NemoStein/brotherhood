@@ -4,15 +4,15 @@ package brotherhood.states.gameplay.heroes
 	
 	public class Hero extends Core 
 	{
-		public var currentHp:Number;
-		public var totalHp:Number;
+		public var currentHp:Number = 100;
+		public var totalHp:Number = 100;
 		
-		public var currentXp:Number;
-		public var nextLevelXp:Number;
+		public var currentXp:Number = 0;
+		public var nextLevelXp:Number = 100;
 		
-		public function Hero() 
+		override protected function initialize():void 
 		{
-			
+			super.initialize();
 		}
 	}
 }

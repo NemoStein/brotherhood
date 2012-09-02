@@ -44,13 +44,13 @@ package brotherhood.states.gameplay.hud
 			_lifeBar = new Bar();
 			_xpBar = new Bar();
 			
+			_lifeBar.build(100, 15, 0xFF800000);
+			_xpBar.build(100, 15, 0xFF808000);
+			
 			_lifeBar.setValues(hero.currentHp, hero.totalHp);
 			_xpBar.setValues(hero.currentXp, hero.nextLevelXp);
 			
 			_lvl = new Text("lvl: 1");
-			
-			_lifeBar.build(100, 15, 0xFF800000);
-			_xpBar.build(100, 15, 0xFF808000);
 			
 			add(_lifeBar);
 			add(_xpBar);
