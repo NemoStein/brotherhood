@@ -6,7 +6,7 @@ package brotherhood.states.heroselection
 	import brotherhood.states.gameplay.heroes.wizard.Wizard;
 	import brotherhood.states.gameplay.hud.HUD;
 	import brotherhood.states.State;
-	import brotherhood.system.HeroService;
+	import brotherhood.system.EntityService;
 	import brotherhood.system.SystemService;
 	import flash.display.BitmapData;
 	import nemostein.framework.dragonfly.AnchorAlign;
@@ -16,6 +16,8 @@ package brotherhood.states.heroselection
 	public class HeroSelection extends State
 	{
 		private var _archerRight:Boolean = true;
+		private var _archerAvatar:Core;
+		private var _wizardAvatar:Core;
 		
 		override protected function initialize():void
 		{
@@ -24,8 +26,8 @@ package brotherhood.states.heroselection
 			draw(new BitmapData(1280, 720, false, 0xffababeb));
 			
 			var screenTitle:Core = new Core(new BitmapData(800, 100, true, 0xffdd8080));
-			var archerAvatar:Core = new Core(new BitmapData(400, 400, true, 0xaaffffff));
-			var wizardAvatar:Core = new Core(new BitmapData(400, 400, true, 0xaaffffff));
+			_archerAvatar = new Core(new BitmapData(400, 400, true, 0xaa008000));
+			_wizardAvatar = new Core(new BitmapData(400, 400, true, 0xaa000080));
 			var swapButton:Core = new Core(new BitmapData(250, 70, true, 0xffdd8080));
 			var startButton:Core = new Core(new BitmapData(250, 70, true, 0xffdd8080));
 			
@@ -40,15 +42,15 @@ package brotherhood.states.heroselection
 			startButton.x = 730;
 			startButton.y = 615;
 			
-			archerAvatar.x = 200;
-			archerAvatar.y = 175;
+			_archerAvatar.x = 680;
+			_archerAvatar.y = 175;
 			
-			wizardAvatar.x = 680;
-			wizardAvatar.y = 175;
+			_wizardAvatar.x = 200;
+			_wizardAvatar.y = 175;
 			
 			add(screenTitle);
-			add(archerAvatar);
-			add(wizardAvatar);
+			add(_archerAvatar);
+			add(_wizardAvatar);
 			add(swapButton);
 			add(startButton);
 		}
@@ -62,8 +64,8 @@ package brotherhood.states.heroselection
 			}
 			else if (input.justPressed(Keys.NUMBER_9))
 			{
-				HeroService.archer = new Archer();
-				HeroService.wizard = new Wizard();
+				EntityService.archer = new Archer();
+				EntityService.wizard = new Wizard();
 				
 				HUD.archerRight = _archerRight;
 				
@@ -76,6 +78,11 @@ package brotherhood.states.heroselection
 		private function swap():void 
 		{
 			_archerRight = !_archerRight;
+			
+			var old:int = _archerAvatar.x;
+			
+			_archerAvatar.x = _wizardAvatar.x;
+			_wizardAvatar.x = old;
 		}
 	}
 }

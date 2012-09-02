@@ -1,7 +1,7 @@
 package brotherhood.states.gameplay.hud 
 {
 	import brotherhood.states.gameplay.heroes.Hero;
-	import brotherhood.system.HeroService;
+	import brotherhood.system.EntityService;
 	import flash.display.BitmapData;
 	import nemostein.framework.dragonfly.Core;
 	import nemostein.framework.dragonfly.Text;
@@ -41,7 +41,7 @@ package brotherhood.states.gameplay.hud
 			{
 				draw( new BitmapData(190, 34, false, 0xFF008000 ));
 				
-				hero = HeroService.archer;
+				hero = EntityService.archer;
 				
 				if (HUD.archerRight)
 				{
@@ -60,7 +60,7 @@ package brotherhood.states.gameplay.hud
 			{
 				draw( new BitmapData(190, 34, false, 0xFF000080 ));
 				
-				hero = HeroService.wizard;
+				hero = EntityService.wizard;
 				
 				if (HUD.archerRight)
 				{
