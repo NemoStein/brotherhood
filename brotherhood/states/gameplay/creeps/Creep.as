@@ -30,8 +30,33 @@ package brotherhood.states.gameplay.creeps
 		{
 			if (target == null)
 			{
+				target = new Point();
 				
+				// TODO: Ajust lanes here
+				if (x < 500)
+				{
+					target.x = Math.random() * leftTowerBase.width + leftTowerBase.x;
+					target.y = Math.random() * leftTowerBase.height + leftTowerBase.y;
+				}
+				else if (x < 800)
+				{
+					target.x = Math.random() * gateBase.width + gateBase.x;
+					target.y = Math.random() * gateBase.height + gateBase.y;
+				}
+				else
+				{
+					target.x = Math.random() * rightTowerBase.width + rightTowerBase.x;
+					target.y = Math.random() * rightTowerBase.height + rightTowerBase.y;
+				}
 			}
+			
+			var distanceX:Number = target.x - x;
+			var distanceY:Number = target.y - y;
+			
+			var moveAngle:Number = Math.atan2(distanceY, distanceX);
+			
+			x += Math.cos(moveAngle) * moveSpeed * time;
+			y += Math.sin(moveAngle) * moveSpeed * time;
 			
 			super.update();
 		}
