@@ -15,6 +15,8 @@ package brotherhood.states.gameplay.hud
 		public var value:Number;
 		public var maxValue:Number;
 		
+		public var reverse:Boolean;
+		
 		public function Bar() 
 		{
 			super();
@@ -24,8 +26,9 @@ package brotherhood.states.gameplay.hud
 		{
 			_horizontal = width > height;
 			
-			_background = new Core( new BitmapData(width, height, false, 0));
+			_background = new Core( new BitmapData(width, height, false, 0xFFCCCCCC));
 			_foreground = new Core( new BitmapData(width, height, false, startColour));
+			
 			
 			if (_horizontal)
 			{
@@ -48,7 +51,7 @@ package brotherhood.states.gameplay.hud
 		
 		override protected function update():void 
 		{
-			trace(value);
+			_foreground.x = 0;
 			
 			if (value > maxValue)
 			{
@@ -59,7 +62,25 @@ package brotherhood.states.gameplay.hud
 				value = 0;
 			}
 			
-			_foreground.scaleX = (value / maxValue);
+			
+			if (_horizontal)
+			{
+				_foreground.scaleX = (value / maxValue);
+				
+				if (reverse && value != maxValue)
+				{
+					_foreground.x = _background.width - _foreground.width *_foreground.scaleX;
+				}
+			}
+			else
+			{
+				_foreground.scaleY = (value / maxValue);
+				
+				if (reverse  && value != maxValue)
+				{
+					_foreground.y =  _background.height - _foreground.height * _foreground.scaleY;
+				}
+			}
 			
 			super.update();
 		}
