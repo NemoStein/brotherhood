@@ -2,4 +2,4 @@
 
 # WaveA
 		Time(1)				melee.Normal	10
-		Time(3)				ranged.Normal	10
+		Time(4)				ranged.Normal	10

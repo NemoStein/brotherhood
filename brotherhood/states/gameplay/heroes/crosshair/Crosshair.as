@@ -10,10 +10,11 @@ package brotherhood.states.gameplay.heroes.crosshair
 	
 	public class Crosshair extends Core
 	{
-		static public const SPEED:int = 330;
+		static public const MAX_SPEED:int = 666;
 		
 		private var _heroType:String;
 		
+		public var speed:int;
 		public var destination:Point;
 		public var radius:Number;
 		public var areaOfEffect:Rectangle;
@@ -65,20 +66,21 @@ package brotherhood.states.gameplay.heroes.crosshair
 			{
 				y = 670;
 			}
-			if (y < 220)
+			if (y < 200)
 			{
-				y = 220;
+				y = 200;
 			}
 			
-			radius = y / 630 + 0.1;
+			radius = y / 630;
+			speed = MAX_SPEED * radius;
 			
-			scaleX = scaleY = radius;
+			scaleX = scaleY = radius + 0.1;
 			
-			areaOfEffect.left = x;
-			areaOfEffect.top = y;
+			areaOfEffect.width = radius * width;
+			areaOfEffect.height = radius * height;
 			
-			areaOfEffect.width = radius * 50;
-			areaOfEffect.height = radius * 50;
+			areaOfEffect.x = x - areaOfEffect.width / 2;
+			areaOfEffect.y = y - areaOfEffect.height / 2;
 			
 			core.draw(new BitmapData(areaOfEffect.width, areaOfEffect.height, true, 0x50000000));
 			core.x = areaOfEffect.x;
