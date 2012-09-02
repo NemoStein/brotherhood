@@ -1,6 +1,7 @@
 package brotherhood.states.gameplay.heroes 
 {
 	import nemostein.framework.dragonfly.Core;
+	import nemostein.io.Keys;
 	
 	public class Hero extends Core 
 	{

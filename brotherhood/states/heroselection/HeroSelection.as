@@ -4,6 +4,7 @@ package brotherhood.states.heroselection
 	import brotherhood.states.gameplay.GamePlay;
 	import brotherhood.states.gameplay.heroes.archer.Archer;
 	import brotherhood.states.gameplay.heroes.wizard.Wizard;
+	import brotherhood.states.gameplay.hud.HUD;
 	import brotherhood.states.State;
 	import brotherhood.system.HeroService;
 	import brotherhood.system.SystemService;
@@ -14,6 +15,7 @@ package brotherhood.states.heroselection
 	
 	public class HeroSelection extends State
 	{
+		private var _archerRight:Boolean = true;
 		
 		override protected function initialize():void
 		{
@@ -53,16 +55,27 @@ package brotherhood.states.heroselection
 		
 		override protected function stateUpdate():void
 		{
-			if (input.justPressed(Keys.ANY))
+			if (input.justPressed(Keys.U) || input.justPressed(Keys.I) || input.justPressed(Keys.O)
+			||  input.justPressed(Keys.J) || input.justPressed(Keys.K) || input.justPressed(Keys.L))
 			{
-				
+				swap();
+			}
+			else if (input.justPressed(Keys.NUMBER_9))
+			{
 				HeroService.archer = new Archer();
 				HeroService.wizard = new Wizard();
+				
+				HUD.archerRight = _archerRight;
 				
 				SystemService.changeState(GamePlay);
 			}
 			
 			super.stateUpdate();
+		}
+		
+		private function swap():void 
+		{
+			_archerRight = !_archerRight;
 		}
 	}
 }

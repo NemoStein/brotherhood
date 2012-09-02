@@ -14,7 +14,7 @@ package brotherhood.states.gameplay.hud
 		private var _archerStats:HeroSlot;
 		private var _wizardStats:HeroSlot;
 		
-		private var player1:String;
+		public static var archerRight:Boolean;
 		
 		override protected function initialize():void
 		{
@@ -26,20 +26,18 @@ package brotherhood.states.gameplay.hud
 			_archerStats = new HeroSlot(ARCHER);
 			_wizardStats = new HeroSlot(WIZARD);
 			
-			player1 = ARCHER;
-			
-			if (player1 == ARCHER)
+			if (archerRight)
 			{
 				_archerSkills.alignAnchor(AnchorAlign.TOP, AnchorAlign.LEFT);
 				_wizardSkills.alignAnchor(AnchorAlign.TOP, AnchorAlign.RIGHT);
 				
-				_archerStats.alignAnchor(AnchorAlign.TOP, AnchorAlign.LEFT);
-				_wizardStats.alignAnchor(AnchorAlign.TOP, AnchorAlign.RIGHT);
+				_archerStats.alignAnchor(AnchorAlign.TOP, AnchorAlign.RIGHT);
+				_wizardStats.alignAnchor(AnchorAlign.TOP, AnchorAlign.LEFT);
 				
-				_archerStats.x = _archerSkills.width + 20;
+				_archerStats.x = 960;
 				_archerStats.y = 0;
 				
-				_wizardStats.x = 960;
+				_wizardStats.x = 320;
 				_wizardStats.y = 0;
 				
 				_archerSkills.x = _archerSkills.y = 0;
@@ -52,16 +50,17 @@ package brotherhood.states.gameplay.hud
 				_archerSkills.alignAnchor(AnchorAlign.TOP, AnchorAlign.RIGHT);
 				_wizardSkills.alignAnchor(AnchorAlign.TOP, AnchorAlign.LEFT);
 				
-				_archerStats.alignAnchor(AnchorAlign.TOP, AnchorAlign.RIGHT);
-				_wizardStats.alignAnchor(AnchorAlign.TOP, AnchorAlign.LEFT);
+				_archerStats.alignAnchor(AnchorAlign.TOP, AnchorAlign.LEFT);
+				_wizardStats.alignAnchor(AnchorAlign.TOP, AnchorAlign.RIGHT);
 				
-				_wizardStats.x = 20;
+				_wizardStats.x = 960;
 				_wizardStats.y = 0;
 				
-				_archerStats.x = 960;
+				_archerStats.x = 320;
 				_archerStats.y = 0;
 				
 				_wizardSkills.x = _wizardSkills.y = 0;
+				
 				_archerSkills.x = 1280;
 				_archerSkills.y = 0;
 			}

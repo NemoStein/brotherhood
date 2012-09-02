@@ -28,24 +28,53 @@ package brotherhood.states.gameplay.hud
 		{
 			super.initialize();
 			
+			_lifeBar = new Bar();
+			_xpBar = new Bar();
+			
+			_xpBar.build(100, 15, 0xFF008080);
+			_lifeBar.build(80, 20, 0xFF800000);
+			
+			_xpBar.x = 0;
+			_xpBar.y = 0;
+			
 			if (_heroType == HUD.ARCHER)
 			{
 				draw( new BitmapData(190, 34, false, 0xFF008000 ));
 				
 				hero = HeroService.archer;
+				
+				if (HUD.archerRight)
+				{
+					_lifeBar.x = 0;
+					_lifeBar.y = 34;
+				}
+				else
+				{
+					_lifeBar.x = 110;
+					_lifeBar.y = 34;
+					
+					_lifeBar.reverse = true;
+				}
 			}
 			else
 			{
 				draw( new BitmapData(190, 34, false, 0xFF000080 ));
 				
 				hero = HeroService.wizard;
+				
+				if (HUD.archerRight)
+				{
+					_lifeBar.x = 110;
+					_lifeBar.y = 34;
+					
+					_lifeBar.reverse = true;
+				}
+				else
+				{
+					_lifeBar.x = 0;
+					_lifeBar.y = 34;
+				}
 			}
-			
-			_lifeBar = new Bar();
-			_xpBar = new Bar();
-			
-			_lifeBar.build(100, 15, 0xFF800000);
-			_xpBar.build(100, 15, 0xFF808000);
 			
 			_lifeBar.setValues(hero.currentHp, hero.totalHp);
 			_xpBar.setValues(hero.currentXp, hero.nextLevelXp);
@@ -55,6 +84,8 @@ package brotherhood.states.gameplay.hud
 			add(_lifeBar);
 			add(_xpBar);
 			add(_lvl);
+			
+			setCurrentDescendentsAsRelative();
 		}
 		
 		override protected function update():void 
