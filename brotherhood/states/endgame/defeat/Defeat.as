@@ -16,10 +16,10 @@ package brotherhood.states.endgame.defeat
 			
 			draw(new BitmapData(1280, 720, false, 0xFFCCCCCC));
 			
-			var screenTitle:Core = new Core(new BitmapData(900, 100, false, 0xFF008000));
+			var screenTitle:Core = new Core(new BitmapData(900, 100, false, 0xFF800000));
 			var leftStats:Core = new Core(new BitmapData(300, 300, false, 0xFF800000));
-			var rightStats:Core = new Core(new BitmapData(300, 300, false, 0xFF80000));
-			var returnButton:Core = new Core(new BitmapData(100, 100, false, 0xFF008000));
+			var rightStats:Core = new Core(new BitmapData(300, 300, false, 0xFF800000));
+			var returnButton:Core = new Core(new BitmapData(100, 100, false, 0xFF800000));
 			
 			screenTitle.alignAnchor(AnchorAlign.TOP, AnchorAlign.CENTER);
 			returnButton.alignAnchor(AnchorAlign.TOP, AnchorAlign.CENTER);

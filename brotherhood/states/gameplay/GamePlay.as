@@ -1,10 +1,13 @@
 package brotherhood.states.gameplay 
 {
 	import brotherhood.states.gameplay.creeps.Creep;
+	import brotherhood.states.gameplay.tower.Gate;
 	import brotherhood.states.gameplay.tower.Tower;
 	import brotherhood.states.gameplay.hud.HUD;
 	import brotherhood.states.gameplay.waves.Waves;
 	import brotherhood.states.State;
+	import brotherhood.system.EntityService;
+	import brotherhood.system.SystemService;
 	import flash.display.BitmapData;
 	import flash.geom.Rectangle;
 	import nemostein.framework.dragonfly.AnchorAlign;
@@ -29,6 +32,10 @@ package brotherhood.states.gameplay
 			
 			rightTower.x = 880;
 			rightTower.y = 250;
+			
+			EntityService.leftTower = leftTower;
+			EntityService.rightTower = rightTower;
+			EntityService.gate = new Gate(leftTower, rightTower);
 			
 			Creep.leftTowerBase = new Rectangle(335, 240, 130, 20);
 			Creep.rightTowerBase = new Rectangle(815, 240, 130, 20);

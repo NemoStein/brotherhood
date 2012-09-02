@@ -2,20 +2,24 @@ package brotherhood.states.gameplay.creeps.melee
 {
 	import brotherhood.states.gameplay.creeps.Creep;
 	import brotherhood.states.gameplay.tower.Tower;
+	import brotherhood.system.EntityService;
 	import flash.display.BitmapData;
 	import flash.geom.Point;
 	import nemostein.framework.dragonfly.AnchorAlign;
 	
 	internal class Melee extends Creep
 	{
-		protected var target:Tower;
-		
 		override protected function initialize():void
 		{
 			super.initialize();
 			
 			draw(new BitmapData(15, 15, true, 0xffdf4030));
 			alignAnchor(AnchorAlign.BOTTOM, AnchorAlign.CENTER);
+		}
+		
+		override protected function attackTarget():void 
+		{
+			super.attackTarget();
 		}
 		
 		override protected function update():void
@@ -26,15 +30,15 @@ package brotherhood.states.gameplay.creeps.melee
 				{
 					if (x < 500)
 					{
-						target = null;
+						target = EntityService.leftTower;
 					}
 					else if (x < 800)
 					{
-						target = null;
+						target = EntityService.gate;
 					}
 					else
 					{
-						target = null;
+						target = EntityService.rightTower;
 					}
 				}
 				
