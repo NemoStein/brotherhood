@@ -4,14 +4,20 @@ package brotherhood.system
 	import brotherhood.states.gameplay.heroes.crosshair.Crosshair;
 	import brotherhood.states.gameplay.heroes.Hero;
 	import brotherhood.states.gameplay.heroes.wizard.Wizard;
+	import brotherhood.states.gameplay.tower.Gate;
+	import brotherhood.states.gameplay.tower.Tower;
 	
 	public class EntityService 
 	{
-		public static var archer:Archer;
-		public static var wizard:Wizard;
+		static public var archer:Archer;
+		static public var wizard:Wizard;
 		
-		public static var player1:Hero;
-		public static var player2:Hero;
+		static public var player1:Hero;
+		static public var player2:Hero;
+		
+		static public var leftTower:Tower;
+		static public var rightTower:Tower;
+		static public var gate:Gate;
 		
 		static public var player1Crosshair:Crosshair;
 		static public var player2Crosshair:Crosshair;
