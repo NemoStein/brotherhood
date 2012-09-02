@@ -1,6 +1,7 @@
 package brotherhood.states.gameplay.tower 
 {
 	import brotherhood.states.gameplay.Target;
+	import brotherhood.system.SystemService;
 	import flash.display.BitmapData;
 	import nemostein.framework.dragonfly.AnchorAlign;
 	import nemostein.framework.dragonfly.Core;
@@ -21,7 +22,18 @@ package brotherhood.states.gameplay.tower
 		
 		public function hit(power:Number):void 
 		{
+			currentHP -= power;
+		}
+		
+		override protected function update():void 
+		{
+			if (currentHP <= 0)
+			{
+				currentHP = 0;
+				SystemService.defeat();
+			}
 			
+			super.update();
 		}
 	}
 }
