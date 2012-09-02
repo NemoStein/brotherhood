@@ -25,7 +25,7 @@ package brotherhood.states
 			_swipeSpeed = 100;
 			_swipe = SWIPE_READY;
 			
-			setCurrentDescendentsAsRelative();
+			//setCurrentDescendentsAsRelative();
 		}
 		
 		public function swipeTo(direction:int, distance:int):void

@@ -26,7 +26,7 @@ package brotherhood.states.gameplay.heroes.archer
 		
 		override protected function update():void 
 		{
-			if (input.pressed(HUD.P1_GA))
+			if (input.pressed(Controls.P1_GA))
 			{
 				trace(EntityService.player1Crosshair.radius);
 			}

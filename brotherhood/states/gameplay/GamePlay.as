@@ -25,6 +25,8 @@ package brotherhood.states.gameplay
 		{
 			super.initialize();
 			
+			var controls:Controls = new Controls();
+			
 			crosshairsLayer = new Core();
 			creepsLayer = new Core();
 			skillsLayer = new Core();
@@ -51,6 +53,7 @@ package brotherhood.states.gameplay
 			
 			var hud:HUD = new HUD();
 			
+			add(controls);
 			add(leftTower);
 			add(rightTower);
 			

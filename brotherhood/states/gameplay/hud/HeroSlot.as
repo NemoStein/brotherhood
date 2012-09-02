@@ -90,6 +90,11 @@ package brotherhood.states.gameplay.hud
 		
 		override protected function update():void
 		{
+			if (_lvl.text != "lvl: " + hero.level)
+			{
+				_lvl.text = "lvl: " + hero.level;
+			}
+			
 			_lifeBar.setValues(hero.currentHP, hero.totalHP);
 			_xpBar.setValues(hero.currentXP, hero.nextLevelXP(hero.level));
 			
