@@ -1,18 +1,18 @@
 package brotherhood.states.gameplay.waves 
 {
-	import nemostein.games.botmayhem.bots.enemies.Enemy;
-	import nemostein.games.botmayhem.levels.Level;
+	import brotherhood.states.gameplay.creeps.Creep;
+	import brotherhood.states.State;
 	public class Alive extends Wave
 	{
 		private var _waveReference:Wave;
-		private var _enemiesAlive:int;
+		private var _creepsAlive:int;
 		
 		override protected function initialize(params:Array):void 
 		{
 			try
 			{
 				_waveReference = params[0];
-				_enemiesAlive = int(params[1]);
+				_creepsAlive = int(params[1]);
 			}
 			catch (error:Error)
 			{
@@ -23,22 +23,22 @@ package brotherhood.states.gameplay.waves
 		}
 		
 		
-		override public function start(level:Level):void 
+		override public function start(state:State):void 
 		{
 			if(_waveReference)
 			{
-				_waveReference.onEnemyDestruction(waveReferenceEnemyDestruction);
+				_waveReference.onCreepDestruction(waveReferenceCreepDestruction);
 			}
 			
-			super.start(level);
+			super.start(state);
 		}
 		
 		
-		private function waveReferenceEnemyDestruction(destroyed:Enemy, stillAlive:int):void 
+		private function waveReferenceCreepDestruction(destroyed:Creep, stillAlive:int):void 
 		{
-			if (!dispatched && stillAlive <= _enemiesAlive)
+			if (!dispatched && stillAlive <= _creepsAlive)
 			{
-				dispatchEnemies();
+				dispatchCreeps();
 			}
 		}
 	}

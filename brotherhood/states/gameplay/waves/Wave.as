@@ -1,33 +1,33 @@
 package brotherhood.states.gameplay.waves
 {
+	import brotherhood.states.gameplay.creeps.Creep;
+	import brotherhood.states.State;
 	import flash.geom.Point;
-	import nemostein.games.botmayhem.bots.enemies.Enemy;
-	import nemostein.games.botmayhem.levels.Level;
 	
 	public class Wave
 	{
-		private var _enemyDestructionCallbacks:Vector.<Function>;
-		private var _enemyDispatchCallbacks:Vector.<Function>;
+		private var _creepDestructionCallbacks:Vector.<Function>;
+		private var _creepDispatchCallbacks:Vector.<Function>;
 		
 		protected var id:String;
 		protected var params:Array;
-		protected var EnemyClass:Class;
+		protected var CreepClass:Class;
 		protected var count:int;
 		
-		protected var level:Level;
+		protected var state:State;
 		protected var dispatched:Boolean;
 		
 		public var alive:int;
 		
-		public final function construct(id:String, params:Array, EnemyClass:Class, count:int):void
+		public final function construct(id:String, params:Array, CreepClass:Class, count:int):void
 		{
 			this.id = id;
 			this.params = params;
-			this.EnemyClass = EnemyClass;
+			this.CreepClass = CreepClass;
 			this.count = count;
 			
-			_enemyDestructionCallbacks = new Vector.<Function>();
-			_enemyDispatchCallbacks = new Vector.<Function>();
+			_creepDestructionCallbacks = new Vector.<Function>();
+			_creepDispatchCallbacks = new Vector.<Function>();
 			
 			initialize(params);
 		}
@@ -37,37 +37,37 @@ package brotherhood.states.gameplay.waves
 		
 		}
 		
-		public function start(level:Level):void
+		public function start(state:State):void
 		{
-			this.level = level;
+			this.state = state;
 		}
 		
-		public function onEnemyDestruction(callback:Function):void
+		public function onCreepDestruction(callback:Function):void
 		{
-			_enemyDestructionCallbacks.push(callback);
+			_creepDestructionCallbacks.push(callback);
 		}
 		
-		public function onEnemyDispatch(callback:Function):void
+		public function onCreepDispatch(callback:Function):void
 		{
-			_enemyDispatchCallbacks.push(callback);
+			_creepDispatchCallbacks.push(callback);
 		}
 		
-		public function destroyEnemy(enemy:Enemy):void
+		public function destroyCreep(creep:Creep):void
 		{
 			--alive;
 			
 			// DELETE: wave sequence test
 			trace("Killing a bot from wave " + id + " (" + alive + " alive now)");
 			
-			for (var i:int = 0; i < _enemyDestructionCallbacks.length; i++)
+			for (var i:int = 0; i < _creepDestructionCallbacks.length; i++)
 			{
-				var callback:Function = _enemyDestructionCallbacks[i];
+				var callback:Function = _creepDestructionCallbacks[i];
 				
-				callback(enemy, alive);
+				callback(creep, alive);
 			}
 		}
 		
-		public function dispatchEnemies():void
+		public function dispatchCreeps():void
 		{
 			if (!dispatched)
 			{
@@ -75,27 +75,19 @@ package brotherhood.states.gameplay.waves
 				
 				for (var i:int = 0; i < count; ++i)
 				{
-					var enemy:Enemy = new EnemyClass();
+					var creep:Creep = new CreepClass();
 					
-					if (Math.random() < 0.666)
-					{
-						enemy.x = Math.random() * 900;
-						enemy.y = Math.random() < 0.5 ? -25 - Math.random() * 75 : 625 + Math.random() * 75;
-					}
-					else
-					{
-						enemy.x = Math.random() < 0.5 ? -25 - Math.random() * 75 : 925 + Math.random() * 75;
-						enemy.y = Math.random() * 600;
-					}
+					creep.x = Math.random() * 800 + 250;
+					creep.y = Math.random() * 50 + 750;
 					
-					level.add(enemy);
+					state.add(creep);
 				}
 				
 				// DELETE: wave sequence test
 				trace("Dispatching " + count + " bots from wave " + id);
-				for (var j:int = 0; j < _enemyDispatchCallbacks.length; ++j)
+				for (var j:int = 0; j < _creepDispatchCallbacks.length; ++j)
 				{
-					var callback:Function = _enemyDispatchCallbacks[j];
+					var callback:Function = _creepDispatchCallbacks[j];
 					
 					callback();
 				}
@@ -109,7 +101,7 @@ package brotherhood.states.gameplay.waves
 			if (dispatched)
 			{
 				// DELETE: wave sequence test
-				destroyEnemy(null);
+				destroyCreep(null);
 				
 				if (alive == 0)
 				{

@@ -3,6 +3,7 @@ package brotherhood.states.gameplay
 	import brotherhood.states.gameplay.creeps.Creep;
 	import brotherhood.states.gameplay.tower.Tower;
 	import brotherhood.states.gameplay.hud.HUD;
+	import brotherhood.states.gameplay.waves.Waves;
 	import brotherhood.states.State;
 	import flash.display.BitmapData;
 	import flash.geom.Rectangle;
@@ -11,6 +12,8 @@ package brotherhood.states.gameplay
 	
 	public class GamePlay extends State 
 	{
+		private var _waves:Waves;
+		
 		override protected function initialize():void 
 		{
 			super.initialize();
@@ -75,19 +78,14 @@ package brotherhood.states.gameplay
 			add(gb);
 			
 			/******************************/
+			
+			_waves = Waves.parse(new Assets.TextWavesTestLevel());
+			_waves.startWaves(this);
 		}
 		
 		override protected function stateUpdate():void 
 		{
-			if (Math.random() < 0.25)
-			{
-				var creep:Creep = new Creep();
-				
-				creep.x = Math.random() * 800 + 250;
-				creep.y = Math.random() * 50 + 750;
-				
-				add(creep);
-			}
+			_waves.updateWaves(time);
 			
 			super.stateUpdate();
 		}
