@@ -1,5 +1,6 @@
 package brotherhood.states.gameplay.hud
 {
+	import brotherhood.system.EntityService;
 	import nemostein.framework.dragonfly.AnchorAlign;
 	import nemostein.framework.dragonfly.Core;
 	
@@ -8,13 +9,41 @@ package brotherhood.states.gameplay.hud
 		public static const ARCHER:String = "archer";
 		static public const WIZARD:String = "wizard";
 		
+		static public const P1_GA:String = "p1Ga";
+		static public const P1_GB:String = "p1Gb";
+		static public const P1_BA:String = "p1Ba";
+		static public const P1_BB:String = "p1Bb";
+		static public const P1_RA:String = "p1Ra";
+		static public const P1_RB:String = "p1Rb";
+		static public const P1_U:String = "p1U";
+		static public const P1_D:String = "p1D";
+		static public const P1_L:String = "p1L";
+		static public const P1_R:String = "p1R";
+		static public const P1_S:String = "p1S";
+		
+		static public const P2_GA:String = "p2Ga";
+		static public const P2_GB:String = "p2Gb";
+		static public const P2_BA:String = "p2Ba";
+		static public const P2_BB:String = "p2Bb";
+		static public const P2_RA:String = "p2Ra";
+		static public const P2_RB:String = "p2Rb";
+		static public const P2_U:String = "p2U";
+		static public const P2_D:String = "p2D";
+		static public const P2_L:String = "p2L";
+		static public const P2_R:String = "p2R";
+		static public const P2_S:String = "p2S";
+		
+		public static var archerRight:Boolean;
+		
 		private var _archerSkills:SkillSlot;
 		private var _wizardSkills:SkillSlot;
 		
 		private var _archerStats:HeroSlot;
 		private var _wizardStats:HeroSlot;
 		
-		public static var archerRight:Boolean;
+		private var _archerCrosshair:Core;
+		private var _wizardCrosshair:Core;
+		
 		
 		override protected function initialize():void
 		{
@@ -44,6 +73,9 @@ package brotherhood.states.gameplay.hud
 				
 				_wizardSkills.x = 1280;
 				_wizardSkills.y = 0;
+				
+				EntityService.player1 = EntityService.wizard;
+				EntityService.player2 = EntityService.archer;
 			}
 			else
 			{
@@ -63,12 +95,20 @@ package brotherhood.states.gameplay.hud
 				
 				_archerSkills.x = 1280;
 				_archerSkills.y = 0;
+				
+				EntityService.player1 = EntityService.archer;
+				EntityService.player2 = EntityService.wizard;
 			}
 			
 			add(_archerSkills);
 			add(_wizardSkills);
 			add(_archerStats);
 			add(_wizardStats);
+		}
+		
+		override protected function update():void 
+		{
+			super.update();
 		}
 	}
 
