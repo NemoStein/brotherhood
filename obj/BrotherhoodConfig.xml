@@ -33,7 +33,7 @@
     <verbose-stacktraces>true</verbose-stacktraces>
     <source-path append="true">
       <path-element>D:\Workspaces\Actionscript3.0\Brotherhood\src</path-element>
-      <path-element>D:\Workspaces\Actionscript3.0\DragonFly\src</path-element>
+      <path-element>D:\Workspaces\Actionscript3.0\Dragonfly\src</path-element>
       <path-element>D:\Workspaces\Actionscript3.0\Library</path-element>
       <path-element>C:\Program Files (x86)\FlashDevelop\Library\AS3\classes</path-element>
     </source-path>

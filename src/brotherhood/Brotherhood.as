@@ -28,7 +28,7 @@ package brotherhood
 			intro = new Assets.SoundThemesIntro;
 			loop = new Assets.SoundThemesLoop;
 			
-			soundChannel = intro.play();
+			//soundChannel = intro.play();
 			soundChannel.addEventListener(Event.SOUND_COMPLETE, onSoundChannelSoundComplete);
 		}
 		
