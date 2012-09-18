@@ -14,6 +14,8 @@ package brotherhood.states.gameplay.heroes
 		static public const LOOK_MIDDLE:String = "lookMiddle";
 		static public const LOOK_RIGHT:String = "lookRight";
 		
+		public var slot:int;
+		
 		public var currentHP:Number = 100;
 		public var totalHP:Number = 100;
 		
@@ -80,18 +82,18 @@ package brotherhood.states.gameplay.heroes
 				SystemService.defeat();
 			}
 			
-			if (input.justPressed(Controls.P1_GB))
-			{
-				playAnimation(LOOK_LEFT);
-			}
-			else if (input.justPressed(Controls.P1_BB))
-			{
-				playAnimation(LOOK_MIDDLE);
-			}
-			else if (input.justPressed(Controls.P1_RB))
-			{
-				playAnimation(LOOK_RIGHT);
-			}
+			//if (input.justPressed(Controls.P1_GreenB))
+			//{
+				//playAnimation(LOOK_LEFT);
+			//}
+			//else if (input.justPressed(Controls.P1_BlueB))
+			//{
+				//playAnimation(LOOK_MIDDLE);
+			//}
+			//else if (input.justPressed(Controls.P1_RedB))
+			//{
+				//playAnimation(LOOK_RIGHT);
+			//}
 			
 			super.update();
 		}

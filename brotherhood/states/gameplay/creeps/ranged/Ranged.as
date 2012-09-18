@@ -24,7 +24,6 @@ package brotherhood.states.gameplay.creeps.ranged
 			frame.width = 65;
 			frame.height = 65;
 			
-			//draw(new BitmapData(15, 15, true, 0xff4030df));
 			alignAnchor(AnchorAlign.BOTTOM, AnchorAlign.CENTER);
 			
 			minRange = 100;

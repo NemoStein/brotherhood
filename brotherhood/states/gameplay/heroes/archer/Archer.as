@@ -23,12 +23,7 @@ package brotherhood.states.gameplay.heroes.archer
 		
 		public function shoot():void
 		{
-			var arrow:CommonArrow = new CommonArrow();
-			
-			add(arrow);
-			
-			arrow.x = x;
-			arrow.y = y - height/2;
+			add(new CommonArrow());
 		}
 	}
 }

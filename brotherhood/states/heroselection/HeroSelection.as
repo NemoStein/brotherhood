@@ -37,40 +37,11 @@ package brotherhood.states.heroselection
 			
 			add(_archerAvatar);
 			add(_wizardAvatar);
-			
-			//var screenTitle:Core = new Core(new BitmapData(800, 100, true, 0xffdd8080));
-			//
-			//_archerAvatar = new Core(new BitmapData(400, 400, true, 0xaa008000));
-			//_wizardAvatar = new Core(new BitmapData(400, 400, true, 0xaa000080));
-			//
-			//var swapButton:Core = new Core(new BitmapData(250, 70, true, 0xffdd8080));
-			//var startButton:Core = new Core(new BitmapData(250, 70, true, 0xffdd8080));
-			//
-			//screenTitle.alignAnchor(AnchorAlign.TOP, AnchorAlign.CENTER);
-			//
-			//screenTitle.x = 1280 / 2;
-			//screenTitle.y = 35;
-			//
-			//swapButton.x = 300;
-			//swapButton.y = 615;
-			//
-			//startButton.x = 730;
-			//startButton.y = 615;
-			//
-			//add(screenTitle);
-			//add(_archerAvatar);
-			//add(_wizardAvatar);
-			//add(swapButton);
-			//add(startButton);
 		}
 		
 		override protected function stateUpdate():void
 		{
-			if (input.justPressed(Keys.U) || input.justPressed(Keys.I) || input.justPressed(Keys.O) || input.justPressed(Keys.J) || input.justPressed(Keys.K) || input.justPressed(Keys.L))
-			{
-				swap();
-			}
-			else if (input.justPressed(Keys.NUMBER_9))
+			if (input.justPressed(Controls.Slot1Start))
 			{
 				EntityService.archer = new Archer();
 				EntityService.wizard = new Wizard();
@@ -78,6 +49,10 @@ package brotherhood.states.heroselection
 				HUD.archerRight = _archerRight;
 				
 				SystemService.changeState(GamePlay);
+			}
+			else if (input.justPressed(Keys.ANY))
+			{
+				swap();
 			}
 			
 			super.stateUpdate();

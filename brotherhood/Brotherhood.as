@@ -9,9 +9,9 @@ package brotherhood
 	
 	public class Brotherhood extends Game
 	{
-		private var intro:Sound;
-		private var loop:Sound;
-		private var soundChannel:SoundChannel;
+		//private var intro:Sound;
+		//private var loop:Sound;
+		//private var soundChannel:SoundChannel;
 		
 		public function Brotherhood()
 		{
@@ -25,17 +25,17 @@ package brotherhood
 			SystemService.registerGame(this);
 			SystemService.changeState(StartMenu);
 			
-			intro = new Assets.SoundThemesIntro;
-			loop = new Assets.SoundThemesLoop;
-			
-			soundChannel = intro.play();
-			soundChannel.addEventListener(Event.SOUND_COMPLETE, onSoundChannelSoundComplete);
+			//intro = new Assets.SoundThemesIntro;
+			//loop = new Assets.SoundThemesLoop;
+			//
+			//soundChannel = intro.play();
+			//soundChannel.addEventListener(Event.SOUND_COMPLETE, onSoundChannelSoundComplete);
 		}
 		
-		private function onSoundChannelSoundComplete(e:Event):void 
-		{
-			soundChannel = loop.play();
-			soundChannel.addEventListener(Event.SOUND_COMPLETE, onSoundChannelSoundComplete);
-		}
+		//private function onSoundChannelSoundComplete(e:Event):void 
+		//{
+			//soundChannel = loop.play();
+			//soundChannel.addEventListener(Event.SOUND_COMPLETE, onSoundChannelSoundComplete);
+		//}
 	}
 }

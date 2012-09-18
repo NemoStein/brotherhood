@@ -45,8 +45,6 @@ package brotherhood.states.gameplay.hud
 			}
 			
 			add(_bar);
-			
-			setCurrentDescendentsAsRelative();
 		}
 		
 		public function setValues(value:Number, maxValue:Number):void

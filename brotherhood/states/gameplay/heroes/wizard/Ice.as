@@ -24,10 +24,9 @@ package brotherhood.states.gameplay.heroes.wizard
 			super.initialize();
 			
 			draw(Bitmap(new Assets.ImageCreepsFire).bitmapData);
+			
 			frame.width = 32;
 			frame.height = 32;
-			
-			//draw( new BitmapData(8, 8, true, 0x80000070));
 		}
 		
 		override protected function update():void

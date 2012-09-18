@@ -25,12 +25,7 @@ package brotherhood.states.gameplay.heroes.wizard
 		
 		public function shoot():void
 		{
-			var ice:Ice = new Ice();
-			
-			add(ice);
-			
-			ice.x = x;
-			ice.y = y - height/2;
+			add(new Ice());
 		}
 	}
 }

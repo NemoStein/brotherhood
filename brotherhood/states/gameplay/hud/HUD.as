@@ -75,8 +75,8 @@ package brotherhood.states.gameplay.hud
 				EntityService.player1 = archer;
 				EntityService.player2 = wizard;
 				
-				EntityService.player1Crosshair = new Crosshair(ARCHER);
-				EntityService.player2Crosshair = new Crosshair(WIZARD);
+				EntityService.player1Crosshair = new Crosshair(archer);
+				EntityService.player2Crosshair = new Crosshair(wizard);
 			}
 			else
 			{
@@ -106,8 +106,8 @@ package brotherhood.states.gameplay.hud
 				EntityService.player1 = wizard;
 				EntityService.player2 = archer;
 				
-				EntityService.player1Crosshair = new Crosshair(WIZARD);
-				EntityService.player2Crosshair = new Crosshair(ARCHER);
+				EntityService.player1Crosshair = new Crosshair(wizard);
+				EntityService.player2Crosshair = new Crosshair(archer);
 			}
 			
 			add(_archerSkills);

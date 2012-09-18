@@ -86,8 +86,6 @@ package brotherhood.states.gameplay.hud
 			add(_lifeBar);
 			add(_xpBar);
 			add(_lvl);
-			
-			setCurrentDescendentsAsRelative();
 		}
 		
 		override protected function update():void

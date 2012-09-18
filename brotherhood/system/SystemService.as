@@ -48,43 +48,6 @@ package brotherhood.system
 			{
 				_gameEnded = false;
 			}
-			
-			//_nextState = getState(stateClass);
-			//_stateLayer.add(_nextState);
-			//
-			//if (_currentState)
-			//{
-				//var direction:int = int(Math.random() * 4);
-				//var distance:int;
-				//
-				//if (direction == State.SWIPE_UP)
-				//{
-					//_nextState.y = _game.height;
-					//distance = _game.height;
-				//}
-				//else if (direction == State.SWIPE_DOWN)
-				//{
-					//_nextState.y = -_game.height;
-					//distance = _game.height;
-				//}
-				//else if (direction == State.SWIPE_LEFT)
-				//{
-					//_nextState.x = _game.width;
-					//distance = _game.width;
-				//}
-				//else if (direction == State.SWIPE_RIGHT)
-				//{
-					//_nextState.x = -_game.width;
-					//distance = _game.width;
-				//}
-				//
-				//_nextState.swipeTo(direction, distance);
-				//_currentState.swipeTo(direction, distance);
-			//}
-			//else
-			//{
-				//_currentState = _nextState;
-			//}
 		}
 		
 		static public function swipeFinished(state:State):void

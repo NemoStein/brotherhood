@@ -12,6 +12,10 @@ package brotherhood.states.startmenu
 	public class StartMenu extends State
 	{
 		private var _pressStart:Core;
+		private var _pressStartVisibleTime:Number;
+		private var _pressStartVisibleDelay:Number;
+		private var _pressStartHiddenTime:Number;
+		private var _pressStartHiddedDelay:Number;
 		
 		override protected function initialize():void
 		{
@@ -19,27 +23,15 @@ package brotherhood.states.startmenu
 			
 			draw(Bitmap(new Assets.ImageStatesStartScreen).bitmapData);
 			
-			//var logo:Core = new Core(new BitmapData(400, 400, false, 0xFF800000));
-			//var pressSomething:Core = new Core(new BitmapData(900, 100, false, 0xFF008000));
-			//
-			//logo.alignAnchor(AnchorAlign.TOP, AnchorAlign.CENTER);
-			//pressSomething.alignAnchor(AnchorAlign.TOP, AnchorAlign.CENTER);
-			//
-			//logo.x = 1280 / 2;
-			//logo.y = 50;
-			//
-			//pressSomething.x = 1280 / 2;
-			//pressSomething.y = 500;
-			//
-			//add(logo);
-			//add(pressSomething);
-			//
-			//setCurrentDescendentsAsRelative();
-			
 			_pressStart = new Core(Bitmap(new Assets.ImageHeroSelectPressStart).bitmapData);
 			
 			_pressStart.x = 573;
 			_pressStart.y = 461;
+			
+			_pressStartVisibleTime = 0;
+			_pressStartVisibleDelay = 0.6;
+			_pressStartHiddenTime = 0;
+			_pressStartHiddedDelay = 0.4;
 			
 			add(_pressStart)
 		}
@@ -47,6 +39,26 @@ package brotherhood.states.startmenu
 		override protected function stateUpdate():void
 		{
 			// TODO: Blink start button
+			if (_pressStart.visible)
+			{
+				_pressStartVisibleTime += time;
+				
+				if(_pressStartVisibleTime > _pressStartVisibleDelay)
+				{
+					_pressStartVisibleTime -= _pressStartVisibleDelay;
+					_pressStart.hide();
+				}
+			}
+			else
+			{
+				_pressStartHiddenTime += time;
+				
+				if(_pressStartHiddenTime > _pressStartHiddedDelay)
+				{
+					_pressStartHiddenTime -= _pressStartHiddedDelay;
+					_pressStart.show();
+				}
+			}
 			
 			if (input.justPressed(Keys.ANY))
 			{

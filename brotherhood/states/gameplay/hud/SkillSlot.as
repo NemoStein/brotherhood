@@ -16,12 +16,10 @@ package brotherhood.states.gameplay.hud
 			if (heroType == HUD.ARCHER)
 			{
 				draw(Bitmap(new Assets.ImageSkillsArcher).bitmapData);
-				//draw(new BitmapData(300, 200, false, 0xFF008000));
 			}
 			else
 			{
 				draw(Bitmap(new Assets.ImageSkillsWizard).bitmapData);
-				//draw(new BitmapData(300, 200, false, 0xFF000080));
 			}
 		}
 	}

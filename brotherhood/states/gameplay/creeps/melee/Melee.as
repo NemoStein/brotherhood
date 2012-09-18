@@ -21,7 +21,6 @@ package brotherhood.states.gameplay.creeps.melee
 			frame.width = 65;
 			frame.height = 65;
 			
-			//draw(new BitmapData(15, 15, true, 0xffdf4030));
 			alignAnchor(AnchorAlign.BOTTOM, AnchorAlign.CENTER);
 		}
 		

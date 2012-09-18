@@ -1,5 +1,8 @@
 package brotherhood.states.gameplay.heroes.crosshair
 {
+	import air.update.states.HSM;
+	import brotherhood.states.gameplay.heroes.archer.Archer;
+	import brotherhood.states.gameplay.heroes.Hero;
 	import brotherhood.states.gameplay.hud.HUD;
 	import flash.display.Bitmap;
 	import flash.display.BitmapData;
@@ -12,18 +15,30 @@ package brotherhood.states.gameplay.heroes.crosshair
 	{
 		static public const MAX_SPEED:int = 666;
 		
-		private var _heroType:String;
+		static public var KeyGreenA:int;
+		static public var KeyGreenB:int;
+		static public var KeyBlueA:int;
+		static public var KeyBlueB:int;
+		static public var KeyRedA:int;
+		static public var KeyRedB:int;
+		static public var KeyUp:int;
+		static public var KeyDown:int;
+		static public var KeyLeft:int;
+		static public var KeyRight:int;
+		static public var KeyStart:int;
+		
+		private var _hero:Hero;
 		
 		public var speed:int;
 		public var destination:Point;
 		public var radius:Number;
 		public var areaOfEffect:Rectangle;
 		
-		public function Crosshair(heroType:String):void
+		public function Crosshair(hero:Hero):void
 		{
 			super();
 			
-			_heroType = heroType;
+			_hero = hero;
 		}
 		
 		override protected function initialize():void
@@ -33,14 +48,43 @@ package brotherhood.states.gameplay.heroes.crosshair
 			destination = new Point();
 			areaOfEffect = new Rectangle();
 			
-			draw(Bitmap(new Assets.ImageArea).bitmapData);
+			draw(Bitmap(new Assets.ImageHeroesCrosshairs).bitmapData);
 			
 			frame.width = 280;
 			frame.height = 280;
 			
-			if (_heroType == HUD.ARCHER)
+			if (_hero is Archer)
 			{
 				frame.y = 280;
+			}
+			
+			if (_hero.slot == 1)
+			{
+				KeyGreenA = Controls.Slot1GreenA;
+				KeyGreenB = Controls.Slot1GreenB;
+				KeyBlueA = Controls.Slot1BlueA;
+				KeyBlueB = Controls.Slot1BlueB;
+				KeyRedA = Controls.Slot1RedA;
+				KeyRedB = Controls.Slot1RedB;
+				KeyUp = Controls.Slot1Up;
+				KeyDown = Controls.Slot1Down;
+				KeyLeft = Controls.Slot1Left;
+				KeyRight = Controls.Slot1RedA;
+				KeyStart = Controls.Slot1Start;
+			}
+			else
+			{
+				KeyGreenA = Controls.Slot2GreenA;
+				KeyGreenB = Controls.Slot2GreenB;
+				KeyBlueA = Controls.Slot2BlueA;
+				KeyBlueB = Controls.Slot2BlueB;
+				KeyRedA = Controls.Slot2RedA;
+				KeyRedB = Controls.Slot2RedB;
+				KeyUp = Controls.Slot2Up;
+				KeyDown = Controls.Slot2Down;
+				KeyLeft = Controls.Slot2Left;
+				KeyRight = Controls.Slot2RedA;
+				KeyStart = Controls.Slot2Start;
 			}
 			
 			alignAnchor(AnchorAlign.CENTER, AnchorAlign.CENTER);
@@ -48,12 +92,12 @@ package brotherhood.states.gameplay.heroes.crosshair
 		
 		override protected function update():void
 		{
-			if (input.pressed(Controls.P1_U))
+			if (input.pressed(KeyUp))
 			{
 				destination.y = -Infinity;
 				
 			}
-			else if(input.pressed(Controls.P1_D))
+			else if (input.pressed(KeyDown))
 			{
 				destination.y = Infinity;
 			}
@@ -62,11 +106,11 @@ package brotherhood.states.gameplay.heroes.crosshair
 				destination.y = y;
 			}
 			
-			if (input.pressed(Controls.P1_L))
+			if (input.pressed(KeyLeft))
 			{
 				destination.x = -Infinity;
 			}
-			else if(input.pressed(Controls.P1_R))
+			else if (input.pressed(KeyRight))
 			{
 				destination.x = Infinity;
 			}
@@ -80,7 +124,7 @@ package brotherhood.states.gameplay.heroes.crosshair
 			
 			if (distanceX || distanceY)
 			{
-				var moveSpeed:Number = MAX_SPEED * time;
+				var moveSpeed:Number = Crosshair.MAX_SPEED * time;
 				
 				var moveAngle:Number = Math.atan2(distanceY, distanceX);
 				
