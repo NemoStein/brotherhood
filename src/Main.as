@@ -39,6 +39,7 @@ package
 			
 			_introSequence = new IntroSequence(onIntroSequenceComplete);
 			
+			// test
 			//_introSequence.addIntro(new SponsorIntro());
 			//_introSequence.addIntro(new DeveloperIntro());
 			//_introSequence.addIntro(new GameIntro());
