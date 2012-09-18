@@ -13,13 +13,8 @@ package brotherhood.states.gameplay.hud
 	
 	public class HUD extends Core
 	{
-		public static const ARCHER:String = "archer";
-		static public const WIZARD:String = "wizard";
-		
 		static public const LEFT:String = "left";
 		static public const RIGHT:String = "right";
-		
-		public static var archerRight:Boolean;
 		
 		private var _archerSkills:SkillSlot;
 		private var _wizardSkills:SkillSlot;
@@ -30,25 +25,24 @@ package brotherhood.states.gameplay.hud
 		private var _leftTowerStats:TowerSlot;
 		private var _rightTowerStats:TowerSlot;
 		
-		
 		override protected function initialize():void
 		{
 			super.initialize();
 			
-			_archerSkills = new SkillSlot(ARCHER);
-			_wizardSkills = new SkillSlot(WIZARD);
-			
-			_archerStats = new HeroSlot(ARCHER);
-			_wizardStats = new HeroSlot(WIZARD);
-			
-			_leftTowerStats = new TowerSlot(LEFT);
-			_rightTowerStats = new TowerSlot(RIGHT);
-			
 			var wizard:Hero = EntityService.wizard;
 			var archer:Hero = EntityService.archer;
 			
-			if (!archerRight)
+			_archerSkills = archer.skillSlot;
+			_wizardSkills = wizard.skillSlot;
+			
+			_archerStats = archer.heroSlot;
+			_wizardStats = wizard.heroSlot;
+			
+			if (wizard.slot == LEFT)
 			{
+				_leftTowerStats = wizard.towerSlot;
+				_rightTowerStats = archer.towerSlot;
+				
 				_archerSkills.alignAnchor(AnchorAlign.TOP, AnchorAlign.LEFT);
 				_archerStats.alignAnchor(AnchorAlign.TOP, AnchorAlign.LEFT);
 				
@@ -57,8 +51,8 @@ package brotherhood.states.gameplay.hud
 				_archerStats.x = 300;
 				_archerStats.y = 0;
 				
-				archer.x = 415;
-				archer.y = 104;
+				wizard.x = 415;
+				wizard.y = 104;
 				
 				_wizardSkills.alignAnchor(AnchorAlign.TOP, AnchorAlign.RIGHT);
 				_wizardStats.alignAnchor(AnchorAlign.TOP, AnchorAlign.RIGHT);
@@ -69,8 +63,8 @@ package brotherhood.states.gameplay.hud
 				_wizardStats.x = 960;
 				_wizardStats.y = 0;
 				
-				wizard.x = 866;
-				wizard.y = 106;
+				archer.x = 866;
+				archer.y = 106;
 				
 				EntityService.player1 = archer;
 				EntityService.player2 = wizard;
@@ -80,6 +74,9 @@ package brotherhood.states.gameplay.hud
 			}
 			else
 			{
+				_leftTowerStats = archer.towerSlot;
+				_rightTowerStats = wizard.towerSlot;
+				
 				_wizardSkills.alignAnchor(AnchorAlign.TOP, AnchorAlign.LEFT);
 				_wizardStats.alignAnchor(AnchorAlign.TOP, AnchorAlign.LEFT);
 				
@@ -88,8 +85,8 @@ package brotherhood.states.gameplay.hud
 				_wizardStats.x = 320;
 				_wizardStats.y = 0;
 				
-				wizard.x = 404;
-				wizard.y = 104;
+				archer.x = 404;
+				archer.y = 104;
 				
 				_archerSkills.alignAnchor(AnchorAlign.TOP, AnchorAlign.RIGHT);
 				_archerStats.alignAnchor(AnchorAlign.TOP, AnchorAlign.RIGHT);
@@ -100,8 +97,8 @@ package brotherhood.states.gameplay.hud
 				_archerStats.x = 960;
 				_archerStats.y = 0;
 				
-				archer.x = 877;
-				archer.y = 105;
+				wizard.x = 877;
+				wizard.y = 105;
 				
 				EntityService.player1 = wizard;
 				EntityService.player2 = archer;
@@ -121,11 +118,6 @@ package brotherhood.states.gameplay.hud
 			
 			add(_leftTowerStats);
 			add(_rightTowerStats);
-		}
-		
-		override protected function update():void 
-		{
-			super.update();
 		}
 	}
 

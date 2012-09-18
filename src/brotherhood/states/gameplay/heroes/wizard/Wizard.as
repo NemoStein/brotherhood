@@ -10,9 +10,16 @@ package brotherhood.states.gameplay.heroes.wizard
 	
 	public class Wizard extends Hero
 	{
+		public function Wizard(slot:String) 
+		{
+			super(slot);
+		}
+		
 		override protected function initialize():void
 		{
 			super.initialize();
+			
+			
 		}
 		
 		override public function useSkill(value:int):void 

@@ -1,94 +1,69 @@
-package brotherhood.states.gameplay.hud 
+package brotherhood.states.gameplay.hud
 {
 	import flash.display.BitmapData;
 	import flash.geom.Point;
 	import nemostein.framework.dragonfly.AnchorAlign;
 	import nemostein.framework.dragonfly.Core;
 	
-	
-	public class Bar extends Core 
+	public class Bar extends Core
 	{
 		private var _bar:Core;
 		
-		private var _originalWidth:int;
-		private var _originalHeight:int;
+		private var _totalWidth:int;
+		private var _totalHeight:int;
 		
 		private var _horizontal:Boolean;
 		
-		public var value:Number;
-		public var maxValue:Number;
+		protected var value:Number;
+		protected var maxValue:Number;
 		
 		public var reverse:Boolean;
 		
-		public function Bar() 
+		public function Bar(width:int, height:int, startColour:uint, endColour:uint = 0, vertical:Boolean = false)
 		{
-			super();
-		}
-		
-		public function build(width:int,height:int,startColour:uint,endColour:uint=0):void
-		{
-			_horizontal = width > height;
+			_totalWidth = width;
+			_totalHeight = height;
 			
-			_originalWidth = width;
-			_originalHeight = height;
+			_horizontal = !vertical;
 			
-			_bar= new Core( new BitmapData(width, height, false, startColour));
-			
+			_bar = new Core(new BitmapData(width, height, false, startColour));
 			
 			if (_horizontal)
 			{
-				_bar.alignAnchor( AnchorAlign.TOP,  AnchorAlign.LEFT);
+				_bar.alignAnchor(AnchorAlign.TOP, AnchorAlign.LEFT);
 			}
 			else
 			{
-				_bar.alignAnchor( AnchorAlign.BOTTOM,  AnchorAlign.CENTER);
+				_bar.alignAnchor(AnchorAlign.BOTTOM, AnchorAlign.CENTER);
 			}
+			
+			super();
 			
 			add(_bar);
 		}
 		
-		public function setValues(value:Number, maxValue:Number):void
+		override protected function update():void
 		{
-			this.value = value;
-			this.maxValue = maxValue;
-		}
-		
-		override protected function update():void 
-		{
-			_bar.x = 0;
-			
-			if (value > maxValue)
-			{
-				value = maxValue;
-			}
-			else if (value < 0)
-			{
-				value = 0;
-			}
-			
-			
 			if (_horizontal)
 			{
 				_bar.scaleX = (value / maxValue);
 				
-				if (reverse && value != maxValue)
+				if (reverse)
 				{
-					_bar.x = _originalWidth - _bar.width *_bar.scaleX;
+					_bar.x = _totalWidth - _bar.width * _bar.scaleX;
 				}
 			}
 			else
 			{
 				_bar.scaleY = (value / maxValue);
 				
-				if (reverse  && value != maxValue)
+				if (reverse)
 				{
-					_bar.y =  _originalHeight - _bar.height * _bar.scaleY;
+					_bar.y = _totalHeight - _bar.height * _bar.scaleY;
 				}
 			}
 			
 			super.update();
 		}
-		
 	}
-
 }

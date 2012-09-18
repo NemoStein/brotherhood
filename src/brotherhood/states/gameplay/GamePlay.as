@@ -33,13 +33,6 @@ package brotherhood.states.gameplay
 			creepsLayer = new Core();
 			skillsLayer = new Core();
 			
-			var leftTower:Tower = new Tower();
-			var rightTower:Tower = new Tower();
-			
-			EntityService.leftTower = leftTower;
-			EntityService.rightTower = rightTower;
-			EntityService.gate = new Gate(leftTower, rightTower);
-			
 			Creep.leftTowerBase = new Rectangle(340, 250, 125, 25);
 			Creep.rightTowerBase = new Rectangle(815, 250, 125, 25);
 			Creep.gateBase = new Rectangle(555, 225, 175, 20);
@@ -47,8 +40,8 @@ package brotherhood.states.gameplay
 			var hud:HUD = new HUD();
 			
 			add(controls);
-			add(leftTower);
-			add(rightTower);
+			add(EntityService.leftTower);
+			add(EntityService.rightTower);
 			
 			add(crosshairsLayer);
 			add(creepsLayer);

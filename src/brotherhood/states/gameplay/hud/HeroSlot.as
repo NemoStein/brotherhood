@@ -1,5 +1,6 @@
 package brotherhood.states.gameplay.hud
 {
+	import brotherhood.states.gameplay.heroes.archer.Archer;
 	import brotherhood.states.gameplay.heroes.Hero;
 	import brotherhood.system.EntityService;
 	import flash.display.BitmapData;
@@ -8,18 +9,16 @@ package brotherhood.states.gameplay.hud
 	
 	public class HeroSlot extends Core
 	{
-		private var _heroType:String;
+		private var _hero:Hero;
 		
 		private var _lifeBar:Bar;
 		private var _xpBar:Bar;
 		
 		private var _lvl:Text;
 		
-		private var hero:Hero;
-		
-		public function HeroSlot(heroType:String):void
+		public function HeroSlot(hero:Hero):void
 		{
-			_heroType = heroType;
+			_hero = hero;
 			
 			super();
 		}
@@ -28,57 +27,26 @@ package brotherhood.states.gameplay.hud
 		{
 			super.initialize();
 			
-			_lifeBar = new Bar();
-			_xpBar = new Bar();
-			
-			_xpBar.build(189, 32, 0xFF008080);
-			_lifeBar.build(69, 15, 0xFF800000);
+			_lifeBar = new BarHeroHP(_hero);
+			_xpBar = new BarHeroXP(_hero);
 			
 			_xpBar.x = 11;
 			_xpBar.y = 0;
 			
-			if (_heroType == HUD.ARCHER)
+			draw(new BitmapData(190, 34, true, (_hero is Archer ? 0x0008000 : 0x00000080)));
+			
+			if (_hero.slot == HUD.LEFT)
 			{
-				draw(new BitmapData(190, 34, true, 0x0008000));
-				
-				
-				hero = EntityService.archer;
-				
-				if (HUD.archerRight)
-				{
-					_lifeBar.x = 11;
-					_lifeBar.y = 44;
-				}
-				else
-				{
-					_lifeBar.x = 131;
-					_lifeBar.y = 44;
-					
-					_lifeBar.reverse = true;
-				}
+				_lifeBar.x = 11;
+				_lifeBar.y = 44;
 			}
 			else
 			{
-				draw(new BitmapData(190, 34, true, 0x00000080));
+				_lifeBar.x = 131;
+				_lifeBar.y = 44;
 				
-				hero = EntityService.wizard;
-				
-				if (HUD.archerRight)
-				{
-					_lifeBar.x = 131;
-					_lifeBar.y = 44;
-					
-					_lifeBar.reverse = true;
-				}
-				else
-				{
-					_lifeBar.x = 11;
-					_lifeBar.y = 44;
-				}
+				_lifeBar.reverse = true;
 			}
-			
-			_lifeBar.setValues(hero.currentHP, hero.totalHP);
-			_xpBar.setValues(hero.currentXP, hero.nextLevelXP(hero.level));
 			
 			_lvl = new Text("lvl: 1");
 			_lvl.x = 9;
@@ -90,13 +58,10 @@ package brotherhood.states.gameplay.hud
 		
 		override protected function update():void
 		{
-			if (_lvl.text != "lvl: " + hero.level)
+			if (_lvl.text != "lvl: " + _hero.level)
 			{
-				_lvl.text = "lvl: " + hero.level;
+				_lvl.text = "lvl: " + _hero.level;
 			}
-			
-			_lifeBar.setValues(hero.currentHP, hero.totalHP);
-			_xpBar.setValues(hero.currentXP, hero.nextLevelXP(hero.level));
 			
 			super.update();
 		}

@@ -1,5 +1,8 @@
 package brotherhood.states.gameplay.heroes 
 {
+	import brotherhood.states.gameplay.hud.HeroSlot;
+	import brotherhood.states.gameplay.hud.SkillSlot;
+	import brotherhood.states.gameplay.hud.TowerSlot;
 	import brotherhood.states.gameplay.Target;
 	import brotherhood.system.SystemService;
 	import flash.display.Bitmap;
@@ -14,7 +17,11 @@ package brotherhood.states.gameplay.heroes
 		static public const LOOK_MIDDLE:String = "lookMiddle";
 		static public const LOOK_RIGHT:String = "lookRight";
 		
-		public var slot:int;
+		public var skillSlot:SkillSlot;
+		public var heroSlot:HeroSlot;
+		public var towerSlot:TowerSlot;
+		
+		public var slot:String;
 		
 		public var currentHP:Number = 100;
 		public var totalHP:Number = 100;
@@ -22,6 +29,13 @@ package brotherhood.states.gameplay.heroes
 		public var currentXP:Number = 100;
 		
 		public var level:int = 1;
+		
+		public function Hero(slot:String) 
+		{
+			this.slot = slot;
+			
+			super();
+		}
 		
 		override protected function initialize():void 
 		{
@@ -31,6 +45,10 @@ package brotherhood.states.gameplay.heroes
 			
 			frame.width = 50;
 			frame.height = 50;
+			
+			skillSlot = new SkillSlot(this);
+			heroSlot = new HeroSlot(this);
+			towerSlot = new TowerSlot(this);
 			
 			alignAnchor(AnchorAlign.BOTTOM, AnchorAlign.CENTER);
 			
@@ -48,7 +66,7 @@ package brotherhood.states.gameplay.heroes
 		{
 			currentXP += xp;
 			
-			if (currentXP >= nextLevelXP(level))
+			if (currentXP >= experienceToLevel(level))
 			{
 				levelUp();
 			}
@@ -56,17 +74,22 @@ package brotherhood.states.gameplay.heroes
 		
 		private function levelUp():void 
 		{
-			currentXP -= nextLevelXP(level++);
+			currentXP -= experienceToLevel(level++);
 		}
 		
-		public function nextLevelXP(level:int):Number 
+		public function experienceToLevel(level:int = -1):int 
 		{
+			if (level == -1)
+			{
+				level = this.level;
+			}
+			
 			if (level == 1)
 			{
 				return 100;
 			}
 			
-			return nextLevelXP(level - 1) * 1.2;
+			return experienceToLevel(level - 1) * 1.2;
 		}
 		
 		public function hit(power:Number):void 

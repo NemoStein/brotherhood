@@ -36,9 +36,9 @@ package brotherhood.states.gameplay.heroes.crosshair
 		
 		public function Crosshair(hero:Hero):void
 		{
-			super();
-			
 			_hero = hero;
+			
+			super();
 		}
 		
 		override protected function initialize():void
@@ -58,7 +58,7 @@ package brotherhood.states.gameplay.heroes.crosshair
 				frame.y = 280;
 			}
 			
-			if (_hero.slot == 1)
+			if (_hero.slot == HUD.LEFT)
 			{
 				KeyGreenA = Controls.Slot1GreenA;
 				KeyGreenB = Controls.Slot1GreenB;
@@ -69,7 +69,7 @@ package brotherhood.states.gameplay.heroes.crosshair
 				KeyUp = Controls.Slot1Up;
 				KeyDown = Controls.Slot1Down;
 				KeyLeft = Controls.Slot1Left;
-				KeyRight = Controls.Slot1RedA;
+				KeyRight = Controls.Slot1Right;
 				KeyStart = Controls.Slot1Start;
 			}
 			else

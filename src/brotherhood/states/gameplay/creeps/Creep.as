@@ -7,6 +7,9 @@ package brotherhood.states.gameplay.creeps
 	
 	public class Creep extends Core implements Target
 	{
+		static public const WALKING:String = "walking";
+		static public const ATTACKING:String = "attacking";
+		
 		static public var leftTowerBase:Rectangle;
 		static public var rightTowerBase:Rectangle;
 		static public var gateBase:Rectangle;
@@ -29,7 +32,7 @@ package brotherhood.states.gameplay.creeps
 			
 			fireDelay = 0;
 			
-			maxMoveSpeed = 150;
+			maxMoveSpeed = 50;
 		}
 		
 		protected function attackTarget():void
@@ -78,6 +81,8 @@ package brotherhood.states.gameplay.creeps
 				{
 					moveY = distanceY;
 				}
+				
+				angle = moveAngle + Math.PI / 2;
 				
 				x += moveX;
 				y += moveY;
