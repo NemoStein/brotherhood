@@ -16,8 +16,8 @@
   <!-- Other classes to be compiled into your SWF -->
   <classpaths>
     <class path="src" />
-    <class path="..\dragonfly\src" />
-    <class path="..\library" />
+    <class path="..\Dragonfly\src" />
+    <class path="..\Library" />
   </classpaths>
   <!-- Build options -->
   <build>
