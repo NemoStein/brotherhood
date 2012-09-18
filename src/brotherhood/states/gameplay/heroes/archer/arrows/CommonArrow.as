@@ -14,8 +14,8 @@ package brotherhood.states.gameplay.heroes.archer.arrows
 		{
 			super();
 			
-			_destination.x = EntityService.player1Crosshair.x;
-			_destination.y = EntityService.player1Crosshair.y;
+			_destination.x = EntityService.slot1Crosshair.x;
+			_destination.y = EntityService.slot1Crosshair.y;
 		}
 		
 		override protected function initialize():void 

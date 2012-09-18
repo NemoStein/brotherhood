@@ -10,7 +10,7 @@ package brotherhood.states.gameplay.hud
 		{
 			_hero = hero;
 			
-			super(189, 32, 0xFF008080);
+			super(189, 33, 0x80008080);
 		}
 		
 		override protected function update():void 

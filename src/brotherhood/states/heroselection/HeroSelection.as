@@ -46,12 +46,9 @@ package brotherhood.states.heroselection
 		{
 			if (input.justPressed(Controls.Slot1Start))
 			{
-				var leftTower:Tower = new Tower();
-				var rightTower:Tower = new Tower();
-				
-				EntityService.leftTower = leftTower;
-				EntityService.rightTower = rightTower;
-				EntityService.gate = new Gate(leftTower, rightTower);
+				EntityService.leftTower = new Tower();
+				EntityService.rightTower = new Tower();
+				EntityService.gate = new Gate();
 				
 				EntityService.wizard = new Wizard(_wizardSlot);
 				EntityService.archer = new Archer(_archerSlot);
@@ -68,21 +65,21 @@ package brotherhood.states.heroselection
 		
 		private function swap():void
 		{
-			if (_wizardSlot == HUD.RIGHT)
-			{
-				_wizardSlot = HUD.LEFT;
-				_archerSlot = HUD.RIGHT;
-				
-				_wizardAvatar.x = 505;
-				_archerAvatar.x = 650;
-			}
-			else
+			if (_wizardSlot == HUD.LEFT)
 			{
 				_wizardSlot = HUD.RIGHT;
 				_archerSlot = HUD.LEFT;
 				
 				_wizardAvatar.x = 650;
 				_archerAvatar.x = 505;
+			}
+			else
+			{
+				_wizardSlot = HUD.LEFT;
+				_archerSlot = HUD.RIGHT;
+				
+				_wizardAvatar.x = 505;
+				_archerAvatar.x = 650;
 			}
 		}
 	}

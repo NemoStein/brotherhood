@@ -27,23 +27,24 @@ package brotherhood.states.gameplay.hud
 		{
 			super.initialize();
 			
-			_lifeBar = new BarHeroHP(_hero);
-			_xpBar = new BarHeroXP(_hero);
-			
-			_xpBar.x = 11;
-			_xpBar.y = 0;
+			relative = false;
 			
 			draw(new BitmapData(190, 34, true, (_hero is Archer ? 0x0008000 : 0x00000080)));
 			
+			_lifeBar = new BarHeroHP(_hero);
+			_xpBar = new BarHeroXP(_hero);
+			
+			_lifeBar.y = 43;
+			
 			if (_hero.slot == HUD.LEFT)
 			{
-				_lifeBar.x = 11;
-				_lifeBar.y = 44;
+				_lifeBar.x = 431;
+				_xpBar.x = 311;
 			}
 			else
 			{
-				_lifeBar.x = 131;
-				_lifeBar.y = 44;
+				_lifeBar.x = 780;
+				_xpBar.x = 780;
 				
 				_lifeBar.reverse = true;
 			}

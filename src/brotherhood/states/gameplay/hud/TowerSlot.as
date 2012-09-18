@@ -22,6 +22,8 @@ package brotherhood.states.gameplay.hud
 		{
 			super.initialize();
 			
+			relative = false;
+			
 			if (_slot == HUD.LEFT)
 			{
 				_lifeBar = new BarTowerHP(EntityService.leftTower);

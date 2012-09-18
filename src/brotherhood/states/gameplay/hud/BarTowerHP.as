@@ -10,7 +10,7 @@ package brotherhood.states.gameplay.hud
 		{
 			_tower = tower;
 			
-			super(16, 122, 0xFF800000, 0, true);
+			super(16, 122, 0x80800000, 0, true);
 		}
 		
 		override protected function update():void 

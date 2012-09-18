@@ -36,7 +36,7 @@ package brotherhood.states.gameplay.creeps.ranged
 			{
 				if (!target)
 				{
-					target = x < 640 ? EntityService.player1 : EntityService.player2;
+					target = x < 640 ? EntityService.slot1 : EntityService.slot2;
 				}
 				
 				attackTarget();

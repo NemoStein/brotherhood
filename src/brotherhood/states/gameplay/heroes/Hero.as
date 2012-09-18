@@ -1,9 +1,12 @@
 package brotherhood.states.gameplay.heroes 
 {
+	import brotherhood.states.gameplay.heroes.crosshair.Crosshair;
 	import brotherhood.states.gameplay.hud.HeroSlot;
+	import brotherhood.states.gameplay.hud.HUD;
 	import brotherhood.states.gameplay.hud.SkillSlot;
 	import brotherhood.states.gameplay.hud.TowerSlot;
 	import brotherhood.states.gameplay.Target;
+	import brotherhood.system.EntityService;
 	import brotherhood.system.SystemService;
 	import flash.display.Bitmap;
 	import nemostein.framework.dragonfly.AnchorAlign;
@@ -20,6 +23,8 @@ package brotherhood.states.gameplay.heroes
 		public var skillSlot:SkillSlot;
 		public var heroSlot:HeroSlot;
 		public var towerSlot:TowerSlot;
+		
+		public var crosshair:Crosshair;
 		
 		public var slot:String;
 		
@@ -49,12 +54,23 @@ package brotherhood.states.gameplay.heroes
 			skillSlot = new SkillSlot(this);
 			heroSlot = new HeroSlot(this);
 			towerSlot = new TowerSlot(this);
+			crosshair = new Crosshair(this);
+			
+			if(slot == HUD.LEFT)
+			{
+				EntityService.slot1 = this;
+			}
+			else
+			{
+				EntityService.slot2 = this;
+			}
 			
 			alignAnchor(AnchorAlign.BOTTOM, AnchorAlign.CENTER);
 			
-			addAnimation(new Animation(LOOK_LEFT, [0], 150, false));
-			addAnimation(new Animation(LOOK_MIDDLE, [1], 150, false));
-			addAnimation(new Animation(LOOK_RIGHT, [2], 150, false));
+			add(skillSlot);
+			add(heroSlot);
+			add(towerSlot);
+			add(crosshair);
 		}
 		
 		public function useSkill(value:int):void
@@ -104,19 +120,6 @@ package brotherhood.states.gameplay.heroes
 				currentHP = 0;
 				SystemService.defeat();
 			}
-			
-			//if (input.justPressed(Controls.P1_GreenB))
-			//{
-				//playAnimation(LOOK_LEFT);
-			//}
-			//else if (input.justPressed(Controls.P1_BlueB))
-			//{
-				//playAnimation(LOOK_MIDDLE);
-			//}
-			//else if (input.justPressed(Controls.P1_RedB))
-			//{
-				//playAnimation(LOOK_RIGHT);
-			//}
 			
 			super.update();
 		}

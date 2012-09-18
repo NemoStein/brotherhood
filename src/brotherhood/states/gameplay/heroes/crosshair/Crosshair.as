@@ -4,6 +4,7 @@ package brotherhood.states.gameplay.heroes.crosshair
 	import brotherhood.states.gameplay.heroes.archer.Archer;
 	import brotherhood.states.gameplay.heroes.Hero;
 	import brotherhood.states.gameplay.hud.HUD;
+	import brotherhood.system.EntityService;
 	import flash.display.Bitmap;
 	import flash.display.BitmapData;
 	import flash.geom.Point;
@@ -45,6 +46,7 @@ package brotherhood.states.gameplay.heroes.crosshair
 		{
 			super.initialize();
 			
+			relative = false;
 			destination = new Point();
 			areaOfEffect = new Rectangle();
 			
@@ -83,7 +85,7 @@ package brotherhood.states.gameplay.heroes.crosshair
 				KeyUp = Controls.Slot2Up;
 				KeyDown = Controls.Slot2Down;
 				KeyLeft = Controls.Slot2Left;
-				KeyRight = Controls.Slot2RedA;
+				KeyRight = Controls.Slot2Right;
 				KeyStart = Controls.Slot2Start;
 			}
 			
@@ -93,7 +95,7 @@ package brotherhood.states.gameplay.heroes.crosshair
 		override protected function update():void
 		{
 			if (input.pressed(KeyUp))
-			{
+			{	
 				destination.y = -Infinity;
 				
 			}
@@ -173,6 +175,17 @@ package brotherhood.states.gameplay.heroes.crosshair
 			
 			areaOfEffect.x = x - areaOfEffect.width / 2;
 			areaOfEffect.y = y - areaOfEffect.height / 2;
+			
+			//if (input.justPressed(Slot1GreenA))
+			//{
+				//EntityService.archer.useSkill(1);
+				//EntityService.wizard.useSkill(1);
+			//}
+			
+			if (input.pressed(KeyGreenA))
+			{
+				_hero.useSkill(1);
+			}
 			
 			super.update();
 		}

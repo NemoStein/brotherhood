@@ -12,6 +12,9 @@ package brotherhood.states.gameplay.hud
 		private var _totalWidth:int;
 		private var _totalHeight:int;
 		
+		private var _startColour:uint;
+		private var _endColour:uint;
+		
 		private var _horizontal:Boolean;
 		
 		protected var value:Number;
@@ -24,9 +27,21 @@ package brotherhood.states.gameplay.hud
 			_totalWidth = width;
 			_totalHeight = height;
 			
+			_startColour = startColour;
+			_endColour = endColour;
+			
 			_horizontal = !vertical;
 			
-			_bar = new Core(new BitmapData(width, height, false, startColour));
+			super();
+		}
+		
+		override protected function initialize():void
+		{
+			super.initialize();
+			
+			relative = false;
+			
+			_bar = new Core(new BitmapData(_totalWidth, _totalHeight, true, _startColour));
 			
 			if (_horizontal)
 			{
@@ -36,8 +51,6 @@ package brotherhood.states.gameplay.hud
 			{
 				_bar.alignAnchor(AnchorAlign.BOTTOM, AnchorAlign.CENTER);
 			}
-			
-			super();
 			
 			add(_bar);
 		}

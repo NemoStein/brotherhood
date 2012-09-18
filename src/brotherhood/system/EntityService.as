@@ -12,14 +12,14 @@ package brotherhood.system
 		static public var archer:Archer;
 		static public var wizard:Wizard;
 		
-		static public var player1:Hero;
-		static public var player2:Hero;
+		static public var slot1:Hero;
+		static public var slot2:Hero;
 		
 		static public var leftTower:Tower;
 		static public var rightTower:Tower;
 		static public var gate:Gate;
 		
-		static public var player1Crosshair:Crosshair;
-		static public var player2Crosshair:Crosshair;
+		static public var slot1Crosshair:Crosshair;
+		static public var slot2Crosshair:Crosshair;
 	}
 }

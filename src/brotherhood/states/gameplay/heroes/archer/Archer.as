@@ -2,7 +2,6 @@ package brotherhood.states.gameplay.heroes.archer
 {
 	import brotherhood.states.gameplay.heroes.archer.arrows.CommonArrow;
 	import brotherhood.states.gameplay.heroes.Hero;
-	import brotherhood.system.EntityService;
 	
 	public class Archer extends Hero
 	{
