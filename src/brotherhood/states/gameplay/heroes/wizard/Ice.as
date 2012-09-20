@@ -4,6 +4,7 @@ package brotherhood.states.gameplay.heroes.wizard
 	import flash.display.Bitmap;
 	import flash.display.BitmapData;
 	import flash.geom.Point;
+	import nemostein.framework.dragonfly.AnchorAlign;
 	import nemostein.framework.dragonfly.Core;
 	
 	public class Ice extends Core
@@ -15,8 +16,8 @@ package brotherhood.states.gameplay.heroes.wizard
 		{
 			super();
 			
-			_destination.x = EntityService.slot1Crosshair.x;
-			_destination.y = EntityService.slot1Crosshair.y;
+			_destination.x = EntityService.slot1.crosshair.x;
+			_destination.y = EntityService.slot1.crosshair.y;
 		}
 		
 		override protected function initialize():void
@@ -27,6 +28,8 @@ package brotherhood.states.gameplay.heroes.wizard
 			
 			frame.width = 32;
 			frame.height = 32;
+			
+			alignAnchor(AnchorAlign.CENTER, AnchorAlign.CENTER);
 		}
 		
 		override protected function update():void

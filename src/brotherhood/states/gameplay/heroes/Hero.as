@@ -16,9 +16,8 @@ package brotherhood.states.gameplay.heroes
 	
 	public class Hero extends Core implements Target
 	{
-		static public const LOOK_LEFT:String = "lookLeft";
-		static public const LOOK_MIDDLE:String = "lookMiddle";
-		static public const LOOK_RIGHT:String = "lookRight";
+		public var lookLeft:int;
+		public var lookRight:int;
 		
 		public var skillSlot:SkillSlot;
 		public var heroSlot:HeroSlot;
@@ -59,10 +58,14 @@ package brotherhood.states.gameplay.heroes
 			if(slot == HUD.LEFT)
 			{
 				EntityService.slot1 = this;
+				lookLeft = 1;
+				lookRight = 2;
 			}
 			else
 			{
 				EntityService.slot2 = this;
+				lookLeft = 0;
+				lookRight = 1;
 			}
 			
 			alignAnchor(AnchorAlign.BOTTOM, AnchorAlign.CENTER);

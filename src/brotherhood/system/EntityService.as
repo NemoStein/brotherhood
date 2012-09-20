@@ -18,8 +18,5 @@ package brotherhood.system
 		static public var leftTower:Tower;
 		static public var rightTower:Tower;
 		static public var gate:Gate;
-		
-		static public var slot1Crosshair:Crosshair;
-		static public var slot2Crosshair:Crosshair;
 	}
 }

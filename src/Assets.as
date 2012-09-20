@@ -3,9 +3,6 @@ package
 
 	public class Assets
 	{
-		[Embed(source="assets/area.png")]
-		public static const ImageArea:Class;
-		
 		[Embed(source="assets/creeps/creeps.png")]
 		public static const ImageCreepsCreeps:Class;
 		

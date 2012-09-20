@@ -60,6 +60,12 @@ package brotherhood.states.gameplay
 			add(wizard);
 			add(archer);
 			
+			wizard.x = 610;
+			wizard.y = 384;
+			
+			archer.x = 670;
+			archer.y = 384;
+			
 			_waves = Waves.parse(new Assets.TextWavesTestLevel());
 			_waves.startWaves(creepsLayer);
 		}

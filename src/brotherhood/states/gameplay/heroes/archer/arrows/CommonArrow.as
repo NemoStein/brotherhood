@@ -4,6 +4,7 @@ package brotherhood.states.gameplay.heroes.archer.arrows
 	import flash.display.BitmapData;
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
+	import nemostein.framework.dragonfly.AnchorAlign;
 	import nemostein.framework.dragonfly.Core;
 	
 	public class CommonArrow extends Core 
@@ -14,8 +15,8 @@ package brotherhood.states.gameplay.heroes.archer.arrows
 		{
 			super();
 			
-			_destination.x = EntityService.slot1Crosshair.x;
-			_destination.y = EntityService.slot1Crosshair.y;
+			_destination.x = EntityService.slot1.crosshair.x;
+			_destination.y = EntityService.slot1.crosshair.y;
 		}
 		
 		override protected function initialize():void 
@@ -33,6 +34,8 @@ package brotherhood.states.gameplay.heroes.archer.arrows
 			sprite.fillRect(new Rectangle(3, 1, 1, 1), 0xff008000);
 			sprite.fillRect(new Rectangle(12, 0, 2, 3), 0xff808080);
 			sprite.fillRect(new Rectangle(14, 1, 1, 1), 0xff808080);
+			
+			alignAnchor(AnchorAlign.CENTER, AnchorAlign.CENTER);
 		}
 		
 		override protected function update():void 

@@ -14,6 +14,7 @@ package brotherhood.states.gameplay.heroes.crosshair
 	
 	public class Crosshair extends Core
 	{
+		static public const IDLE:String = "idle";
 		static public const MAX_SPEED:int = 666;
 		
 		static public var KeyGreenA:int;
@@ -29,6 +30,7 @@ package brotherhood.states.gameplay.heroes.crosshair
 		static public var KeyStart:int;
 		
 		private var _hero:Hero;
+		private var _lookingLeft:Boolean;
 		
 		public var speed:int;
 		public var destination:Point;
@@ -90,12 +92,15 @@ package brotherhood.states.gameplay.heroes.crosshair
 			}
 			
 			alignAnchor(AnchorAlign.CENTER, AnchorAlign.CENTER);
+			
+			addAnimation(IDLE, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23], 12);
+			playAnimation(IDLE);
 		}
 		
 		override protected function update():void
 		{
 			if (input.pressed(KeyUp))
-			{	
+			{
 				destination.y = -Infinity;
 				
 			}
@@ -165,10 +170,22 @@ package brotherhood.states.gameplay.heroes.crosshair
 				y = 200;
 			}
 			
+			if (!_lookingLeft && x < 640)
+			{
+				_lookingLeft = true;
+				_hero.moveSpriteToFrame(_hero.lookLeft);
+			}
+			else if(_lookingLeft && x > 640)
+			{
+				_lookingLeft = false;
+				_hero.moveSpriteToFrame(_hero.lookRight);
+			}
+			
 			radius = y / 630;
 			speed = MAX_SPEED * radius;
 			
 			scaleX = scaleY = radius + 0.1;
+			alpha = 1 - radius * 0.75;
 			
 			areaOfEffect.width = radius * width;
 			areaOfEffect.height = radius * height;
@@ -178,8 +195,8 @@ package brotherhood.states.gameplay.heroes.crosshair
 			
 			//if (input.justPressed(Slot1GreenA))
 			//{
-				//EntityService.archer.useSkill(1);
-				//EntityService.wizard.useSkill(1);
+			//EntityService.archer.useSkill(1);
+			//EntityService.wizard.useSkill(1);
 			//}
 			
 			if (input.pressed(KeyGreenA))
