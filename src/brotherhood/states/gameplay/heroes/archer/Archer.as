@@ -23,11 +23,13 @@ package brotherhood.states.gameplay.heroes.archer
 			{
 				shoot();
 			}
+			
+			super.useSkill(value);
 		}
 		
 		public function shoot():void
 		{
-			add(new CommonArrow());
+			add(new CommonArrow(this));
 		}
 	}
 }

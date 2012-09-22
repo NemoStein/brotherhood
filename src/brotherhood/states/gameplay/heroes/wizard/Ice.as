@@ -1,5 +1,6 @@
 package brotherhood.states.gameplay.heroes.wizard
 {
+	import brotherhood.states.gameplay.heroes.Hero;
 	import brotherhood.system.EntityService;
 	import flash.display.Bitmap;
 	import flash.display.BitmapData;
@@ -9,15 +10,14 @@ package brotherhood.states.gameplay.heroes.wizard
 	
 	public class Ice extends Core
 	{
-		
 		private var _destination:Point = new Point();
+		private var _hero:Hero;
 		
-		public function Ice():void
+		public function Ice(hero:Hero) 
 		{
-			super();
+			_hero = hero;
 			
-			_destination.x = EntityService.slot1.crosshair.x;
-			_destination.y = EntityService.slot1.crosshair.y;
+			super();
 		}
 		
 		override protected function initialize():void
@@ -30,6 +30,14 @@ package brotherhood.states.gameplay.heroes.wizard
 			frame.height = 32;
 			
 			alignAnchor(AnchorAlign.CENTER, AnchorAlign.CENTER);
+			
+			relative = false;
+			
+			x = _hero.x;
+			y = _hero.y;
+			
+			_destination.x = _hero.crosshair.x;
+			_destination.y = _hero.crosshair.y;
 		}
 		
 		override protected function update():void
@@ -43,10 +51,10 @@ package brotherhood.states.gameplay.heroes.wizard
 			{
 				var moveSpeed:Number = maxMoveSpeed * time;
 				
-				var moveAngle:Number = Math.atan2(distanceY, distanceX);
+				angle = Math.atan2(distanceY, distanceX);
 				
-				var moveX:Number = Math.cos(moveAngle) * moveSpeed;
-				var moveY:Number = Math.sin(moveAngle) * moveSpeed;
+				var moveX:Number = Math.cos(angle) * moveSpeed;
+				var moveY:Number = Math.sin(angle) * moveSpeed;
 				
 				if (distanceX > 0 && distanceX < moveX || distanceX < 0 && distanceX > moveX)
 				{

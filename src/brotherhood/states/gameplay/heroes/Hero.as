@@ -55,17 +55,21 @@ package brotherhood.states.gameplay.heroes
 			towerSlot = new TowerSlot(this);
 			crosshair = new Crosshair(this);
 			
+			y = 105;
+			
 			if(slot == HUD.LEFT)
 			{
 				EntityService.slot1 = this;
 				lookLeft = 1;
 				lookRight = 2;
+				x = 410;
 			}
 			else
 			{
 				EntityService.slot2 = this;
 				lookLeft = 0;
 				lookRight = 1;
+				x = 870;
 			}
 			
 			alignAnchor(AnchorAlign.BOTTOM, AnchorAlign.CENTER);
@@ -78,7 +82,7 @@ package brotherhood.states.gameplay.heroes
 		
 		public function useSkill(value:int):void
 		{
-			
+			trace(this);
 		}
 		
 		public function addXP(xp:int):void

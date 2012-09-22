@@ -17,17 +17,17 @@ package brotherhood.states.gameplay.heroes.crosshair
 		static public const IDLE:String = "idle";
 		static public const MAX_SPEED:int = 666;
 		
-		static public var KeyGreenA:int;
-		static public var KeyGreenB:int;
-		static public var KeyBlueA:int;
-		static public var KeyBlueB:int;
-		static public var KeyRedA:int;
-		static public var KeyRedB:int;
-		static public var KeyUp:int;
-		static public var KeyDown:int;
-		static public var KeyLeft:int;
-		static public var KeyRight:int;
-		static public var KeyStart:int;
+		private var _KeyGreenA:int;
+		private var _KeyGreenB:int;
+		private var _KeyBlueA:int;
+		private var _KeyBlueB:int;
+		private var _KeyRedA:int;
+		private var _KeyRedB:int;
+		private var _KeyUp:int;
+		private var _KeyDown:int;
+		private var _KeyLeft:int;
+		private var _KeyRight:int;
+		private var _KeyStart:int;
 		
 		private var _hero:Hero;
 		private var _lookingLeft:Boolean;
@@ -54,41 +54,41 @@ package brotherhood.states.gameplay.heroes.crosshair
 			
 			draw(Bitmap(new Assets.ImageHeroesCrosshairs).bitmapData);
 			
-			frame.width = 280;
-			frame.height = 280;
+			frame.width = 140;
+			frame.height = 140;
 			
 			if (_hero is Archer)
 			{
-				frame.y = 280;
+				frame.y = 140;
 			}
 			
 			if (_hero.slot == HUD.LEFT)
 			{
-				KeyGreenA = Controls.Slot1GreenA;
-				KeyGreenB = Controls.Slot1GreenB;
-				KeyBlueA = Controls.Slot1BlueA;
-				KeyBlueB = Controls.Slot1BlueB;
-				KeyRedA = Controls.Slot1RedA;
-				KeyRedB = Controls.Slot1RedB;
-				KeyUp = Controls.Slot1Up;
-				KeyDown = Controls.Slot1Down;
-				KeyLeft = Controls.Slot1Left;
-				KeyRight = Controls.Slot1Right;
-				KeyStart = Controls.Slot1Start;
+				_KeyGreenA = Controls.Slot1GreenA;
+				_KeyGreenB = Controls.Slot1GreenB;
+				_KeyBlueA = Controls.Slot1BlueA;
+				_KeyBlueB = Controls.Slot1BlueB;
+				_KeyRedA = Controls.Slot1RedA;
+				_KeyRedB = Controls.Slot1RedB;
+				_KeyUp = Controls.Slot1Up;
+				_KeyDown = Controls.Slot1Down;
+				_KeyLeft = Controls.Slot1Left;
+				_KeyRight = Controls.Slot1Right;
+				_KeyStart = Controls.Slot1Start;
 			}
 			else
 			{
-				KeyGreenA = Controls.Slot2GreenA;
-				KeyGreenB = Controls.Slot2GreenB;
-				KeyBlueA = Controls.Slot2BlueA;
-				KeyBlueB = Controls.Slot2BlueB;
-				KeyRedA = Controls.Slot2RedA;
-				KeyRedB = Controls.Slot2RedB;
-				KeyUp = Controls.Slot2Up;
-				KeyDown = Controls.Slot2Down;
-				KeyLeft = Controls.Slot2Left;
-				KeyRight = Controls.Slot2Right;
-				KeyStart = Controls.Slot2Start;
+				_KeyGreenA = Controls.Slot2GreenA;
+				_KeyGreenB = Controls.Slot2GreenB;
+				_KeyBlueA = Controls.Slot2BlueA;
+				_KeyBlueB = Controls.Slot2BlueB;
+				_KeyRedA = Controls.Slot2RedA;
+				_KeyRedB = Controls.Slot2RedB;
+				_KeyUp = Controls.Slot2Up;
+				_KeyDown = Controls.Slot2Down;
+				_KeyLeft = Controls.Slot2Left;
+				_KeyRight = Controls.Slot2Right;
+				_KeyStart = Controls.Slot2Start;
 			}
 			
 			alignAnchor(AnchorAlign.CENTER, AnchorAlign.CENTER);
@@ -99,12 +99,12 @@ package brotherhood.states.gameplay.heroes.crosshair
 		
 		override protected function update():void
 		{
-			if (input.pressed(KeyUp))
+			if (input.pressed(_KeyUp))
 			{
 				destination.y = -Infinity;
 				
 			}
-			else if (input.pressed(KeyDown))
+			else if (input.pressed(_KeyDown))
 			{
 				destination.y = Infinity;
 			}
@@ -113,11 +113,11 @@ package brotherhood.states.gameplay.heroes.crosshair
 				destination.y = y;
 			}
 			
-			if (input.pressed(KeyLeft))
+			if (input.pressed(_KeyLeft))
 			{
 				destination.x = -Infinity;
 			}
-			else if (input.pressed(KeyRight))
+			else if (input.pressed(_KeyRight))
 			{
 				destination.x = Infinity;
 			}
@@ -193,13 +193,7 @@ package brotherhood.states.gameplay.heroes.crosshair
 			areaOfEffect.x = x - areaOfEffect.width / 2;
 			areaOfEffect.y = y - areaOfEffect.height / 2;
 			
-			//if (input.justPressed(Slot1GreenA))
-			//{
-			//EntityService.archer.useSkill(1);
-			//EntityService.wizard.useSkill(1);
-			//}
-			
-			if (input.pressed(KeyGreenA))
+			if (input.pressed(_KeyGreenA))
 			{
 				_hero.useSkill(1);
 			}

@@ -16,11 +16,13 @@ package brotherhood.states.gameplay.heroes.wizard
 			{
 				shoot();
 			}
+			
+			super.useSkill(value);
 		}
 		
 		public function shoot():void
 		{
-			add(new Ice());
+			add(new Ice(this));
 		}
 	}
 }

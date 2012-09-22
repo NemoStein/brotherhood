@@ -1,5 +1,6 @@
 package brotherhood.states.gameplay.heroes.archer.arrows 
 {
+	import brotherhood.states.gameplay.heroes.Hero;
 	import brotherhood.system.EntityService;
 	import flash.display.BitmapData;
 	import flash.geom.Point;
@@ -10,13 +11,13 @@ package brotherhood.states.gameplay.heroes.archer.arrows
 	public class CommonArrow extends Core 
 	{
 		private var _destination:Point = new Point();
+		private var _hero:Hero;
 		
-		public function CommonArrow():void
+		public function CommonArrow(hero:Hero) 
 		{
-			super();
+			_hero = hero;
 			
-			_destination.x = EntityService.slot1.crosshair.x;
-			_destination.y = EntityService.slot1.crosshair.y;
+			super();
 		}
 		
 		override protected function initialize():void 
@@ -36,6 +37,14 @@ package brotherhood.states.gameplay.heroes.archer.arrows
 			sprite.fillRect(new Rectangle(14, 1, 1, 1), 0xff808080);
 			
 			alignAnchor(AnchorAlign.CENTER, AnchorAlign.CENTER);
+			
+			relative = false;
+			
+			x = _hero.x;
+			y = _hero.y;
+			
+			_destination.x = _hero.crosshair.x;
+			_destination.y = _hero.crosshair.y;
 		}
 		
 		override protected function update():void 

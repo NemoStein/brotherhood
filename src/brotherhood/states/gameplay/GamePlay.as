@@ -2,6 +2,7 @@ package brotherhood.states.gameplay
 {
 	import brotherhood.states.gameplay.creeps.Creep;
 	import brotherhood.states.gameplay.heroes.archer.Archer;
+	import brotherhood.states.gameplay.heroes.crosshair.Crosshair;
 	import brotherhood.states.gameplay.heroes.wizard.Wizard;
 	import brotherhood.states.gameplay.tower.Gate;
 	import brotherhood.states.gameplay.tower.Tower;
@@ -20,11 +21,13 @@ package brotherhood.states.gameplay
 		private var _leftTower:Tower;
 		private var _rightTower:Tower;
 		
-		public var crosshairsLayer:Core;
+		private var _slot1Crosshair:Crosshair;
+		private var _slot2Crosshair:Crosshair;
+		
 		public var creepsLayer:Core;
 		public var skillsLayer:Core;
 		
-		override protected function initialize():void 
+		override protected function initialize():void
 		{
 			super.initialize();
 			
@@ -36,35 +39,20 @@ package brotherhood.states.gameplay
 			_leftTower = EntityService.leftTower;
 			_rightTower = EntityService.rightTower;			
 			
-			//crosshairsLayer = new Core();
 			creepsLayer = new Core();
 			//skillsLayer = new Core();
 			
-			Creep.leftTowerBase = new Rectangle(340, 250, 125, 25);
-			Creep.rightTowerBase = new Rectangle(815, 250, 125, 25);
-			Creep.gateBase = new Rectangle(555, 225, 175, 20);
+			Creep.leftTowerBase = new Rectangle(340, 290, 125, 25);
+			Creep.rightTowerBase = new Rectangle(815, 290, 125, 25);
+			Creep.gateBase = new Rectangle(555, 265, 175, 20);
 			
-			//add(controls);
-			//add(EntityService.leftTower);
-			//add(EntityService.rightTower);
-			
-			//add(crosshairsLayer);
 			add(creepsLayer);
 			//add(skillsLayer);
 			
-			//crosshairsLayer.add(EntityService.player1Crosshair);
-			//crosshairsLayer.add(EntityService.player2Crosshair);
-			
-			//EntityService.player2Crosshair.visible = false;
+			EntityService.slot2.crosshair.hide();
 			
 			add(wizard);
 			add(archer);
-			
-			wizard.x = 610;
-			wizard.y = 384;
-			
-			archer.x = 670;
-			archer.y = 384;
 			
 			_waves = Waves.parse(new Assets.TextWavesTestLevel());
 			_waves.startWaves(creepsLayer);
