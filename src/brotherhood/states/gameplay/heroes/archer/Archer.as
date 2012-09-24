@@ -17,18 +17,20 @@ package brotherhood.states.gameplay.heroes.archer
 			super(slot);
 		}
 		
-		override protected function initialize():void
+		override public function build():void
 		{
-			super.initialize();
+			super.build();
 			
 			frame.y = 50;
 			
-			skills.push(new Arrow());
-			skills.push(new Overheated());
-			skills.push(new Upgrade());
-			skills.push(new Overweighted());
-			skills.push(new ArrowShower());
-			skills.push(new PiercingArrow());
+			skills[0] = new Arrow();
+			skills[1] = new Overheated();
+			skills[2] = new Upgrade();
+			skills[3] = new Overweighted();
+			skills[4] = new ArrowShower();
+			skills[5] = new PiercingArrow();
+			
+			skillSlot.buildMeters();
 		}
 		
 		public function shoot():void

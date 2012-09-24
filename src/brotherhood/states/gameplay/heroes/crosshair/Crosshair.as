@@ -195,7 +195,32 @@ package brotherhood.states.gameplay.heroes.crosshair
 			
 			if (input.pressed(_KeyGreenA))
 			{
+				_hero.useSkill(0);
+			}
+			
+			if (input.pressed(_KeyGreenB))
+			{
 				_hero.useSkill(1);
+			}
+			
+			if (input.pressed(_KeyBlueA))
+			{
+				_hero.useSkill(2);
+			}
+			
+			if (input.pressed(_KeyBlueB))
+			{
+				_hero.useSkill(3);
+			}
+			
+			if (input.pressed(_KeyRedA))
+			{
+				_hero.useSkill(4);
+			}
+			
+			if (input.pressed(_KeyRedB))
+			{
+				_hero.useSkill(5);
 			}
 			
 			super.update();

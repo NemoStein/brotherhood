@@ -4,13 +4,13 @@ package brotherhood.states.gameplay.hud
 	import brotherhood.states.gameplay.heroes.Hero;
 	import brotherhood.states.gameplay.heroes.skills.Skill;
 	import flash.display.Bitmap;
-	import flash.display.BitmapData;
 	import nemostein.framework.dragonfly.AnchorAlign;
 	import nemostein.framework.dragonfly.Core;
 	
 	public class SkillSlot extends Core
 	{
 		private var _hero:Hero;
+		private var _skillMeters:Vector.<SkillMeter>;
 		
 		public function SkillSlot(hero:Hero):void
 		{
@@ -19,20 +19,32 @@ package brotherhood.states.gameplay.hud
 			super();
 		}
 		
-		override protected function initialize():void 
+		public function buildMeters():void 
 		{
-			super.initialize();
-			
 			relative = false;
+			
+			_skillMeters = new Vector.<SkillMeter>(6, true);
+			
+			for (var i:int = 0; i < 6; ++i) 
+			{
+				var skillMeter:SkillMeter = new SkillMeter(_hero.skills[i], i);
+				add(skillMeter);
+			}
+			
+			var skills:Core;
 			
 			if (_hero is Archer)
 			{
-				draw(Bitmap(new Assets.ImageSkillsArcher).bitmapData);
+				skills = new Core(Bitmap(new Assets.ImageSkillsArcher).bitmapData);
 			}
 			else
 			{
-				draw(Bitmap(new Assets.ImageSkillsWizard).bitmapData);
+				skills = new Core(Bitmap(new Assets.ImageSkillsWizard).bitmapData);
 			}
+			
+			add(skills);
+			
+			width = skills.width;
 			
 			if (_hero.slot == HUD.LEFT)
 			{

@@ -16,16 +16,18 @@ package brotherhood.states.gameplay.heroes.wizard
 			super(slot);
 		}
 		
-		override protected function initialize():void
+		override public function build():void
 		{
-			super.initialize();
+			super.build();
 			
-			skills.push(new FieryArrows());
-			skills.push(new Icewave());
-			skills.push(new Upgrade());
-			skills.push(new Regeneration());
-			skills.push(new Teleport());
-			skills.push(new Companions());
+			skills[0] = new FieryArrows();
+			skills[1] = new Icewave();
+			skills[2] = new Upgrade();
+			skills[3] = new Regeneration();
+			skills[4] = new Teleport();
+			skills[5] = new Companions();
+			
+			skillSlot.buildMeters();
 		}
 	}
 }

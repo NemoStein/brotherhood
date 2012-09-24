@@ -1,13 +1,11 @@
 package brotherhood.states.gameplay.heroes.skills.archer 
 {
-	import brotherhood.states.gameplay.heroes.skills.Skill;
-	
-	public class PiercingArrow extends Skill 
+	public class PiercingArrow extends ArcherSkill 
 	{
 		
 		public function PiercingArrow() 
 		{
-			
+			delay = 5;
 		}
 	}
 }

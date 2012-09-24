@@ -17,8 +17,6 @@ package brotherhood.states.gameplay.heroes
 	
 	public class Hero extends Core implements Target
 	{
-		static protected const SKILL_COUNT:int = 6;
-		
 		public var lookLeft:int;
 		public var lookRight:int;
 		
@@ -43,10 +41,8 @@ package brotherhood.states.gameplay.heroes
 			super();
 		}
 		
-		override protected function initialize():void
+		public function build():void 
 		{
-			super.initialize();
-			
 			draw(Bitmap(new Assets.ImageHeroesHeroes).bitmapData);
 			
 			frame.width = 50;
@@ -57,7 +53,7 @@ package brotherhood.states.gameplay.heroes
 			towerSlot = new TowerSlot(this);
 			crosshair = new Crosshair(this);
 			
-			skills = new Vector.<Skill>(SKILL_COUNT, true);
+			skills = new Vector.<Skill>(6, true);
 			
 			y = 105;
 			
@@ -85,12 +81,14 @@ package brotherhood.states.gameplay.heroes
 		}
 		
 		public function useSkill(value:int):void
-		{
+		{	
 			var skill:Skill = skills[value];
 			if (skill)
 			{
 				skill.activate();
 			}
+			
+			trace(this, value, skill);
 		}
 		
 		public function addXP(xp:int):void
@@ -141,7 +139,7 @@ package brotherhood.states.gameplay.heroes
 				SystemService.defeat();
 			}
 			
-			for (var i:int = 0; i < SKILL_COUNT; ++i)
+			for (var i:int = 0; i < 6; ++i)
 			{
 				var skill:Skill = skills[i];
 				if (skill)

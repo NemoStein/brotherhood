@@ -50,8 +50,14 @@ package brotherhood.states.heroselection
 				EntityService.rightTower = new Tower();
 				EntityService.gate = new Gate();
 				
-				EntityService.wizard = new Wizard(_wizardSlot);
-				EntityService.archer = new Archer(_archerSlot);
+				var wizard:Wizard = new Wizard(_wizardSlot);
+				var archer:Archer = new Archer(_archerSlot);
+				
+				EntityService.wizard = wizard;
+				EntityService.archer = archer;
+				
+				wizard.build();
+				archer.build();
 				
 				SystemService.changeState(GamePlay);
 			}

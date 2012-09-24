@@ -1,13 +1,11 @@
 package brotherhood.states.gameplay.heroes.skills.wizard 
 {
-	import brotherhood.states.gameplay.heroes.skills.Skill;
-	
-	public class FieryArrows extends Skill 
+	public class FieryArrows extends WizardSkill 
 	{
 		
 		public function FieryArrows() 
 		{
-			
+			delay = 1;
 		}
 	}
 }
