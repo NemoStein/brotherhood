@@ -1,6 +1,7 @@
-package brotherhood.states.gameplay.heroes 
+package brotherhood.states.gameplay.heroes
 {
 	import brotherhood.states.gameplay.heroes.crosshair.Crosshair;
+	import brotherhood.states.gameplay.heroes.skills.Skill;
 	import brotherhood.states.gameplay.hud.HeroSlot;
 	import brotherhood.states.gameplay.hud.HUD;
 	import brotherhood.states.gameplay.hud.SkillSlot;
@@ -16,6 +17,8 @@ package brotherhood.states.gameplay.heroes
 	
 	public class Hero extends Core implements Target
 	{
+		static protected const SKILL_COUNT:int = 6;
+		
 		public var lookLeft:int;
 		public var lookRight:int;
 		
@@ -24,24 +27,23 @@ package brotherhood.states.gameplay.heroes
 		public var towerSlot:TowerSlot;
 		
 		public var crosshair:Crosshair;
-		
 		public var slot:String;
 		
 		public var currentHP:Number = 100;
 		public var totalHP:Number = 100;
-		
 		public var currentXP:Number = 100;
-		
 		public var level:int = 1;
 		
-		public function Hero(slot:String) 
+		public var skills:Vector.<Skill>;
+		
+		public function Hero(slot:String)
 		{
 			this.slot = slot;
 			
 			super();
 		}
 		
-		override protected function initialize():void 
+		override protected function initialize():void
 		{
 			super.initialize();
 			
@@ -55,9 +57,11 @@ package brotherhood.states.gameplay.heroes
 			towerSlot = new TowerSlot(this);
 			crosshair = new Crosshair(this);
 			
+			skills = new Vector.<Skill>(SKILL_COUNT, true);
+			
 			y = 105;
 			
-			if(slot == HUD.LEFT)
+			if (slot == HUD.LEFT)
 			{
 				EntityService.slot1 = this;
 				lookLeft = 1;
@@ -82,7 +86,11 @@ package brotherhood.states.gameplay.heroes
 		
 		public function useSkill(value:int):void
 		{
-			trace(this);
+			var skill:Skill = skills[value];
+			if (skill)
+			{
+				skill.activate();
+			}
 		}
 		
 		public function addXP(xp:int):void
@@ -95,12 +103,17 @@ package brotherhood.states.gameplay.heroes
 			}
 		}
 		
-		private function levelUp():void 
+		private function levelUp():void
 		{
 			currentXP -= experienceToLevel(level++);
 		}
 		
-		public function experienceToLevel(level:int = -1):int 
+		protected function upgrade():void
+		{
+		
+		}
+		
+		public function experienceToLevel(level:int = -1):int
 		{
 			if (level == -1)
 			{
@@ -115,17 +128,26 @@ package brotherhood.states.gameplay.heroes
 			return experienceToLevel(level - 1) * 1.2;
 		}
 		
-		public function hit(power:Number):void 
+		public function hit(power:Number):void
 		{
 			currentHP -= power;
 		}
 		
-		override protected function update():void 
+		override protected function update():void
 		{
 			if (currentHP <= 0)
 			{
 				currentHP = 0;
 				SystemService.defeat();
+			}
+			
+			for (var i:int = 0; i < SKILL_COUNT; ++i)
+			{
+				var skill:Skill = skills[i];
+				if (skill)
+				{
+					skill.update(time);
+				}
 			}
 			
 			super.update();

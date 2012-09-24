@@ -1,6 +1,5 @@
 package brotherhood
 {
-	import brotherhood.states.gameplay.heroes.wizard.Ice;
 	import brotherhood.states.startmenu.StartMenu;
 	import brotherhood.system.SystemService;
 	import flash.display.Bitmap;
