@@ -4,7 +4,7 @@ package brotherhood.states.gameplay.heroes.skills.archer
 	{
 		public function Arrow() 
 		{
-			delay = 0.1;
+			delay = 1;
 		}
 		
 		override public function activate():void 
