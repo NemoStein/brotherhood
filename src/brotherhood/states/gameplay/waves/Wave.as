@@ -14,8 +14,7 @@ package brotherhood.states.gameplay.waves
 		protected var CreepClass:Class;
 		protected var count:int;
 		
-		protected var dispatched:Boolean;
-		
+		public var dispatched:Boolean;
 		public var alive:int;
 		
 		public final function construct(id:String, params:Array, CreepClass:Class, count:int):void
@@ -101,6 +100,11 @@ package brotherhood.states.gameplay.waves
 			}
 			
 			return false;
+		}
+		
+		public function toString():String 
+		{
+			return "[Wave id=" + id + "]";
 		}
 	}
 }

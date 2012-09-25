@@ -84,8 +84,7 @@ package brotherhood.states.gameplay.waves
 						}
 						catch (error:Error)
 						{
-							trace("Unable to build wave in line " + (i + 1));
-							trace(error.message);
+							trace("Unable to build wave in line " + (i + 1), error.message);
 							continue;
 						}
 						

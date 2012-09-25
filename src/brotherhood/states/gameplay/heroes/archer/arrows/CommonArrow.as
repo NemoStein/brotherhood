@@ -10,7 +10,7 @@ package brotherhood.states.gameplay.heroes.archer.arrows
 	public class CommonArrow extends Core 
 	{
 		static public const FLYING:String = "flying";
-		static public const MAX_MOVE_SPEED:int = 400;
+		static public const MAX_MOVE_SPEED:int = 4900;
 		
 		private var _destination:Point = new Point();
 		private var _hero:Hero;

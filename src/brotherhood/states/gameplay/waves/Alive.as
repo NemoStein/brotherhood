@@ -1,14 +1,15 @@
-package brotherhood.states.gameplay.waves 
+package brotherhood.states.gameplay.waves
 {
 	import brotherhood.states.gameplay.creeps.Creep;
 	import brotherhood.states.State;
 	import nemostein.framework.dragonfly.Core;
+	
 	public class Alive extends Wave
 	{
 		private var _waveReference:Wave;
 		private var _creepsAlive:int;
 		
-		override protected function initialize(params:Array):void 
+		override protected function initialize(params:Array):void
 		{
 			try
 			{
@@ -17,16 +18,15 @@ package brotherhood.states.gameplay.waves
 			}
 			catch (error:Error)
 			{
-				trace("\"" + params[0] + "\" isn't a valid wave reference.");
+				trace(this, "\"" + params[0] + "\" isn't a valid wave reference.");
 			}
 			
 			super.initialize(params);
 		}
 		
-		
-		override public function start():void 
+		override public function start():void
 		{
-			if(_waveReference)
+			if (_waveReference)
 			{
 				_waveReference.onCreepDestruction(waveReferenceCreepDestruction);
 			}
@@ -34,7 +34,7 @@ package brotherhood.states.gameplay.waves
 			super.start();
 		}
 		
-		private function waveReferenceCreepDestruction(destroyed:Creep, stillAlive:int):void 
+		private function waveReferenceCreepDestruction(destroyed:Creep, stillAlive:int):void
 		{
 			if (!dispatched && stillAlive <= _creepsAlive)
 			{
