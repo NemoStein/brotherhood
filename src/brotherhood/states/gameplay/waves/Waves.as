@@ -38,7 +38,7 @@ package brotherhood.states.gameplay.waves
 			for (var id:String in _waves)
 			{
 				var wave:Wave = _waves[id];
-				wave.start(container);
+				wave.start();
 			}
 		}
 		

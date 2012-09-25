@@ -1,13 +1,10 @@
 package brotherhood.states.gameplay.heroes.archer.arrows 
 {
+	import brotherhood.states.gameplay.creeps.CreepService;
 	import brotherhood.states.gameplay.heroes.Hero;
-	import brotherhood.system.EntityService;
 	import flash.display.Bitmap;
-	import flash.display.BitmapData;
 	import flash.geom.Point;
-	import flash.geom.Rectangle;
 	import nemostein.framework.dragonfly.AnchorAlign;
-	import nemostein.framework.dragonfly.Animation;
 	import nemostein.framework.dragonfly.Core;
 	
 	public class CommonArrow extends Core 
@@ -47,9 +44,9 @@ package brotherhood.states.gameplay.heroes.archer.arrows
 			var distanceY:Number = _destination.y - y;
 			var distance:Number = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
 			
-			var frameRate:Number = MAX_MOVE_SPEED / (distance / 7);
+			var frameRate:Number = MAX_MOVE_SPEED / (distance / 15);
 			
-			addAnimation(FLYING, [0, 1, 2, 3, 4, 5, 6], frameRate, false);
+			addAnimation(FLYING, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], frameRate, false);
 			playAnimation(FLYING);
 		}
 		
@@ -82,6 +79,7 @@ package brotherhood.states.gameplay.heroes.archer.arrows
 				
 				if (x == _destination.x)
 				{
+					CreepService.hitCreep(_destination);
 					parent.remove(this);
 				}
 			}

@@ -87,8 +87,6 @@ package brotherhood.states.gameplay.heroes
 			{
 				skill.activate();
 			}
-			
-			trace(this, value, skill);
 		}
 		
 		public function addXP(xp:int):void

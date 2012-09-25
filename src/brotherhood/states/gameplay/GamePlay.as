@@ -1,6 +1,7 @@
 package brotherhood.states.gameplay 
 {
 	import brotherhood.states.gameplay.creeps.Creep;
+	import brotherhood.states.gameplay.creeps.CreepService;
 	import brotherhood.states.gameplay.heroes.archer.Archer;
 	import brotherhood.states.gameplay.heroes.crosshair.Crosshair;
 	import brotherhood.states.gameplay.heroes.wizard.Wizard;
@@ -41,6 +42,8 @@ package brotherhood.states.gameplay
 			
 			creepsLayer = new Core();
 			//skillsLayer = new Core();
+			
+			CreepService.container = creepsLayer;
 			
 			Creep.leftTowerBase = new Rectangle(340, 290, 125, 25);
 			Creep.rightTowerBase = new Rectangle(815, 290, 125, 25);

@@ -45,7 +45,7 @@ package brotherhood.states.gameplay.hud
 			{
 				signal = Assets.ImageSkillsBackgroundBlue;
 				colour = 0x802e3192;
-				x = 103;
+				x = 102;
 			}
 			else
 			{

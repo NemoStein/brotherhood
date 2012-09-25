@@ -1,6 +1,7 @@
 package brotherhood.states.gameplay.waves
 {
 	import brotherhood.states.gameplay.creeps.Creep;
+	import brotherhood.states.gameplay.creeps.CreepService;
 	import nemostein.framework.dragonfly.Core;
 	
 	public class Wave
@@ -13,7 +14,6 @@ package brotherhood.states.gameplay.waves
 		protected var CreepClass:Class;
 		protected var count:int;
 		
-		protected var container:Core;
 		protected var dispatched:Boolean;
 		
 		public var alive:int;
@@ -36,9 +36,9 @@ package brotherhood.states.gameplay.waves
 		
 		}
 		
-		public function start(container:Core):void
+		public function start():void
 		{
-			this.container = container;
+			
 		}
 		
 		public function onCreepDestruction(callback:Function):void
@@ -76,7 +76,7 @@ package brotherhood.states.gameplay.waves
 					creep.x = Math.random() * 660 + 310;
 					creep.y = Math.random() * 30 + 750;
 					
-					container.add(creep);
+					CreepService.add(creep);
 				}
 				
 				for (var j:int = 0; j < _creepDispatchCallbacks.length; ++j)

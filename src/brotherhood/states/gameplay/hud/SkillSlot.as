@@ -49,7 +49,11 @@ package brotherhood.states.gameplay.hud
 			if (_hero.slot == HUD.LEFT)
 			{
 				alignAnchor(AnchorAlign.TOP, AnchorAlign.RIGHT);
-				x = 1280;
+				x = 1280 - 9;
+			}
+			else
+			{
+				x = 1;
 			}
 		}
 	}

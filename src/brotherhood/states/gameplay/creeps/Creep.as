@@ -14,6 +14,8 @@ package brotherhood.states.gameplay.creeps
 		static public var rightTowerBase:Rectangle;
 		static public var gateBase:Rectangle;
 		
+		private var currentHP:Number;
+		
 		protected var target:Target;
 		protected var arivedAtDestination:Boolean;
 		protected var maxMoveSpeed:Number;
@@ -33,6 +35,8 @@ package brotherhood.states.gameplay.creeps
 			fireDelay = 0;
 			
 			maxMoveSpeed = 50;
+			
+			currentHP = 1;
 		}
 		
 		protected function attackTarget():void
@@ -46,7 +50,19 @@ package brotherhood.states.gameplay.creeps
 		
 		public function hit(power:Number):void
 		{
+			currentHP -= power;
+			
+			if (currentHP <= 0)
+			{
+				die();
+			}
+		}
 		
+		override public function die():void 
+		{
+			CreepService.remove(this);
+			
+			super.die();
 		}
 		
 		override protected function update():void

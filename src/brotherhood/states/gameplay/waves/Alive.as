@@ -24,16 +24,15 @@ package brotherhood.states.gameplay.waves
 		}
 		
 		
-		override public function start(container:Core):void 
+		override public function start():void 
 		{
 			if(_waveReference)
 			{
 				_waveReference.onCreepDestruction(waveReferenceCreepDestruction);
 			}
 			
-			super.start(container);
+			super.start();
 		}
-		
 		
 		private function waveReferenceCreepDestruction(destroyed:Creep, stillAlive:int):void 
 		{
