@@ -1,7 +1,8 @@
-package brotherhood.states.gameplay.creeps 
+package brotherhood.states.gameplay.creeps
 {
 	import flash.geom.Point;
 	import nemostein.framework.dragonfly.Core;
+	
 	public class CreepService
 	{
 		static public var container:Core;
@@ -11,21 +12,21 @@ package brotherhood.states.gameplay.creeps
 			creeps = new Vector.<Creep>();
 		}
 		
-		static public function add(creep:Creep):void 
+		static public function add(creep:Creep):void
 		{
 			creeps.push(creep);
 			container.add(creep);
 		}
 		
-		static public function remove(creep:Creep):void 
+		static public function remove(creep:Creep):void
 		{
 			creeps.splice(creeps.indexOf(creep), 1);
 			container.remove(creep);
 		}
 		
-		static public function hitCreep(point:Point):void 
+		static public function hitCreep(point:Point):void
 		{
-			for (var i:int = 0; i < creeps.length; ++i) 
+			for (var i:int = creeps.length - 1; i >= 0; --i)
 			{
 				var creep:Creep = creeps[i];
 				
