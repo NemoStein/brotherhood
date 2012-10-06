@@ -1,6 +1,8 @@
 package brotherhood.states.heroselection
 {
-	import brotherhood.states.endgame.defeat.Defeat;
+	import assets.heroSelect.AssetArcher;
+	import assets.heroSelect.AssetSelectHero;
+	import assets.heroSelect.AssetWizard;
 	import brotherhood.states.gameplay.GamePlay;
 	import brotherhood.states.gameplay.heroes.archer.Archer;
 	import brotherhood.states.gameplay.heroes.wizard.Wizard;
@@ -10,9 +12,6 @@ package brotherhood.states.heroselection
 	import brotherhood.states.State;
 	import brotherhood.system.EntityService;
 	import brotherhood.system.SystemService;
-	import flash.display.Bitmap;
-	import flash.display.BitmapData;
-	import nemostein.framework.dragonfly.AnchorAlign;
 	import nemostein.framework.dragonfly.Core;
 	import nemostein.io.Keys;
 	
@@ -28,12 +27,12 @@ package brotherhood.states.heroselection
 		{
 			super.initialize();
 			
-			draw(Bitmap(new Assets.ImageHeroSelectSelectHero).bitmapData);
+			draw(new AssetSelectHero().bitmapData);
 			
-			_wizardAvatar = new Core(Bitmap(new Assets.ImageHeroSelectMagician).bitmapData);
+			_wizardAvatar = new Core(new AssetWizard().bitmapData);
 			_wizardAvatar.y = 300;
 			
-			_archerAvatar = new Core(Bitmap(new Assets.ImageHeroSelectArcher).bitmapData);
+			_archerAvatar = new Core(new AssetArcher().bitmapData);
 			_archerAvatar.y = 300;
 			
 			swap();

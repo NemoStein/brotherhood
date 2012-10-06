@@ -1,0 +1,24 @@
+# ID	WaveType(...args)	CreepType	Count
+
+# WavePack 4
+
+A	Time(2)				ranged.Giant	3
+	Time(8)				ranged.Giant	2	
+B	Time(10)			melee.Giant		2
+C	AliveDelay(B,0,1)	ranged.Normal	2
+	Delay(C,1)			ranged.Normal	2
+	Delay(C,2)			ranged.Normal	2
+	Delay(C,3)			melee.Fast		2
+	Delay(C,4)			ranged.Normal	2
+	Delay(C,5)			ranged.Normal	2
+	Delay(C,6)			ranged.Normal	2
+	Delay(C,7)			melee.Fast		2
+	Delay(C,8)			ranged.Normal	2
+	Delay(C,9)			ranged.Normal	2
+	Delay(C,10)			melee.Fast		2
+	Delay(C,11)			ranged.Normal	2
+	Delay(C,12)			ranged.Normal	2
+	Delay(C,13)			ranged.Normal	2
+	Delay(C,14)			melee.Fast		2
+	Delay(C,15)			ranged.Normal	2
+	Delay(C,16)			ranged.Normal	2

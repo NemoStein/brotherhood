@@ -1,5 +1,8 @@
 package brotherhood.states.gameplay 
 {
+	import assets.states.AssetGamePlay;
+	import assets.waves.AssetPack1;
+	import assets.waves.AssetTestLevel;
 	import brotherhood.states.gameplay.creeps.Creep;
 	import brotherhood.states.gameplay.creeps.CreepService;
 	import brotherhood.states.gameplay.heroes.archer.Archer;
@@ -32,7 +35,7 @@ package brotherhood.states.gameplay
 		{
 			super.initialize();
 			
-			draw(Bitmap(new Assets.ImageStatesGamePlay).bitmapData);
+			draw(new AssetGamePlay().bitmapData);
 			
 			var wizard:Wizard = EntityService.wizard;
 			var archer:Archer = EntityService.archer;
@@ -57,7 +60,7 @@ package brotherhood.states.gameplay
 			add(wizard);
 			add(archer);
 			
-			_waves = Waves.parse(new Assets.TextWavesTestLevel());
+			_waves = Waves.parse(new AssetPack1);
 			_waves.startWaves(creepsLayer);
 		}
 		

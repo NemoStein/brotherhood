@@ -1,0 +1,22 @@
+# ID	WaveType(...args)	CreepType	Count
+
+# WavePack 3
+
+A	Time(2)				melee.Normal	3
+	Time(5)				ranged.Normal	2
+	Time(7)				ranged.Normal	2
+	Time(9)				melee.Normal	2
+B	Time(11)			ranged.Normal	2
+	AliveDelay(B,1,8)	melee.Fast		3
+	AliveDelay(B,1,9)	melee.Fast		3
+	AliveDelay(B,1,10)	melee.Fast		3
+C	AliveDelay(B,1,11)	melee.Fast		3
+	AliveDelay(C,1,2)	melee.Giant		2
+	AliveDelay(C,1,4)	melee.Giant		2
+D	AliveDelay(C,1,6)	melee.Giant		2
+	AliveDelay(D,1,5)	melee.Swarm		4
+	AliveDelay(D,1,6)	ranged.Swarm	4
+	AliveDelay(D,1,7)	melee.Swarm		4
+	AliveDelay(D,1,8)	ranged.Swarm	4
+	AliveDelay(D,1,9)	melee.Swarm		4
+	AliveDelay(D,1,10)	ranged.Swarm	4

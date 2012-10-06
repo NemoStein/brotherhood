@@ -1,6 +1,7 @@
 package brotherhood.states.gameplay.creeps
 {
 	import brotherhood.states.gameplay.Target;
+	import brotherhood.states.gameplay.waves.Wave;
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
 	import nemostein.framework.dragonfly.Core;
@@ -13,6 +14,8 @@ package brotherhood.states.gameplay.creeps
 		static public var leftTowerBase:Rectangle;
 		static public var rightTowerBase:Rectangle;
 		static public var gateBase:Rectangle;
+		
+		public var wave:Wave;
 		
 		private var currentHP:Number;
 		
@@ -98,7 +101,7 @@ package brotherhood.states.gameplay.creeps
 					moveY = distanceY;
 				}
 				
-				angle = moveAngle + Math.PI / 2;
+				angle = moveAngle;
 				
 				x += moveX;
 				y += moveY;

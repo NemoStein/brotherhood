@@ -2,7 +2,8 @@ package brotherhood.states.gameplay.waves
 {
 	import brotherhood.states.gameplay.creeps.Creep;
 	import brotherhood.states.gameplay.creeps.CreepService;
-	import nemostein.framework.dragonfly.Core;
+	import flash.geom.Point;
+	import nemostein.utils.MathUtils;
 	
 	public class Wave
 	{
@@ -74,6 +75,7 @@ package brotherhood.states.gameplay.waves
 					
 					creep.x = Math.random() * 660 + 310;
 					creep.y = Math.random() * 30 + 750;
+					creep.wave = this;
 					
 					CreepService.add(creep);
 				}
@@ -100,11 +102,6 @@ package brotherhood.states.gameplay.waves
 			}
 			
 			return false;
-		}
-		
-		public function toString():String 
-		{
-			return "[Wave id=" + id + "]";
 		}
 	}
 }

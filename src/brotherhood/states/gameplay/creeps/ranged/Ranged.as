@@ -1,10 +1,10 @@
 package brotherhood.states.gameplay.creeps.ranged
 {
+	import assets.creeps.melee.AssetNormal1;
+	import assets.creeps.melee.AssetNormal2;
+	import assets.creeps.melee.AssetNormal3;
 	import brotherhood.states.gameplay.creeps.Creep;
-	import brotherhood.states.gameplay.heroes.Hero;
 	import brotherhood.system.EntityService;
-	import flash.display.Bitmap;
-	import flash.display.BitmapData;
 	import flash.geom.Point;
 	import nemostein.framework.dragonfly.AnchorAlign;
 	
@@ -16,15 +16,6 @@ package brotherhood.states.gameplay.creeps.ranged
 		override protected function initialize():void
 		{
 			super.initialize();
-			
-			draw(Bitmap(new Assets.ImageCreepsCreeps).bitmapData);
-			
-			frame.x = 0;
-			frame.y = 385;
-			frame.width = 65;
-			frame.height = 65;
-			
-			alignAnchor(AnchorAlign.BOTTOM, AnchorAlign.CENTER);
 			
 			minRange = 100;
 			maxRange = 150;

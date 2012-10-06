@@ -20,6 +20,7 @@ package brotherhood.states.gameplay.creeps
 		
 		static public function remove(creep:Creep):void
 		{
+			creep.wave.destroyCreep(creep);
 			creeps.splice(creeps.indexOf(creep), 1);
 			container.remove(creep);
 		}

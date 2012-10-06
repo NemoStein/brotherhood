@@ -1,5 +1,6 @@
 package brotherhood.states.endgame.victory 
 {
+	import assets.states.AssetEndGameVictory;
 	import brotherhood.states.startmenu.StartMenu;
 	import brotherhood.states.State;
 	import brotherhood.system.SystemService;
@@ -15,7 +16,7 @@ package brotherhood.states.endgame.victory
 		{
 			super.initialize();
 			
-			draw(Bitmap(new Assets.ImageStatesEndGameVictory).bitmapData);
+			draw(new AssetEndGameVictory().bitmapData);
 		}
 		
 		override protected function stateUpdate():void 

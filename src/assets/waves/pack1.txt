@@ -1,0 +1,23 @@
+# ID	WaveType(...args)	CreepType	Count
+
+# WavePack 1
+
+A	Time(1)				melee.Normal	3
+B	Alive(A,0)			melee.Normal	5
+# Hero First Upgrade
+	AliveDelay(B,0,8)	ranged.Normal	1
+	AliveDelay(B,0,9)	ranged.Normal	1
+	AliveDelay(B,0,10)	ranged.Normal	1
+	AliveDelay(B,0,11)	ranged.Normal	1
+	AliveDelay(B,0,12)	ranged.Normal	1
+	AliveDelay(B,0,13)	ranged.Normal	1
+	Time(30)			ranged.Fast		3
+	Time(32)			ranged.Fast		2
+C	Time(40)			melee.Giant		1
+	AliveDelay(C,0,3)	melee.Normal	2
+	AliveDelay(C,0,4)	melee.Normal	2
+	AliveDelay(C,0,5)	melee.Normal	1
+	AliveDelay(C,0,6)	melee.Normal	2
+	AliveDelay(C,0,7)	melee.Normal	1
+D	AliveDelay(C,0,8)	melee.Normal	3
+	Alive(D,1)			melee.Giant		2

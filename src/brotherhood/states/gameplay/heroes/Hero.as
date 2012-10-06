@@ -1,5 +1,6 @@
 package brotherhood.states.gameplay.heroes
 {
+	import assets.heroes.AssetHeroes;
 	import brotherhood.states.gameplay.heroes.crosshair.Crosshair;
 	import brotherhood.states.gameplay.heroes.skills.Skill;
 	import brotherhood.states.gameplay.hud.HeroSlot;
@@ -9,11 +10,8 @@ package brotherhood.states.gameplay.heroes
 	import brotherhood.states.gameplay.Target;
 	import brotherhood.system.EntityService;
 	import brotherhood.system.SystemService;
-	import flash.display.Bitmap;
 	import nemostein.framework.dragonfly.AnchorAlign;
-	import nemostein.framework.dragonfly.Animation;
 	import nemostein.framework.dragonfly.Core;
-	import nemostein.io.Keys;
 	
 	public class Hero extends Core implements Target
 	{
@@ -43,7 +41,7 @@ package brotherhood.states.gameplay.heroes
 		
 		public function build():void 
 		{
-			draw(Bitmap(new Assets.ImageHeroesHeroes).bitmapData);
+			draw(new AssetHeroes().bitmapData);
 			
 			frame.width = 50;
 			frame.height = 50;

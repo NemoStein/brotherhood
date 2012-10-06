@@ -1,27 +1,14 @@
 package brotherhood.states.gameplay.creeps.melee
 {
 	import brotherhood.states.gameplay.creeps.Creep;
-	import brotherhood.states.gameplay.tower.Tower;
 	import brotherhood.system.EntityService;
-	import flash.display.Bitmap;
-	import flash.display.BitmapData;
 	import flash.geom.Point;
-	import nemostein.framework.dragonfly.AnchorAlign;
 	
 	internal class Melee extends Creep
 	{
 		override protected function initialize():void
 		{
 			super.initialize();
-			
-			draw(Bitmap(new Assets.ImageCreepsCreeps).bitmapData);
-			
-			frame.x = 0;
-			frame.y = 570;
-			frame.width = 65;
-			frame.height = 65;
-			
-			alignAnchor(AnchorAlign.BOTTOM, AnchorAlign.CENTER);
 		}
 		
 		override protected function attackTarget():void 

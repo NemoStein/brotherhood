@@ -1,9 +1,10 @@
 package brotherhood.states.gameplay.heroes.archer.arrows 
 {
+	import assets.heroes.AssetArrow;
 	import brotherhood.states.gameplay.creeps.CreepService;
 	import brotherhood.states.gameplay.heroes.Hero;
-	import flash.display.Bitmap;
 	import flash.geom.Point;
+	import flash.geom.Rectangle;
 	import nemostein.framework.dragonfly.AnchorAlign;
 	import nemostein.framework.dragonfly.Core;
 	
@@ -14,6 +15,7 @@ package brotherhood.states.gameplay.heroes.archer.arrows
 		
 		private var _destination:Point = new Point();
 		private var _hero:Hero;
+		private var _fading:Boolean;
 		
 		public function CommonArrow(hero:Hero) 
 		{
@@ -28,7 +30,7 @@ package brotherhood.states.gameplay.heroes.archer.arrows
 			
 			relative = false;
 			
-			draw(Bitmap(new Assets.ImageHeroesArrow).bitmapData);
+			draw(new AssetArrow().bitmapData);
 			
 			frame.width = 48;
 			
@@ -37,8 +39,13 @@ package brotherhood.states.gameplay.heroes.archer.arrows
 			x = _hero.x;
 			y = _hero.y;
 			
-			_destination.x = _hero.crosshair.x;
-			_destination.y = _hero.crosshair.y;
+			//_destination.x = _hero.crosshair.x;
+			//_destination.y = _hero.crosshair.y;
+			
+			var area:Rectangle = _hero.crosshair.areaOfEffect;
+			
+			_destination.x = Math.random() * area.width + area.x;
+			_destination.y = Math.random() * area.height + area.y;
 			
 			var distanceX:Number = _destination.x - x;
 			var distanceY:Number = _destination.y - y;
@@ -52,34 +59,46 @@ package brotherhood.states.gameplay.heroes.archer.arrows
 		
 		override protected function update():void
 		{
-			var distanceX:Number = _destination.x - x;
-			var distanceY:Number = _destination.y - y;
-			
-			if (distanceX || distanceY)
+			if (!_fading)
 			{
-				var moveSpeed:Number = MAX_MOVE_SPEED * time;
+				var distanceX:Number = _destination.x - x;
+				var distanceY:Number = _destination.y - y;
 				
-				angle = Math.atan2(distanceY, distanceX);
-				
-				var moveX:Number = Math.cos(angle) * moveSpeed;
-				var moveY:Number = Math.sin(angle) * moveSpeed;
-				
-				if (distanceX > 0 && distanceX < moveX || distanceX < 0 && distanceX > moveX)
+				if (distanceX || distanceY)
 				{
-					moveX = distanceX;
+					var moveSpeed:Number = MAX_MOVE_SPEED * time;
+					
+					angle = Math.atan2(distanceY, distanceX);
+					
+					var moveX:Number = Math.cos(angle) * moveSpeed;
+					var moveY:Number = Math.sin(angle) * moveSpeed;
+					
+					if (distanceX > 0 && distanceX < moveX || distanceX < 0 && distanceX > moveX)
+					{
+						moveX = distanceX;
+					}
+					
+					if (distanceY > 0 && distanceY < moveY || distanceY < 0 && distanceY > moveY)
+					{
+						moveY = distanceY;
+					}
+					
+					x += moveX;
+					y += moveY;
+					
+					if (x == _destination.x)
+					{
+						CreepService.hitCreep(_destination);
+						_fading = true;
+					}
 				}
+			}
+			else
+			{
+				alpha -= time; // 1 sec delay
 				
-				if (distanceY > 0 && distanceY < moveY || distanceY < 0 && distanceY > moveY)
+				if (alpha <= 0)
 				{
-					moveY = distanceY;
-				}
-				
-				x += moveX;
-				y += moveY;
-				
-				if (x == _destination.x)
-				{
-					CreepService.hitCreep(_destination);
 					parent.remove(this);
 				}
 			}

@@ -7,7 +7,6 @@ package brotherhood.states.gameplay.heroes.archer
 	import brotherhood.states.gameplay.heroes.skills.archer.Overheated;
 	import brotherhood.states.gameplay.heroes.skills.archer.Overweighted;
 	import brotherhood.states.gameplay.heroes.skills.archer.PiercingArrow;
-	import brotherhood.states.gameplay.heroes.skills.Skill;
 	import brotherhood.states.gameplay.heroes.skills.Upgrade;
 	
 	public class Archer extends Hero

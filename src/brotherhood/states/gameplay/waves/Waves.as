@@ -56,8 +56,9 @@ package brotherhood.states.gameplay.waves
 			}
 		}
 		
-		static public function parse(string:String):Waves
+		static public function parse(object:Object):Waves
 		{
+			var string:String = object.toString();
 			var waves:Waves = new Waves();
 			var waveCount:int = 0;
 			

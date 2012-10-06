@@ -1,5 +1,8 @@
 package brotherhood.states.gameplay.hud
 {
+	import assets.skills.AssetBackgroundBlue;
+	import assets.skills.AssetBackgroundGreen;
+	import assets.skills.AssetBackgroundRed;
 	import brotherhood.states.gameplay.heroes.skills.Skill;
 	import flash.display.Bitmap;
 	import flash.display.BitmapData;
@@ -29,7 +32,7 @@ package brotherhood.states.gameplay.hud
 			
 			_ready = true;
 			
-			var row:int = _index % 2;
+			var row:int = int(_index / 2);
 			var col:int = _index % 3;
 			
 			var signal:Class;
@@ -37,19 +40,19 @@ package brotherhood.states.gameplay.hud
 			
 			if (col == 0)
 			{
-				signal = Assets.ImageSkillsBackgroundGreen;
+				signal = AssetBackgroundGreen;
 				colour = 0x80008f0c;
 				x = 0;
 			}
 			else if (col == 1)
 			{
-				signal = Assets.ImageSkillsBackgroundBlue;
+				signal = AssetBackgroundBlue;
 				colour = 0x802e3192;
 				x = 102;
 			}
 			else
 			{
-				signal = Assets.ImageSkillsBackgroundRed;
+				signal = AssetBackgroundRed;
 				colour = 0x809f1200;
 				x = 206;
 			}

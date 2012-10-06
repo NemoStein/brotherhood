@@ -1,5 +1,7 @@
 package brotherhood.states.startmenu
 {
+	import assets.heroSelect.AssetPressStart;
+	import assets.states.AssetStartScreen;
 	import brotherhood.states.heroselection.HeroSelection;
 	import brotherhood.states.State;
 	import brotherhood.system.SystemService;
@@ -21,9 +23,9 @@ package brotherhood.states.startmenu
 		{
 			super.initialize();
 			
-			draw(Bitmap(new Assets.ImageStatesStartScreen).bitmapData);
+			draw(new AssetStartScreen().bitmapData);
 			
-			_pressStart = new Core(Bitmap(new Assets.ImageHeroSelectPressStart).bitmapData);
+			_pressStart = new Core(new AssetPressStart().bitmapData);
 			
 			_pressStart.x = 573;
 			_pressStart.y = 461;

@@ -1,5 +1,7 @@
 package brotherhood.states.gameplay.hud
 {
+	import assets.skills.AssetArcher;
+	import assets.skills.AssetWizard;
 	import brotherhood.states.gameplay.heroes.archer.Archer;
 	import brotherhood.states.gameplay.heroes.Hero;
 	import brotherhood.states.gameplay.heroes.skills.Skill;
@@ -35,11 +37,11 @@ package brotherhood.states.gameplay.hud
 			
 			if (_hero is Archer)
 			{
-				skills = new Core(Bitmap(new Assets.ImageSkillsArcher).bitmapData);
+				skills = new Core(new AssetArcher().bitmapData);
 			}
 			else
 			{
-				skills = new Core(Bitmap(new Assets.ImageSkillsWizard).bitmapData);
+				skills = new Core(new AssetWizard().bitmapData);
 			}
 			
 			add(skills);

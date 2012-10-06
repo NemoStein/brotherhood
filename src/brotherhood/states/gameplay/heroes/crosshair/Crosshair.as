@@ -1,11 +1,9 @@
 package brotherhood.states.gameplay.heroes.crosshair
 {
-	import air.update.states.HSM;
+	import assets.heroes.AssetCrosshairs;
 	import brotherhood.states.gameplay.heroes.archer.Archer;
 	import brotherhood.states.gameplay.heroes.Hero;
 	import brotherhood.states.gameplay.hud.HUD;
-	import brotherhood.system.EntityService;
-	import flash.display.Bitmap;
 	import flash.display.BitmapData;
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
@@ -15,7 +13,7 @@ package brotherhood.states.gameplay.heroes.crosshair
 	public class Crosshair extends Core
 	{
 		static public const IDLE:String = "idle";
-		static public const MAX_SPEED:int = 666;
+		static public const MAX_SPEED:int = 150;
 		
 		private var _KeyGreenA:int;
 		private var _KeyGreenB:int;
@@ -52,7 +50,7 @@ package brotherhood.states.gameplay.heroes.crosshair
 			destination = new Point();
 			areaOfEffect = new Rectangle();
 			
-			draw(Bitmap(new Assets.ImageHeroesCrosshairs).bitmapData);
+			draw(new AssetCrosshairs().bitmapData);
 			
 			frame.width = 140;
 			frame.height = 140;
@@ -198,22 +196,22 @@ package brotherhood.states.gameplay.heroes.crosshair
 				_hero.useSkill(0);
 			}
 			
-			if (input.pressed(_KeyGreenB))
+			if (input.pressed(_KeyBlueA))
 			{
 				_hero.useSkill(1);
 			}
 			
-			if (input.pressed(_KeyBlueA))
+			if (input.pressed(_KeyRedA))
 			{
 				_hero.useSkill(2);
 			}
 			
-			if (input.pressed(_KeyBlueB))
+			if (input.pressed(_KeyGreenB))
 			{
 				_hero.useSkill(3);
 			}
 			
-			if (input.pressed(_KeyRedA))
+			if (input.pressed(_KeyBlueB))
 			{
 				_hero.useSkill(4);
 			}

@@ -1,13 +1,22 @@
-package brotherhood.states.gameplay.creeps.ranged 
+package brotherhood.states.gameplay.creeps.ranged
 {
+	import assets.creeps.ranged.AssetNormal;
+	import nemostein.framework.dragonfly.AnchorAlign;
+	
 	public class Normal extends Ranged
 	{
-		override protected function initialize():void 
+		override protected function initialize():void
 		{
 			super.initialize();
 			
-			addAnimation(WALKING, [0, 1], 7);
+			draw(new AssetNormal().bitmapData);
+			
+			frame.width = 48;
+			
+			addAnimation(WALKING, [0, 1, 2, 3, 4, 5, 6, 7], 6);
 			playAnimation(WALKING);
+			
+			alignAnchor(AnchorAlign.BOTTOM, AnchorAlign.CENTER);
 		}
 	}
 }
